@@ -1,0 +1,18 @@
+/* 
+    Created on : Sep 13, 2015, 3:07:25 PM
+    Author     : abdallah abukhader
+*/
+
+
+@font-face {
+    font-family: 'newfont';
+    src: url('../fonts/ar/gesstwolight-light-webfont.eot');
+    src: url('../fonts/ar/gesstwolight-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/ar/gesstwolight-light-webfont.woff2') format('woff2'),
+         url('../fonts/ar/gesstwolight-light-webfont.woff') format('woff'),
+         url('../fonts/ar/gesstwolight-light-webfont.ttf') format('truetype'),
+         url('../fonts/ar/gesstwolight-light-webfont.svg#ge_ss_twolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

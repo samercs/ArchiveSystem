@@ -1,0 +1,38 @@
+/* 
+    Created on : Sep 13, 2015, 4:16:44 PM
+    Author     : abdallah abukhader
+*/
+/* 
+    Created on : Sep 13, 2015, 4:16:44 PM
+    Author     : abdallah abukhader
+*/
+@import url(../../css/1024.css) all and (min-width:1100px);
+@import url(../../css/800.css) all and (max-width:1099px) and (min-width:701px);
+@import url(../../css/Mobile.css) all and (max-width:700px);
+
+
+.error {
+    margin: 15px 0 !important;
+}
+
+.login_form_container {
+    height: auto !important;
+}
+
+.main_container_body .tabler tr td {
+    float: none !important;
+}
+
+.msgBox {
+    margin: 15px;
+    text-align: right;
+}
+
+.notifications td a {
+    color: gray;
+}
+
+.notifications td a:hover {
+    color: red;
+}
+

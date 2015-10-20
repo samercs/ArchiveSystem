@@ -1,0 +1,62 @@
+﻿<%@ Page ValidateRequest="false" Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="login" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
+    <meta charset="UTF-8" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="background_img"></div>
+        <div class="container">
+            <div class="sub-container">
+                <div class="logo_container">
+                    <img class="logo_img img-responsive" src="img/logo.png"/>
+                    <img src="img/logo_arrow.png" class="arrow_logo img-responsive"/>
+                </div>
+                <div class="arrow_login_form"></div>  
+                <div class="login_form_container">
+                    <form class="login_form">
+                        <table dir="rtl" class="form_table">
+                            <tr><td colspan="2" class="center"><h4  dir="rtl">الدخول</h4></td></tr>
+                            <tr class="form_table_tr ">
+                                <td class="hme"><img class="img-responsive label_img" src="img/arro.png"/><div  class="arrow_box" ><label class="text_color_white_smoke ">إسم المستخدم</label></div> </td><td class=""><div class="input_box"><img src="img/input.png" class="input_img img-responsive"/><asp:TextBox CssClass="input_txt" ID="txtUserName" placeholder="إسم المستخدم" runat="server"></asp:TextBox></div></td>
+                            </tr >
+                            <tr >
+                                <td class="hme"><img class="img-responsive label_img" src="img/arro.png"/><div class="arrow_box " ><label class="text_color_white_smoke ">كلمة السر</label></div></td><td class=""><div class="input_box"><img src="img/input.png" class="input_img img-responsive"/><asp:TextBox CssClass="input_txt" placeholder="كلمة السر" TextMode="Password" ID="txtPassword" runat="server"></asp:TextBox></div></td>
+                            </tr>
+                            <tr class="form_table_tr " >
+                                <td >
+                                    <input type="checkbox" name="rememberme" value="rememberme">    <label class="text_color_white_smoke">تذكرني  </label>
+                                </td>
+                            </tr>
+                            <tr class="form_table_tr">
+                                <td>
+                                    <input type="checkbox" name="keepmeonline" value="keepmeonline">  <label class="text_color_white_smoke">البقاء متصلا</label>
+                                </td>
+                            </tr>
+                            <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="دخول" /></td><td class="hme"><a href="#"  class="hyperlink_login_form">هل نسيت كلمة المرور ؟</a></td></tr>
+                            <tr><td class="moblie_hide align_center"><a href="#" class="hyperlink_login_form" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a></td></tr>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    <asp:Panel CssClass="alert alert-danger error" ID="ErrorDiv" Visible="False" runat="server">
+                                        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                                    </asp:Panel>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

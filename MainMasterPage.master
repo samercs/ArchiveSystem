@@ -1,0 +1,154 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMasterPage.master.cs" Inherits="MainMasterPage" %>
+
+<%@ Register Src="~/Controls/UserSection.ascx" TagPrefix="uc1" TagName="UserSection" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/tooltip.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="background_color"></div>
+        <header>
+            <div class="container">
+                <div class="sub_header">
+                    <a href="Default.aspx">
+                        <img src="img/logo.png" class="logo_img_default img-responsive" /></a>
+                    <img src="img/line.png" class="line img-responsive" />
+                    <div class="mobile_menu shadow_class">
+                        <i class="fa fa-bars menu_btn"></i>
+                        <table class="menunotifications">
+                            <tr>
+                                <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
+                                <td class="emplow"><i class="fa fa-envelope font" data-toggle="tooltip" title="الصندوق الوارد"></i></td>
+                                <td class="bell"><i class="fa fa-bell font" data-toggle="tooltip" title="التنبهات"></i></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="dropdownmenu">
+                        <ul class="menu_mobile" dir="ltr">
+                            <li class="menuitem_mobile"><a href="Default.aspx">الرئيسية<i class="fa fa-home font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="PersonalInfo.aspx">الملف الشخصي <i class="fa fa-user font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="favorite.html">المفضلة<i class="fa fa-star font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="chating.html">مراسلة مدير الموقع<i class="fa fa-envelope font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="default.html">تصفح الموقع<i class="fa fa-mouse-pointer font"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="logo_p">
+                        <p>الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية</p>
+                    </div>
+                    <ul class="menu" dir="rtl">
+                        <li class="menuitem"><a href="Default.aspx"><i class="fa fa-home font"></i>
+                            <br>
+                            الرئيسية</a></li>
+                        <li class="menuitem"><a href="PersonalInfo.aspx"><i class="fa fa-user font"></i>
+                            <br>
+                            الملف الشخصي </a></li>
+                        <li class="menuitem"><a href="favorite.html"><i class="fa fa-star font"></i>
+                            <br>
+                            المفضلة</a></li>
+                        <li class="menuitem"><a href="chating.html"><i class="fa fa-envelope font"></i>
+                            <br>
+                            مراسلة مدير الموقع</a></li>
+                        <li class="menuitem"><a href="default.html"><i class="fa fa-mouse-pointer font"></i>
+                            <br>
+                            تصفح الموقع</a></li>
+                    </ul>
+                    </ul>
+                   
+                    <table class="notifications">
+                        <tr>
+                            <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
+                            <td class="emplow"><i class="fa fa-envelope font" data-toggle="tooltip" title="الصندوق الوارد"></i></td>
+                            <td class="bell"><i class="fa fa-bell font" data-toggle="tooltip" title="التنبهات"></i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </header>
+        <img src="img/undernav.png" class="undernav img-responsive" />
+        <div class="container">
+            <div class="space"></div>
+
+            <uc1:UserSection runat="server" ID="UserSection" />
+            
+            
+
+            <section class="main_container_body">
+
+                <asp:Panel ID="msg" CssClass="alert msgBox " Visible="False" runat="server">
+                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>    
+                </asp:Panel>
+                
+                
+                <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
+            </section>
+            <aside class="events">
+                <div class="file_header">
+                    <h4>البحث عن ملف
+                        <img src="img/search.png" /></h4>
+                </div>
+                <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
+                <div class="search_form">
+                    <label class="search_label">اسم الملف: </label>
+                    <br>
+                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                    <label class="search_label">المجال:</label><br>
+                    <select class="search_input">
+                        <option>--إختر المجال--</option>
+                    </select><br>
+                    <div class="space"></div>
+                    <label class="search_label">التايخ :</label><br>
+                    <div class="input-group date ">
+                        <input type="text" class="form-control picker search_input">
+                    </div>
+                    <div class="space"></div>
+                    <div class="submit_box">
+                        <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                    </div>
+                </div>
+                <div class="space gray"></div>
+                <div class="space gray"></div>
+                <div class="file_header">
+                    <h4>‫مستخدم‬ ‫عن‬ ‫بحث‬<img src="img/search.png" /></h4>
+                </div>
+                <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
+                <div class="search_form">
+                    <label class="search_label">اسم الملف: </label>
+                    <br>
+                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                    <label class="search_label">المسمى الوظيفي: </label>
+                    <br>
+                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                    <div class="submit_box">
+                        <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+        <div class="space"></div>
+
+        <footer>
+            <div class=" footer_img img-responsive"></div>
+        </footer>
+
+    </form>
+</body>
+</html>
