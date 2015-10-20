@@ -6,11 +6,15 @@
 <head runat="server">
     <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
     <meta charset="UTF-8" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/tooltip.js"></script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
