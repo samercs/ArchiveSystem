@@ -43,7 +43,7 @@
                         <ul class="menu_mobile" dir="ltr">
                             <li class="menuitem_mobile"><a href="Default.aspx">الرئيسية<i class="fa fa-home font"></i></a></li>
                             <li class="menuitem_mobile"><a href="PersonalInfo.aspx">الملف الشخصي <i class="fa fa-user font"></i></a></li>
-                            <li class="menuitem_mobile"><a href="favorite.html">المفضلة<i class="fa fa-star font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="favorite.aspx">المفضلة<i class="fa fa-star font"></i></a></li>
                             <li class="menuitem_mobile"><a href="chating.html">مراسلة مدير الموقع<i class="fa fa-envelope font"></i></a></li>
                             <li class="menuitem_mobile"><a href="default.html">تصفح الموقع<i class="fa fa-mouse-pointer font"></i></a></li>
                         </ul>
@@ -58,7 +58,7 @@
                         <li class="menuitem"><a href="PersonalInfo.aspx"><i class="fa fa-user font"></i>
                             <br>
                             الملف الشخصي </a></li>
-                        <li class="menuitem"><a href="favorite.html"><i class="fa fa-star font"></i>
+                        <li class="menuitem"><a href="favorite.aspx"><i class="fa fa-star font"></i>
                             <br>
                             المفضلة</a></li>
                         <li class="menuitem"><a href="chating.html"><i class="fa fa-envelope font"></i>

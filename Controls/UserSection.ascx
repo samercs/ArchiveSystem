@@ -23,48 +23,24 @@
         </div>
         <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
         <ul class="files">
-            <li class="filer">
-                <div class="one_file_container">
-                    <h5 dir="ltr">اسم الملف </h5>
-                    <span class="datename">تاريخ الاصدار : </span><span class="datedes">16/9/2015</span>
-                </div>
-            </li>
-            <img src="img/grayspliter.png" class="split img-responsive">
-            <li class="filer">
-                <div class="one_file_container">
-                    <h5 dir="ltr">اسم الملف </h5>
-                    <span class="datename">تاريخ الاصدار : </span><span class="datedes">16/9/2015</span>
-                </div>
 
-            </li>
-            <img src="img/grayspliter.png" class="split img-responsive">
-            <li class="filer">
-                <div class="one_file_container">
-                    <h5 dir="ltr">اسم الملف </h5>
-                    <span class="datename">تاريخ الاصدار : </span><span class="datedes">16/9/2015</span>
-                </div>
+            <asp:Repeater ID="Repeater1" runat="server">
+                <ItemTemplate>
+                    <li class="filer">
+                        <div class="one_file_container">
+                            <h5 dir="ltr"><%#Eval("title") %> </h5>
+                            <span class="datename">تاريخ الاصدار : </span><span class="datedes"><%#Eval("FileDate","{0:dd/MM/yyyy}") %></span>
+                        </div>
+                    </li>
+                    <img src="img/grayspliter.png" class="split img-responsive">
+                </ItemTemplate>
+            </asp:Repeater>
 
-            </li>
-            <img src="img/grayspliter.png" class="split img-responsive">
-            <li class="filer">
-                <div class="one_file_container">
-                    <h5 dir="ltr">اسم الملف </h5>
-                    <span class="datename">تاريخ الاصدار : </span><span class="datedes">16/9/2015</span>
-                </div>
 
-            </li>
-            <img src="img/grayspliter.png" class="split img-responsive">
-            <li class="filer">
-                <div class="one_file_container">
-                    <h5 dir="ltr">اسم الملف </h5>
-                    <span class="datename">تاريخ الاصدار : </span><span class="datedes">16/9/2015</span>
-                </div>
 
-            </li>
-            <img src="img/grayspliter.png" class="split img-responsive">
         </ul>
     </div>
     <div class="load_more">
-        تصفح جميع  الملفات<br>
+        <a href="Favorite.aspx">تصفح جميع  الملفات</a> <br>
     </div>
 </aside>
