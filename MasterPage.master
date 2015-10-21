@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register Src="~/Controls/UserSection.ascx" TagPrefix="uc1" TagName="UserSection" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <asp:ContentPlaceHolder runat="server" ID="head"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div class="container">
+        <div class="space"></div>
+
+        <uc1:UserSection runat="server" ID="UserSection" />
+
+
+
+        <section class="main_container_body">
+
+            
+
+
+            <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
+        </section>
+        <aside class="events">
+            <div class="file_header">
+                <h4>البحث عن ملف
+                        <img src="img/search.png" /></h4>
+            </div>
+            <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
+            <div class="search_form">
+                <label class="search_label">اسم الملف: </label>
+                <br>
+                <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                <label class="search_label">المجال:</label><br>
+                <select class="search_input">
+                    <option>--إختر المجال--</option>
+                </select><br>
+                <div class="space"></div>
+                <label class="search_label">التايخ :</label><br>
+                <div class="input-group date ">
+                    <input type="text" class="form-control picker search_input">
+                </div>
+                <div class="space"></div>
+                <div class="submit_box">
+                    <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                </div>
+            </div>
+            <div class="space gray"></div>
+            <div class="space gray"></div>
+            <div class="file_header">
+                <h4>‫مستخدم‬ ‫عن‬ ‫بحث‬<img src="img/search.png" /></h4>
+            </div>
+            <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
+            <div class="search_form">
+                <label class="search_label">اسم الملف: </label>
+                <br>
+                <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                <label class="search_label">المسمى الوظيفي: </label>
+                <br>
+                <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                <div class="submit_box">
+                    <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</asp:Content>
+

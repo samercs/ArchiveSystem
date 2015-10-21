@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainMasterPage.master.cs" Inherits="MainMasterPage" %>
 
-<%@ Register Src="~/Controls/UserSection.ascx" TagPrefix="uc1" TagName="UserSection" %>
+
 
 
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
                         <li class="menuitem"><a href="favorite.aspx"><i class="fa fa-star font"></i>
                             <br>
                             المفضلة</a></li>
-                        <li class="menuitem"><a href="chating.html"><i class="fa fa-envelope font"></i>
+                        <li class="menuitem"><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-envelope font"></i>
                             <br>
                             مراسلة مدير الموقع</a></li>
                         <li class="menuitem"><a href="default.html"><i class="fa fa-mouse-pointer font"></i>
@@ -81,66 +81,14 @@
             </div>
         </header>
         <img src="img/undernav.png" class="undernav img-responsive" />
+        
         <div class="container">
-            <div class="space"></div>
-
-            <uc1:UserSection runat="server" ID="UserSection" />
-            
-            
-
-            <section class="main_container_body">
-
-                <asp:Panel ID="msg" CssClass="alert msgBox " Visible="False" runat="server">
-                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>    
-                </asp:Panel>
-                
-                
-                <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
-            </section>
-            <aside class="events">
-                <div class="file_header">
-                    <h4>البحث عن ملف
-                        <img src="img/search.png" /></h4>
-                </div>
-                <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
-                <div class="search_form">
-                    <label class="search_label">اسم الملف: </label>
-                    <br>
-                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
-                    <label class="search_label">المجال:</label><br>
-                    <select class="search_input">
-                        <option>--إختر المجال--</option>
-                    </select><br>
-                    <div class="space"></div>
-                    <label class="search_label">التايخ :</label><br>
-                    <div class="input-group date ">
-                        <input type="text" class="form-control picker search_input">
-                    </div>
-                    <div class="space"></div>
-                    <div class="submit_box">
-                        <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
-                    </div>
-                </div>
-                <div class="space gray"></div>
-                <div class="space gray"></div>
-                <div class="file_header">
-                    <h4>‫مستخدم‬ ‫عن‬ ‫بحث‬<img src="img/search.png" /></h4>
-                </div>
-                <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
-                <div class="search_form">
-                    <label class="search_label">اسم الملف: </label>
-                    <br>
-                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
-                    <label class="search_label">المسمى الوظيفي: </label>
-                    <br>
-                    <input type="text" name="filename" class="search_input" /><div class="space"></div>
-                    <div class="submit_box">
-                        <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
-                    </div>
-                </div>
-            </aside>
-
+        <asp:Panel ID="msg" CssClass="alert msgBox" Visible="False" runat="server">
+                <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
+        </asp:Panel>
         </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
         <div class="space"></div>
         <div class="space"></div>
         <div class="space"></div>
@@ -149,7 +97,85 @@
         <footer>
             <div class=" footer_img img-responsive"></div>
         </footer>
+        
+        
+        
+        
+        <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+
+                    <h4 class="modal-title">مراسة مدير الموقع</h4>
+                    <img src="img/model_arrow.png" class="img-responsive arrow_model" />
+                </div>
+                <div class="arrow_model_form"></div>
+                <div class="modal-body">
+                    <table dir="rtl" class="form_table">
+                        <tr class="form_table_tr ">
+                            <td class="hme">
+                                <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs">
+                                    <label class="text_color_white_smoke ">عنوان الرسالة</label>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="input_box">
+                                    <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox CssClass="input_txt" ID="txtTitle" placeholder="العنوان" runat="server"></asp:TextBox>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <tr class="form_table_tr ">
+                            <td class="hme top_align">
+                                <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs ">
+                                    <label class="text_color_white_smoke ">الرسالة</label>
+                                </div>
+                            </td>
+                            <td colspan="6">
+                                <div class="input_box">
+                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine"  height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="form_table_tr_extra ">
+                            <td colspan="2">
+                                <asp:Button OnClientClick="return  validateMsg();" OnClick="btnSendMsg_OnClick" ID="btnSendMsg" CssClass="submit_btn_report_form float_left txt_white" runat="server" Text="إرسال" />
+                                
+                                </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+        
 
     </form>
+    
+    
+    <script type="text/javascript">
+        function validateMsg() {
+            var title = $("#<%=txtTitle.ClientID%>").val();
+            var msg = $("#<%=txtMsg.ClientID%>").val();
+            if (title == "") {
+                alert("الرجاء ادخال عنوان الرسالة");
+                return false;
+
+            }
+            if (msg == "") {
+                alert("الرجاء ادخال  الرسالة");
+                return false;
+
+            }
+            return true;
+        }
+    </script>
+
 </body>
 </html>
