@@ -4,11 +4,11 @@ $(document).ready(function () {
         $(".dropdownmenu").slideToggle("slow");
     });
         $(' .picker').datepicker({});
-        $('.link').click(function(){
+        /*$('.link').click(function(){
             $('.commenter').slideToggle("slow");
-        });
-        $('.up').click(function(){
+        });*/
+        /*$('.up').click(function(){
             $('.collapse').slideToggle("slow");
-        });
+        });*/
 
 });

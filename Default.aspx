@@ -41,11 +41,12 @@
 
                 <img src="img/grayspliter.png" class="split img-responsive">
                 <div class="space"></div>
+                
+                <div class="comment_box" id="comment_box_<%#Container.DataItemIndex +1 %>">
+                    <table dir="rtl">
+                        <asp:ListView ID="Repeater1" runat="server">
+                            <ItemTemplate>
 
-                <div class="comment_box">
-                    <asp:Repeater ID="Repeater1" runat="server">
-                        <ItemTemplate>
-                            <table dir="rtl">
                                 <tr>
                                     <td class="width_50_px" rowspan="4">
                                         <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
@@ -57,24 +58,39 @@
                                 </tr>
                                 <tr>
                                     <td class="space align_right">
-                                        <p>‫
+                                        <p>
+                                            ‫
                                             <%#Eval("text") %>
-
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class=" ">
-                                        <input type="submit" class="comment_sub background_gray txt_left" name="comment_sub" value="كتابة رد" /><img src="img/goback_green.png" class="img-responsive txt_left" /></td>
+                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة رد  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
-                            </table>
-                        </ItemTemplate>
-                    </asp:Repeater>
 
+                            </ItemTemplate>
+                            <EmptyDataTemplate>
+
+                                <tr>
+                                    <td colspan="2" class=" ">
+                                        <div class="text-center alert alert-warning">
+                                            لا يوجد تعليقات
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" class=" ">
+                                        <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة رد  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                </tr>
+                            </EmptyDataTemplate>
+                        </asp:ListView>
+                    </table>
 
                 </div>
 
-                <div class="commenter" id="demo" class="collapse">
+                <div class="commenter collapse" id="commenter_<%#Container.DataItemIndex+1 %>">
                     <div class="space"></div>
 
                     <div class="comment_box">
@@ -94,16 +110,17 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class=" ">
-                                    <input type="submit" class="comment_sub background_gray txt_left" name="comment_sub" value="كتابة رد" /><img src="img/goback_green.png" class="img-responsive txt_left" /></td>
+                                    <a class="comment_sub background_gray txt_left">كتابة رد
+                                        <img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                             </tr>
                         </table>
                     </div>
 
                 </div>
-                <button class="link btn-link font_small">إظهار جميع التعليقات </button>
+                <a class="link btn-link font_small btn-show-all-comment" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
                 <div class="space"></div>
                 <div class="space"></div>
-                <div class="collapse">
+                <div class="collapse" id="attached-<%#Container.DataItemIndex + 1 %>">
                     <img src="img/arrow_attched.png" class="img-responsive attached_img " />
                     <div class="arrow_attached comment_input ">
                         <table>
@@ -113,22 +130,33 @@
                                 </td>
                             </tr>
                             <tr class="align_center">
-                                <td>
-                                    <img src="img/flag.png" class="img-responsive" /><br>
-                                    <span class="align_center">اسم المرفق</span></td>
-                                <td>
-                                    <img src="img/tawoer.png" class="img-responsive" /><br>
-                                    <span class="align_center">اسم المرفق</span></td>
-                                <td>
-                                    <img src="img/city.png" class="img-responsive" /><br>
-                                    <span class="align_center">اسم المرفق</span></td>
+                                <asp:ListView ID="RepeaterAttached" runat="server">
+                                    <ItemTemplate>
+                                        <td>
+                                            <a href="/SystemFiles/FilesAttach/<%#Eval("fileUrl") %>" download>
+                                                <%# GetFileIcon(Eval("fileUrl")) %><br>
+                                                <span class="align_center"><%#Eval("title") %></span>
+                                            </a>
+                                        </td>
+                                    </ItemTemplate>
+
+                                    <EmptyDataTemplate>
+                                        <td colspan="3">
+                                            <div class="alert alert-warning">
+                                                لا يوجد مرفقات
+                                            </div>
+                                        </td>
+                                    </EmptyDataTemplate>
+                                </asp:ListView>
+
+
                             </tr>
                         </table>
                     </div>
                 </div>
                 <div class="space"></div>
-                <div data-toggle="tooltip" title="عرض الملف " class="show_thefile">
-                    <img src="img/uparrow.png" class="img-responsive up" />
+                <div data-toggle="tooltip" title="عرض المرفقات" class="show_thefile">
+                    <img src="img/uparrow.png" class="img-responsive up" data-id="attached-<%#Container.DataItemIndex + 1 %>" />
                 </div>
             </div>
             <div class="space gray"></div>
@@ -214,7 +242,25 @@
 
 
 
+    <script type="text/javascript">
+        $(function () {
 
+            $(".up").click(function () {
+
+                var attached_id = $(this).attr("data-id");
+                $("#" + attached_id).slideToggle("slow");
+
+            });
+
+            $(".btn-show-all-comment").click(function () {
+
+                var commentId = $(this).attr("data-id");
+                $("#" + commentId).toggleClass("full-hieght");
+
+            });
+
+        });
+    </script>
 
 
 
