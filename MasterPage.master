@@ -27,20 +27,22 @@
             <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
             <div class="search_form">
                 <label class="search_label">اسم الملف: </label>
-                <br>
-                <input type="text" name="filename" class="search_input" /><div class="space"></div>
-                <label class="search_label">المجال:</label><br>
-                <select class="search_input">
-                    <option>--إختر المجال--</option>
-                </select><br>
+                <br/>
+                <asp:TextBox ID="txtFileName" CssClass="search_input" runat="server"></asp:TextBox>
                 <div class="space"></div>
-                <label class="search_label">التايخ :</label><br>
+                <label class="search_label">المجال:</label><br/>
+                <asp:TextBox ID="txtTarget" CssClass="search_input" runat="server"></asp:TextBox>
+                <br/>
+                <div class="space"></div>
+                <label class="search_label">التايخ :</label><br/>
                 <div class="input-group date ">
-                    <input type="text" class="form-control picker search_input">
+                    <asp:TextBox ID="txtDate" CssClass="form-control picker search_input" runat="server"></asp:TextBox>
                 </div>
                 <div class="space"></div>
                 <div class="submit_box">
-                    <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                    <img src="img/green_serach.png" class="green_search" />
+                    <asp:Button OnClick="btnSearchFile_OnClick" ID="btnSearchFile" CssClass="green_submit" runat="server" Text="بحث" />
+                    
                 </div>
             </div>
             <div class="space gray"></div>
@@ -50,14 +52,15 @@
             </div>
             <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
             <div class="search_form">
-                <label class="search_label">اسم الملف: </label>
-                <br>
-                <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                <label class="search_label">اسم المستخدم: </label>
+                <br/>
+                <asp:TextBox ID="txtUserName" CssClass="search_input" runat="server"></asp:TextBox>
+                <div class="space"></div>
                 <label class="search_label">المسمى الوظيفي: </label>
-                <br>
-                <input type="text" name="filename" class="search_input" /><div class="space"></div>
+                <br/>
+                <asp:TextBox ID="txtJobTitle" CssClass="search_input" runat="server"></asp:TextBox><div class="space"></div>
                 <div class="submit_box">
-                    <img src="img/green_serach.png" class="green_search" /><input type="submit" name="sub" value="بحث" class="green_submit" />
+                    <img src="img/green_serach.png" class="green_search" /><asp:Button OnClick="btnSearchUsers_OnClick" ID="btnSearchUsers" CssClass="green_submit" runat="server" Text="بحث" />
                 </div>
             </div>
         </aside>

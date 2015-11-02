@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(".menu_btn").click(function () {
         $(".dropdownmenu").slideToggle("slow");
     });
-        $(' .picker').datepicker({});
+    $(' .picker').datepicker({ format: 'dd/mm/yyyy' });
         /*$('.link').click(function(){
             $('.commenter').slideToggle("slow");
         });*/

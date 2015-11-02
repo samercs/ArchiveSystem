@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,5 +11,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void Page_Load(object sender, EventArgs e)
     {
 
+    }
+
+    protected void btnSearchFile_OnClick(object sender, EventArgs e)
+    {
+        DateTime tmp;
+        if (!string.IsNullOrWhiteSpace(txtFileName.Text) ||
+            DateTime.TryParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None,
+                out tmp) || !string.IsNullOrWhiteSpace(txtTarget.Text))
+        {
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}",txtFileName.Text,txtDate.Text,txtTarget.Text));
+        }
+    }
+
+    protected void btnSearchUsers_OnClick(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrWhiteSpace(txtUserName.Text) || !string.IsNullOrWhiteSpace(txtJobTitle.Text))
+        {
+            Response.Redirect(String.Format("SearchUser.aspx?name={0}&jobTitle={1}", txtUserName.Text, txtJobTitle.Text));
+        }
     }
 }

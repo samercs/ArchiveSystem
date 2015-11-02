@@ -81,11 +81,11 @@
             </div>
         </header>
         <img src="img/undernav.png" class="undernav img-responsive" />
-        
-        <div class="container">
-        <asp:Panel ID="msg" CssClass="alert msgBox" Visible="False" runat="server">
-                <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
-        </asp:Panel>
+        <div class="clearfix"></div>
+        <div class="container" >
+            <asp:Panel ID="msg" CssClass="alert msgBox text-center" Visible="False" runat="server">
+                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
+            </asp:Panel>
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>

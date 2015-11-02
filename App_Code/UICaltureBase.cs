@@ -59,13 +59,13 @@ public class UICaltureBase : System.Web.UI.Page
         switch (msgType)
         {
             case MsgType.Success:
-                panel.CssClass += "alert-success";
+                panel.CssClass += " alert-success";
                 break;
             case MsgType.Error:
-                panel.CssClass += "alert-danger";
+                panel.CssClass += " alert-danger";
                 break;
             case MsgType.Warning:
-                panel.CssClass += "alert-warning";
+                panel.CssClass += " alert-warning";
                 break;
 
         }
