@@ -55,6 +55,12 @@ public class UICaltureBase : System.Web.UI.Page
     {
 
         Panel panel = Master.FindControl("msg") as Panel;
+        Label lbl = Master.FindControl("lblMsg") as Label;
+        if (panel == null)
+        {
+            panel = Master.Master.FindControl("msg") as Panel;
+            lbl = Master.Master.FindControl("lblMsg") as Label;
+        }
         panel.Visible = true;
         switch (msgType)
         {
@@ -69,7 +75,7 @@ public class UICaltureBase : System.Web.UI.Page
                 break;
 
         }
-        Label lbl=Master.FindControl("lblMsg") as Label;
+        
         lbl.Text = text;
 
     }

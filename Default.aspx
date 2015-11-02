@@ -30,9 +30,12 @@
                     </tr>
                     <tr class="space txt_green align_right">
                         <td><i class="fa fa-mouse-pointer "></i>‫تصفح‬</td>
-                        <td><i class="fa fa-download"></i>‫تحميل‬</td>
+                        <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
                         <td><i class="fa fa-archive"></i>‫أرشفة‬</td>
-                        <td><i class="fa fa-star "></i>‫ إضافة للمفضلة‬‫‬</td>
+                        <td>
+                            <asp:LinkButton OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
+                                <i class="fa fa-star "></i>‫ إضافة للمفضلة
+                            </asp:LinkButton>‬‫‬</td>
                         <td><a class="txt_green vis" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
                     </tr>
                 </table>
@@ -90,28 +93,33 @@
 
                 </div>
 
-                <div class="commenter collapse" id="commenter_<%#Container.DataItemIndex+1 %>">
+                <div class="commenter" id="commenter_<%#Container.DataItemIndex+1 %>">
                     <div class="space"></div>
 
                     <div class="comment_box">
                         <table dir="rtl">
                             <tr>
                                 <td rowspan="4">
-                                    <img src="img/user_pic.png" class=" small_user_pic" /></td>
+                                    <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
+                                </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h4 class="txt_green font_small space align_right">د.ماجد عبدالله القصبي</h4>
+                                    <h4 class="txt_green font_small space align_right">
+                                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
+                                    </h4>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="space align_right">
-                                    <textarea class="comment_input" placeholder="كتابة رد... " multiple name="comment_txt"></textarea></td>
+                                    <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan="2" class=" ">
-                                    <a class="comment_sub background_gray txt_left">كتابة رد
-                                        <img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand"  CssClass="comment_sub background_gray txt_left" ID="btnSendComent" runat="server">كتابة رد
+                                        <img src="img/goback_green.png" class="img-responsive txt_left" /></asp:LinkButton>
+                               </td>
                             </tr>
                         </table>
                     </div>
@@ -256,6 +264,11 @@
 
                 var commentId = $(this).attr("data-id");
                 $("#" + commentId).toggleClass("full-hieght");
+
+            });
+
+            $(".comment_sub").click(function() {
+                 $(this).parent().parent().parent().parent().parent().next().toggle(300);
 
             });
 

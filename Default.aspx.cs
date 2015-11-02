@@ -38,7 +38,7 @@ public partial class _Default : UICaltureBase
             HiddenField id=e.Item.FindControl("id") as HiddenField;
             Database db=new Database();
             db.AddParameter("@id", id.Value);
-            DataTable dt = db.ExecuteDataTable("select FileComment.Text, users.* from FileComment inner join Users on (FileComment.UserId=Users.id) where FileComment.fileId=@id");
+            DataTable dt = db.ExecuteDataTable("select FileComment.Text, users.* from FileComment inner join Users on (FileComment.UserId=Users.id) where FileComment.fileId=@id and FileComment.Status=1");
             r.DataSource = dt;
             r.DataBind();
 
@@ -54,6 +54,12 @@ public partial class _Default : UICaltureBase
             dt = db.ExecuteDataTable("select * from FilesAttach where fileID=@id");
             ls.DataSource = dt;
             ls.DataBind();
+
+            Label lblUser=e.Item.FindControl("lblUserName") as Label;
+            Users user=Session["User"] as Users;
+            lblUser.Text = user.Name;
+            Image imgUser = e.Item.FindControl("imgUser") as Image;
+            imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
         }
     }
 
@@ -72,5 +78,47 @@ public partial class _Default : UICaltureBase
         {
             return "<i style='font-size: 40px;' class='fa fa-file-o'></i>";
         }
+    }
+
+    
+
+    private bool ValidateComment()
+    {
+        return true;
+    }
+
+    protected void btnSendComent_OnCommand(object sender, CommandEventArgs e)
+    {
+        if (ValidateComment())
+        {
+            Database db = new Database();
+            Users user = Session["User"] as Users;
+            int itemId = int.Parse(e.CommandArgument.ToString());
+            TextBox txtComment= ListView1.Items[itemId].FindControl("txtComment") as TextBox;
+            HiddenField id= ListView1.Items[itemId].FindControl("id") as HiddenField;
+            db.AddParameter("@FileId", id.Value);
+            db.AddParameter("@UserId", user.Id);
+            db.AddParameter("@Text", txtComment.Text);
+            db.AddParameter("@Status", "0");
+            db.ExecuteNonQuery("insert into fileComment(FileId,UserId,Text,Status) values(@FileId,@UserId,@Text,@Status)");
+            ShowAlert("تم اضافة التعليق. سوف يتم مراجعة التعليق من قبل مدير الموقع و نشرة في حالة مطابقة الشروط",MsgType.Success);
+        }
+    }
+
+    protected void btnAddToFav_OnCommand(object sender, CommandEventArgs e)
+    {
+        Database db = new Database();
+        Users user = Session["User"] as Users;
+        db.AddParameter("@userId", user.Id);
+        db.AddParameter("@FileId", e.CommandArgument.ToString());
+        DataTable dt = db.ExecuteDataTable("select * from UserFav where UserId=@UserId and FileId=@FileId");
+        if (dt.Rows.Count == 0)
+        {
+            db.AddParameter("@userId", user.Id);
+            db.AddParameter("@FileId", e.CommandArgument.ToString());
+            db.ExecuteNonQuery("insert into UserFav(UserId,FileId) values(@UserId,@FileId)");
+            
+        }
+        ShowAlert("تم اضافة الملف الى المفضلة", MsgType.Success);
     }
 }
