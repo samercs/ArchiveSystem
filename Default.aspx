@@ -31,12 +31,12 @@
                     <tr class="space txt_green align_right">
                         <td><i class="fa fa-mouse-pointer "></i>‫تصفح‬</td>
                         <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
-                        <td><i class="fa fa-archive"></i>‫أرشفة‬</td>
+                        
                         <td>
                             <asp:LinkButton OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
                                 <i class="fa fa-star "></i>‫ إضافة للمفضلة
                             </asp:LinkButton>‬‫‬</td>
-                        <td><a class="txt_green vis" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
+                        <td><a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
                     </tr>
                 </table>
                 <div class="space"></div>
@@ -206,7 +206,8 @@
                             </td>
                             <td class="">
                                 <div class="input_box">
-                                    <img src="img/input.png" class="input_img img-responsive" /><input type="text" class="input_txt" placeholder="إسم الملف" name="username" />
+                                    <img src="img/input.png" class="input_img img-responsive" />
+                                    <asp:TextBox ReadOnly="True" Enabled="False"  ID="txtFileName" CssClass="input_txt" runat="server"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -218,8 +219,10 @@
                             </td>
                             <td class="">
                                 <div class="input_box">
-                                    <img src="img/input.png" class="input_img img-responsive" /><select class="input_txt txt_gray_light" name="report_cuz"><option class="txt_gray_light">إختار سبب الإبلاغ</option>
-                                    </select>
+                                    <img src="img/input.png" class="input_img img-responsive" />
+                                    <asp:DropDownList CssClass="input_txt txt_gray_light" ID="ddlType" runat="server"></asp:DropDownList>
+                                    
+                                    
                                 </div>
                             </td>
                         </tr>
@@ -231,13 +234,17 @@
                             </td>
                             <td colspan="6">
                                 <div class="input_box">
-                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><textarea class="input_txtarea" placeholder="ملاحظات اخرى" name="report_cuz" height="150"></textarea>
+                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" />
+                                    <asp:TextBox ID="txtNote" CssClass="input_txtarea" runat="server"></asp:TextBox>
+                                    
                                 </div>
                             </td>
                         </tr>
                         <tr class="form_table_tr_extra ">
                             <td colspan="2">
-                                <input type="submit" class="submit_btn_report_form float_left txt_white" name="submet_login_form" value="إرسال" /></td>
+                                <asp:Button OnClick="btnSendError_OnClick" OnClientClick="return validateSendError()" ID="btnSendError" CssClass="submit_btn_report_form float_left txt_white" runat="server" Text="إرسال" />
+                                <asp:HiddenField ID="fileId"  runat="server" />    
+                            </td> 
                         </tr>
                     </table>
 
@@ -272,7 +279,31 @@
 
             });
 
+            $(".btnSendError").click(function () {
+                
+
+                var $this = $(this);
+                var id = $this.data("id");
+                var name = $this.data("name");
+                $("#<%=txtFileName.ClientID%>").val(name);
+                $("#<%=fileId.ClientID%>").val(id);
+
+            });
+
         });
+
+
+        function validateSendError() {
+
+
+            var why = $("#<%=ddlType.ClientID%>").val();
+            if (why == "-1") {
+                alert("الرجاء اختيار سبب البلاغ");
+                return false;
+            }
+            return true;
+            
+        }
     </script>
 
 

@@ -22,6 +22,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
         <div class="background_color"></div>
         <header>
             <div class="container">
@@ -34,8 +35,8 @@
                         <table class="menunotifications">
                             <tr>
                                 <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
-                                <td class="emplow"><i class="fa fa-envelope font" data-toggle="tooltip" title="الصندوق الوارد"></i></td>
-                                <td class="bell"><i class="fa fa-bell font" data-toggle="tooltip" title="التنبهات"></i></td>
+                                <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font" title="الصندوق الوارد"></i></a> </td>
+                                <td class="bell"><i class="fa fa-bell font" title="التنبهات"></i></td>
                             </tr>
                         </table>
                     </div>
@@ -44,7 +45,7 @@
                             <li class="menuitem_mobile"><a href="Default.aspx">الرئيسية<i class="fa fa-home font"></i></a></li>
                             <li class="menuitem_mobile"><a href="PersonalInfo.aspx">الملف الشخصي <i class="fa fa-user font"></i></a></li>
                             <li class="menuitem_mobile"><a href="favorite.aspx">المفضلة<i class="fa fa-star font"></i></a></li>
-                            <li class="menuitem_mobile"><a href="chating.html">مراسلة مدير الموقع<i class="fa fa-envelope font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="#" data-toggle="modal" data-target="#myModal2">مراسلة مدير الموقع<i class="fa fa-envelope font"></i></a></li>
                             <li class="menuitem_mobile"><a href="default.html">تصفح الموقع<i class="fa fa-mouse-pointer font"></i></a></li>
                         </ul>
                     </div>
@@ -68,13 +69,13 @@
                             <br>
                             تصفح الموقع</a></li>
                     </ul>
-                    
-                   
+
+
                     <table class="notifications">
                         <tr>
-                            <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
-                            <td class="emplow"><i class="fa fa-envelope font" data-toggle="tooltip" title="الصندوق الوارد"></i></td>
-                            <td class="bell"><i class="fa fa-bell font" data-toggle="tooltip" title="التنبهات"></i></td>
+                            <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" title="تسجيل خروج"></i></a></td>
+                            <td class="emplow"><a class="btnInbox" href="#"><i class="fa fa-envelope font" title="الصندوق الوارد"></i></a></td>
+                            <td class="bell"><i class="fa fa-bell font" title="التنبهات"></i></td>
                         </tr>
                     </table>
                 </div>
@@ -82,9 +83,9 @@
         </header>
         <img src="img/undernav.png" class="undernav img-responsive" />
         <div class="clearfix"></div>
-        <div class="container" >
+        <div class="container">
             <asp:Panel ID="msg" CssClass="alert msgBox text-center" Visible="False" runat="server">
-                    <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
+                <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
             </asp:Panel>
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -97,68 +98,119 @@
         <footer>
             <div class=" footer_img img-responsive"></div>
         </footer>
-        
-        
-        
-        
-        <div class="modal fade" id="myModal2" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
 
 
-                    <h4 class="modal-title">مراسة مدير الموقع</h4>
-                    <img src="img/model_arrow.png" class="img-responsive arrow_model" />
-                </div>
-                <div class="arrow_model_form"></div>
-                <div class="modal-body">
-                    <table dir="rtl" class="form_table">
-                        <tr class="form_table_tr ">
-                            <td class="hme">
-                                <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs">
-                                    <label class="text_color_white_smoke ">عنوان الرسالة</label>
-                                </div>
-                            </td>
-                            <td class="">
-                                <div class="input_box">
-                                    <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox CssClass="input_txt" ID="txtTitle" placeholder="العنوان" runat="server"></asp:TextBox>
-                                </div>
-                            </td>
-                        </tr>
-                        
-                        <tr class="form_table_tr ">
-                            <td class="hme top_align">
-                                <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs ">
-                                    <label class="text_color_white_smoke ">الرسالة</label>
-                                </div>
-                            </td>
-                            <td colspan="6">
-                                <div class="input_box">
-                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine"  height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="form_table_tr_extra ">
-                            <td colspan="2">
-                                <asp:Button OnClientClick="return  validateMsg();" OnClick="btnSendMsg_OnClick" ID="btnSendMsg" CssClass="submit_btn_report_form float_left txt_white" runat="server" Text="إرسال" />
-                                
+        <div class="inbox moblie_hide">
+            <table class="table table-responsive table-bordered table-hover tbl">
+                <thead>
+                    <tr class="text-right">
+                        <th>العنوان
+                        </th>
+                        <th>من
+                        </th>
+                        <th>التاريخ
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <asp:ListView OnPagePropertiesChanged="ListView1_OnPagePropertiesChanged" ID="ListView1" runat="server">
+                        <ItemTemplate>
+                            <tr class="text-right">
+                                <td>
+                                    <%#Eval("title") %>
                                 </td>
-                        </tr>
-                    </table>
+                                <td>
+                                    <%#Eval("UserName") %>
+                                </td>
+                                <td>
+                                    <%#Eval("AddDate","{0:dd/MM/yyyy}") %>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+
+                    </asp:ListView>
+                    <tr>
+                        <td colspan="3">
+                            <asp:HyperLink NavigateUrl="~/UserInbox.aspx" CssClass="btn btn-block btn-success" ID="HyperLink1" runat="server">عرض الكل</asp:HyperLink>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+            
+        </div>
+
+
+
+
+
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+
+
+                        <h4 class="modal-title">مراسة مدير الموقع</h4>
+                        <img src="img/model_arrow.png" class="img-responsive arrow_model" />
+                    </div>
+                    <div class="arrow_model_form"></div>
+                    <div class="modal-body">
+                        <table dir="rtl" class="form_table">
+                            <tr class="form_table_tr ">
+                                <td class="hme">
+                                    <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs">
+                                        <label class="text_color_white_smoke ">عنوان الرسالة</label>
+                                    </div>
+                                </td>
+                                <td class="">
+                                    <div class="input_box">
+                                        <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox CssClass="input_txt" ID="txtTitle" placeholder="العنوان" runat="server"></asp:TextBox>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr class="form_table_tr ">
+                                <td class="hme top_align">
+                                    <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs ">
+                                        <label class="text_color_white_smoke ">الرسالة</label>
+                                    </div>
+                                </td>
+                                <td colspan="6">
+                                    <div class="input_box">
+                                        <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine" Height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="form_table_tr_extra ">
+                                <td colspan="2">
+                                    <asp:Button OnClientClick="return  validateMsg();" OnClick="btnSendMsg_OnClick" ID="btnSendMsg" CssClass="submit_btn_report_form float_left txt_white" runat="server" Text="إرسال" />
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
 
                 </div>
 
             </div>
-
         </div>
-    </div>
-        
+
+
+
+
+
 
     </form>
-    
-    
+
+
     <script type="text/javascript">
         function validateMsg() {
             var title = $("#<%=txtTitle.ClientID%>").val();
@@ -175,6 +227,17 @@
             }
             return true;
         }
+
+
+        $(function () {
+
+            $(".btnInbox").click(function () {
+
+                $(".inbox").toggle(300);
+
+            });
+
+        });
     </script>
 
 </body>

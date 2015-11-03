@@ -14,6 +14,8 @@ public partial class _Default : UICaltureBase
         if (!Page.IsPostBack)
         {
             LoadData();
+            Database db=new Database();
+            db.LoadDDL("category","title","id",ref ddlType,"اختر سبب الابلاغ","CatId=4");
         }
     }
 
@@ -120,5 +122,17 @@ public partial class _Default : UICaltureBase
             
         }
         ShowAlert("تم اضافة الملف الى المفضلة", MsgType.Success);
+    }
+
+    protected void btnSendError_OnClick(object sender, EventArgs e)
+    {
+        Database db = new Database();
+        Users user = Session["User"] as Users;
+        db.AddParameter("@UserId", user.Id);
+        db.AddParameter("@Rason", ddlType.SelectedValue);
+        db.AddParameter("@Note", txtNote.Text);
+        db.AddParameter("@FileId", fileId.Value);
+        db.ExecuteNonQuery("insert into FileNotice(UserId,Rason,Note,FileId) values (@UserId,@Rason,@Note,@FileId)");
+        ShowAlert("تم ارسال البلاغ بنجاح",MsgType.Success);
     }
 }

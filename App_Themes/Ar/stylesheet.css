@@ -40,6 +40,16 @@ a {
     color: #88c16c;
 }
 
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.btn-group-vertical>.btn, .btn-group>.btn {
+    
+    float: right !important;
+}
+
 
 
 

@@ -1422,3 +1422,27 @@ height: 100%;
                 height: 1em;
                 font-size: 0.8em;
             }
+
+.inbox {
+    width: 30%;
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    z-index: 1000000;
+    background-color: #c0c0c0;
+    padding: 2%;
+    border-radius: 7px;
+    border: solid 2px #aaa;
+    display: none;
+    box-shadow: 2px 2px 2px #414142;
+}
+
+.tbl {
+    direction: rtl;
+    text-align: right !important;
+}
+
+.tbl thead th {
+    
+    text-align: center !important;
+}
