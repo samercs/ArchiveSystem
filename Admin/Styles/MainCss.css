@@ -783,9 +783,17 @@ h5 {
 
 
 .badge {
-    background-color: #444;
-    color: white;
-    padding: 5px 8px;
-    border-radius: 120px;
+
+    color: #008000;
+    text-align: center;
+    font-size: 10px;
+    position: absolute;
+    top: -100px;
+    left: 30%;
+    display: block;
     
+}
+
+.posr {
+    position: relative;
 }

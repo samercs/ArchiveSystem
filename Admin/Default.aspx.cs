@@ -13,7 +13,17 @@ public partial class Admin_Default : System.Web.UI.Page
         {
             Database db=new Database();
             var count=db.ExecuteScalar("select count(*) from FileNotice where IsShow=0");
-            lblFileNoticeCount.InnerText = count.ToString();
+            if (int.Parse(count.ToString()) > 0)
+            {
+                lblFileNoticeCount.InnerText = String.Format("لديك {0} بلاغ جديد", count.ToString());
+            }
+
+            count = db.ExecuteScalar("select count(*) from FileComment where Status=0");
+            if (int.Parse(count.ToString()) > 0)
+            {
+                lblFileCommentCount.InnerText = String.Format("لديك {0} تعليقات غير مفعل", count.ToString());
+            }
+
         }
     }
 }
