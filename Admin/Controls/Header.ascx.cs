@@ -10,10 +10,10 @@ public partial class Admin_Controls_Header : System.Web.UI.UserControl
     protected void Page_Init(object sender, EventArgs e)
     {
 
-        if (Request.Cookies["NCSSCMSKeepOnline"] != null)
+        if (Request.Cookies["ASCMSKeepOnline"] != null)
         {
             int id;
-            if (int.TryParse(Request.Cookies["NCSSCMSKeepOnline"].Value, out id))
+            if (int.TryParse(Request.Cookies["ASCMSKeepOnline"].Value, out id))
             {
                 Database db = new Database();
                 db.AddParameter("@id", id);

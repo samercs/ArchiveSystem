@@ -16,7 +16,7 @@ public partial class Admin_AdminOp : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         AdminInfo adminInfo = Session["AdminInfo"] as AdminInfo;
-        if (!adminInfo.Permition.Equals("1"))
+        if (!adminInfo.Permition.Equals("*"))
         {
             Response.Redirect("Default.aspx");
         }

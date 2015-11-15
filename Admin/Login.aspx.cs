@@ -11,8 +11,8 @@ public partial class Admin_Login : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            HttpCookie UName = Request.Cookies["NCSSUserName"];
-            HttpCookie UPassword = Request.Cookies["NCSSPassword"];
+            HttpCookie UName = Request.Cookies["ASUserName"];
+            HttpCookie UPassword = Request.Cookies["ASPassword"];
             if (UName != null)
             {
                 txtUserName.Text = UName.Value;
@@ -26,10 +26,10 @@ public partial class Admin_Login : System.Web.UI.Page
             }
             txtUserName.Attributes.Add("onkeydown", "if(event.which || event.keyCode){if ((event.which == 13) || (event.keyCode == 13)) {__doPostBack('" + btnLogin.UniqueID + "','');}} ");
             txtPassword.Attributes.Add("onkeydown", "if(event.which || event.keyCode){if ((event.which == 13) || (event.keyCode == 13)) {__doPostBack('" + btnLogin.UniqueID + "','');}} ");
-            if (Request.Cookies["NCSSCMSKeepOnline"] != null)
+            if (Request.Cookies["ASCMSKeepOnline"] != null)
             {
                 int id;
-                if (int.TryParse(Request.Cookies["NCSSCMSKeepOnline"].Value, out id))
+                if (int.TryParse(Request.Cookies["ASCMSKeepOnline"].Value, out id))
                 {
                     Database db = new Database();
                     db.AddParameter("@id", id);
@@ -58,32 +58,32 @@ public partial class Admin_Login : System.Web.UI.Page
 
             if(cbRememberMe.Checked)
             {
-                HttpCookie c=new HttpCookie("NCSSUserName", txtUserName.Text);
+                HttpCookie c=new HttpCookie("ASUserName", txtUserName.Text);
                 c.Expires = DateTime.Now.AddYears(1);
                 Response.Cookies.Add(c);
-                c = new HttpCookie("NCSSPassword", txtPassword.Text);
+                c = new HttpCookie("ASPassword", txtPassword.Text);
                 c.Expires = DateTime.Now.AddYears(1);
                 Response.Cookies.Add(c);
             }
             else
             {
-                HttpCookie c = new HttpCookie("NCSSUserName", "");
+                HttpCookie c = new HttpCookie("ASUserName", "");
                 c.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(c);
-                c = new HttpCookie("NCSSPassword", "");
+                c = new HttpCookie("ASPassword", "");
                 c.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(c);
             }
 
             if(cbKeepMeLogin.Checked)
             {
-                HttpCookie c = new HttpCookie("NCSSCMSKeepOnline", dt.Rows[0]["id"].ToString());
+                HttpCookie c = new HttpCookie("ASCMSKeepOnline", dt.Rows[0]["id"].ToString());
                 c.Expires = DateTime.Now.AddDays(20);
                 Response.Cookies.Add(c);
             }
             else
             {
-                HttpCookie c = new HttpCookie("NCSSCMSKeepOnline", "");
+                HttpCookie c = new HttpCookie("ASCMSKeepOnline", "");
                 c.Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies.Add(c);
             }

@@ -51,8 +51,8 @@
                         <asp:Label ID="Label1" runat="server" Text="الصلاحيات" CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <asp:DropDownList ID="ddlPermition" CssClass="ddl1" runat="server">
-                            <asp:ListItem Text="مدير" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="محرر" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="مدير" Value="*"></asp:ListItem>
+                            
                         </asp:DropDownList>
                     </td>
                     <td></td>
