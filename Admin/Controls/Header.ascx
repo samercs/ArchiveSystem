@@ -16,7 +16,7 @@
                                 <a class="gn-icon gn-icon-download" href="AdminList.aspx">مدراء الموقع</a>
                             </li>
                             <li>
-                                <a class="gn-icon gn-icon-archive" href="PagesList.aspx">صفحات الموقع</a>
+                                <a class="gn-icon gn-icon-archive" href="FileList.aspx">الملفات</a>
                             </li>
                             <li>
                                 <a class="gn-icon gn-icon-article" href="LabelList.aspx">نصوص الموقع</a>

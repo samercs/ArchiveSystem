@@ -64,14 +64,14 @@ header {
 }
 
 .span3 {
-    width: 23%;
+    width: 10%;
     float: right;
     max-height: 750px;
     overflow-y: auto;
 }
 
 .span9 {
-    width: 75%;
+    width: 88%;
     float: left;
     /*max-height: 620px;*/
     overflow-y: auto;
@@ -760,4 +760,32 @@ h5 {
     font-size: 18px;
     border: solid 1px rgb(217,217,217);
     width: 90%;
+}
+
+.read {
+    color: green;
+    font-weight: normal;
+    
+}
+
+.read a {
+    
+    font-weight: normal !important;
+    
+}
+
+.unread a {
+    
+    font-weight: bold !important;
+    
+}
+
+
+
+.badge {
+    background-color: #444;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 120px;
+    
 }

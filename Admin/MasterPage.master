@@ -44,74 +44,14 @@
                         <h2 class="nav-header">الخيارات الاساسية</h2>
                         <a href="AdminList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة مدراء الموقع</a>
                         <a href="AdminOp.aspx?op=add"><i class="fa fa-user-plus fl mr10px"></i>اضافة مدير جديد</a>
-                        <a href="PagesList.aspx"><i class="fa fa-file-text-o fl mr10px"></i>ادارة الصفحات</a>
-                        <a href="ImagesList.aspx"><i class="fa fa-picture-o fl mr10px"></i>ادارة صور الموقع</a>
-                        <a href="LabelList.aspx"><i class="fa fa-picture-o fl mr10px"></i>ادارة نصوص الموقع</a>
                     </div>
                     
                     <div class="item">
-                        <h2 class="nav-header">الشريط المتحرك</h2>
-                        <a href="ShowCaseList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الشريط المتحرك</a>
-                        <a href="ShowCaseOp.aspx?op=add"><i class="fa fa-plus fl mr10px"></i>اضافة صورة جديدة</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">المكتبة</h2>
-                        <a href="LibraryList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة المكتبة</a>
-                        <a href="LibraryOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة بحث جديد</a>
-                        <a href="ResearchTypeList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة التصنيفات</a>
-                        <a href="ResaerchTypeOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة تصنيف جديد</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">الباحثين</h2>
-                        <a href="ResearcherList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الباحثين</a>
-                        <a href="ResearcherOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة باحث جديد</a>
-                        <a href="ResearchMsg.aspx"><i class="fa fa-plus fl mr10px"></i>مراسلة الباحثين</a>
+                        <h2 class="nav-header">الملفات</h2>
+                        <a href="FileList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>الملفات</a>
+                        <a href="FileOp.aspx?op=add"><i class="fa fa-plus fl mr10px"></i>اضافة ملف جديد</a>
                     </div>
                     
-                    <div class="item">
-                        <h2 class="nav-header">الظواهر الاجتماعية</h2>
-                        <a href="SocialEventList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الظواهر الاجتماعية</a>
-                        <a href="SocialEventOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة ظاهرة اجتماعية</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">الاحداث و النشاطات</h2>
-                        <a href="EventList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الاحداث و النشاطات</a>
-                        <a href="EventOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة حدث جديد</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">المنشورات</h2>
-                        <a href="PublicationsList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة المنشورات</a>
-                        <a href="PublicationsOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة منشور جديد</a>
-                    </div>
-                     <div class="item">
-                        <h2 class="nav-header">استطلاعات الراي</h2>
-                        <a href="PollList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة استطلاعات الراي</a>
-                        <a href="PollOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة استطلاع جديد</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">الشركاء</h2>
-                        <a href="PartnersList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الشركاء</a>
-                        <a href="PartnersOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة شريك جديد</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">المركز الاعلامي</h2>
-                        <a href="NewsList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الاخبار</a>
-                        <a href="NewsOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة خبر جديد</a>
-                        <a href="VedioList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة الفيديو</a>
-                        <a href="VedioOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة فيديو جديد</a>
-                        <a href="ReportList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة التقارير</a>
-                        <a href="ReportOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافة تقرير جديد</a>
-                        <a href="AlbumsList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة البوم الصور</a>
-                        <a href="AlbumsOp.aspx?Op=Add"><i class="fa fa-plus fl mr10px"></i>اضافةصورة جديدة</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">البريد الوارد</h2>
-                        <a href="ContactUsList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض البريد  الوارد</a>
-                    </div>
-                    <div class="item">
-                        <h2 class="nav-header">القائمة البريدية</h2>
-                        <a href="NewsLetterList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض االمشتركين</a>
-                    </div>
                 </div>
                 <div class="span9">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

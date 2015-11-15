@@ -16,24 +16,24 @@
 
             </div>
         </a>
-        <a href="PagesList.aspx">
+        <a href="FileList.aspx">
             <div class="item">
                 <div class="clear sp20" "></div>
                 <i class="fa fa-file-text-o fa-4x"></i>
                 <br />
                 <p>
-                    صفحات الموقع
+                    الملفات
                 </p>
 
             </div>
         </a>
-        <a href="LabelList.aspx">
+        <a href="FileNoticeList.aspx">
             <div class="item">
                 <div class="clear sp20"></div>
-                <i class="fa fa-list fa-4x"></i>
+                <i class="fa fa-bell fa-4x"></i>
                 <br />
                 <p>
-                   النصوص
+                   الابلاغات عن الملفات <span runat="server" id="lblFileNoticeCount" class="badge"></span>
                 </p>
 
             </div>
