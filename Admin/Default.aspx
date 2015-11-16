@@ -21,8 +21,10 @@
                 <div class="clear sp20"></div>
                 <i class="fa fa-user fa-4x"></i>
                 <br />
-                <p>
-                    المستخدمين
+                <p class="posr">
+                   المستخدمين
+                    <span id="lblUsersCount" runat="server" class="badge">
+                    </span>
                 </p>
 
             </div>

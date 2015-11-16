@@ -24,6 +24,12 @@ public partial class Admin_Default : System.Web.UI.Page
                 lblFileCommentCount.InnerText = String.Format("لديك {0} تعليقات غير مفعل", count.ToString());
             }
 
+            count = db.ExecuteScalar("select count(*) from Users where IsActive=0");
+            if (int.Parse(count.ToString()) > 0)
+            {
+                lblUsersCount.InnerText = String.Format("لديك {0} مستخدم غير مفعل", count.ToString());
+            }
+
         }
     }
 }
