@@ -40,6 +40,17 @@
 
             </div>
         </a>
+        <a href="DocumentList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-book fa-4x"></i>
+                <br />
+                <p>
+                    المعاملات
+                </p>
+
+            </div>
+        </a>
         <a href="FileNoticeList.aspx">
             <div class="item">
                 <div class="clear sp20"></div>
@@ -61,6 +72,32 @@
                 <p class="posr">
                    التعليقات 
                     <span id="lblFileCommentCount" runat="server" class="badge">
+                    </span>
+                </p>
+
+            </div>
+        </a>
+        <a href="MsgList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-inbox fa-4x"></i>
+                <br />
+                <p class="posr">
+                   رسائل مدير الموقع 
+                    <span id="lblMsgCount" runat="server" class="badge">
+                    </span>
+                </p>
+
+            </div>
+        </a>
+        <a href="CategoryList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-list fa-4x"></i>
+                <br />
+                <p class="posr">
+                   التصنيفات 
+                    <span id="Span1" runat="server" class="badge">
                     </span>
                 </p>
 

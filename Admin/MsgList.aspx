@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="ContactUsList.aspx.cs" Inherits="Admin_ContactUsList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="MsgList.aspx.cs" Inherits="Admin_MsgList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -16,13 +16,14 @@
         <ContentTemplate>
             <asp:HyperLink ID="HyperLink1" NavigateUrl="Default.aspx" CssClass="tdn fl" runat="server"><h5><i class="fa fa-backward"></i> رجوع</h5></asp:HyperLink>
             <asp:LinkButton ID="btnContactDelete" OnClick="btnContactDelete_Click" runat="server" CssClass="tdn fr mr10px btnDelete"><h5><i class="fa fa-times"></i> حذف  المختارة</h5></asp:LinkButton>
+            <a class="tdn fr mr10px" href="SendMsg.aspx"><h5><i class="fa fa-send"></i> ارسال رسالة</h5></a>
             <div class="clear"></div>
             <table cellspacing='0' class="LoginTbl tblList">
                 <!-- cellspacing='0' is important, must stay -->
                 <tr>
                     <th>
                         <asp:CheckBox ID="CheckBox10" OnCheckedChanged="CheckBox10_CheckedChanged" AutoPostBack="true" runat="server" /></th>
-                    <th>الاسم</th>
+                    <th>المرسل</th>
                     <th>العنوان</th>
                     <th>تاريخ الارسال</th>
                     <th></th>
@@ -43,25 +44,25 @@
                         </tr>
                     </LayoutTemplate>
                     <ItemTemplate>
-                        <tr <%# Eval("isread").ToString().Equals("False") ? "class='Bold'" : "" %> >
+                        <tr <%# Eval("isread").ToString().Equals("False") ? "class='unread Bold'" : "class='read'" %> >
                             <td>
                                 <asp:HiddenField ID="id" runat="server" Value='<%# Eval("Id") %>' />
                                 <asp:CheckBox ID="CheckBox1" runat="server" /></td>
                             <td>
-                                <%#Eval("title") %> <%#Eval("name") %>
-                                <br />
-                                <%#Eval("email") %>
+                                <%#Eval("name") %>
+                                <br/>
+                                <%#Eval("username") %> 
                             </td>
 
                             <td>
-                                <%#Eval("Subject") %>
+                                <%#Eval("title") %>
                             </td>
                             <td>
-                                <%#Eval("AddDate","{0:dd/MM/yyyy}")%>
+                                <%#new Dates().GregToHijri(Eval("AddDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>
                             </td>
                             <td>
                                 <asp:LinkButton CssClass="btnDelete" ID="btnDelete" OnCommand="btnDelete_Command" CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-trash fs20px"></i> حذف</asp:LinkButton>
-                                <a href="ContactUsOp.aspx?id=<%#Eval("id") %>"><i class="fa fa-angle-left"></i>تفاصيل</a>
+                                <a href="MsgOp.aspx?id=<%#Eval("id") %>"><i class="fa fa-angle-left"></i>تفاصيل</a>
                             </td>
                         </tr>
                     </ItemTemplate>

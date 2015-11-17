@@ -19,10 +19,13 @@
                                 <a class="gn-icon gn-icon-archive" href="FileList.aspx">الملفات</a>
                             </li>
                             <li>
-                                <a class="gn-icon gn-icon-article" href="LabelList.aspx">نصوص الموقع</a>
+                                <a class="gn-icon gn-icon-archive" href="DocumentList.aspx">المعاملات</a>
                             </li>
                             <li>
-                                <a class="gn-icon gn-icon-photoshop" href="ImagesList.aspx">صور الموقع</a>
+                                <a class="gn-icon gn-icon-archive" href="MsgList.aspx">رسائل مدير الموقع</a>
+                            </li>
+                            <li>
+                                <a class="gn-icon gn-icon-archive" href="CategoryList.aspx">التصنيفات</a>
                             </li>
                             <li><a class="gn-icon gn-icon-cog" href="UserDetail.aspx">حسابي</a>
                                 <ul class="gn-submenu">
@@ -41,7 +44,7 @@
             <li>
                 <asp:HyperLink CssClass="codrops-icon codrops-icon-prev" ID="HyperLink1" runat="server"></asp:HyperLink>
             </li>
-            <%--<li><a class="codrops-icon codrops-icon-drop"  href="../Account.aspx"><i class="fa fa-user"></i> <img alt="Logo" src="Images/Aimstyle_Logo.png" /></a></li>--%>
+            
             <li>
                 <asp:HyperLink ID="HyperLink2" CssClass="codrops-icon codrops-icon-drop" NavigateUrl="../Logout.aspx" runat="server"><span><i class="fa fa-sign-out"></i> تسجيل الخروج</span></asp:HyperLink>
             </li>

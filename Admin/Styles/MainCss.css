@@ -64,14 +64,14 @@ header {
 }
 
 .span3 {
-    width: 10%;
+    width: 15%;
     float: right;
     max-height: 750px;
     overflow-y: auto;
 }
 
 .span9 {
-    width: 88%;
+    width: 83%;
     float: left;
     /*max-height: 620px;*/
     overflow-y: auto;

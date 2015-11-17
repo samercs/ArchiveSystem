@@ -21,7 +21,7 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         Users u = Session["User"] as Users;
         Database db = new Database();
         db.AddParameter("@to", u.Id);
-        DataTable dt = db.ExecuteDataTable("select top(5) msg.*,Users.name as username from (Msg inner join users on (users.id=msg.[from]) ) where msg.ToId=@to order by msg.Id desc");
+        DataTable dt = db.ExecuteDataTable("select top(5) msg.*,Users.name as username from (Msg left join users on (msg.[from]=users.id) ) where msg.ToId=@to or isnull(msg.ToId,-1)=-1 order by msg.Id desc");
         ListView1.DataSource = dt;
         ListView1.DataBind();
     }

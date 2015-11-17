@@ -6,32 +6,39 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_ContactUsList : System.Web.UI.Page
+public partial class Admin_CategoryList : System.Web.UI.Page
 {
-    string tablename = "ContactUs";
-    private string editPage = "#";
-    private string addPage = "#";
-    public string name = "البريد الوارد";
+    string tablename = "Category";
+    private string editPage = "CategoryOp.aspx?Op=Edit&id={0}";
+    private string addPage = "CategoryOp.aspx?Op=Add";
+    public string name = "التصنيفات";
+    
+
+    public Admin_CategoryList()
+    {
+        
+        
+    }
 
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
-            //HyperLink3.NavigateUrl = addPage;
+            HyperLink3.NavigateUrl = addPage;
             LoadData();
+            
         }
     }
     void LoadData()
     {
         Database db = new Database();
-        System.Data.DataSet ds = db.ExecuteDataSet("select * from " + tablename +" Order By Adddate desc");
+        System.Data.DataSet ds = db.ExecuteDataSet("select * from " + tablename +" Order by CatId");
         RepeaterLists.DataSource = ds.Tables[0];
         RepeaterLists.DataBind();
         Cache["dt1"] = ds.Tables[0];
     }
     protected void CheckBox10_CheckedChanged(object sender, EventArgs e)
     {
-        //CheckBox cbAll = RepeaterLists.Controls[0].Controls[0].FindControl("CheckBox10") as CheckBox;
         foreach (ListViewItem r in RepeaterLists.Items)
         {
             CheckBox cb = r.FindControl("CheckBox1") as CheckBox;
@@ -60,11 +67,8 @@ public partial class Admin_ContactUsList : System.Web.UI.Page
     }
     protected void btnDelete_Command(object sender, CommandEventArgs e)
     {
-        
         Database db = new Database(); string sql = string.Empty;
-
         sql = "delete from " + tablename + " where id =" + e.CommandArgument;
-
         if (db.ExecuteNonQuery(sql) >= 1)
         {
             ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
@@ -85,13 +89,11 @@ public partial class Admin_ContactUsList : System.Web.UI.Page
 
         foreach (ListViewItem rptItem in RepeaterLists.Items)
         {
-
             CheckBox chk = (CheckBox)rptItem.FindControl("CheckBox1");
             if (chk.Checked)
             {
                 id = (HiddenField)RepeaterLists.Items[x].FindControl("id");
                 arrlist.Add(id.Value);
-
             }
             x++;
         }
@@ -123,6 +125,18 @@ public partial class Admin_ContactUsList : System.Web.UI.Page
             LoadData();
             CheckBox10.Checked = false;
         }
+    }
+
+    protected string GetCatName(string catId)
+    {
+        CategoryDic categoryDic = new CategoryDic();
+
+
+        if (categoryDic.Dictionary.ContainsKey(catId))
+        {
+            return categoryDic.Dictionary[catId];
+        }
+        return catId;
     }
 
 }

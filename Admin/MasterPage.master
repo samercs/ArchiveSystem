@@ -45,13 +45,33 @@
                         <a href="AdminList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة مدراء الموقع</a>
                         <a href="AdminOp.aspx?op=add"><i class="fa fa-user-plus fl mr10px"></i>اضافة مدير جديد</a>
                     </div>
-                    
+                    <div class="item">
+                        <h2 class="nav-header">المستخدمين</h2>
+                        <a href="UsersList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة المستخدمين</a>
+                        <a href="UsersOp.aspx?op=add"><i class="fa fa-user-plus fl mr10px"></i>اضافة مستخدم جديد</a>
+                    </div>
                     <div class="item">
                         <h2 class="nav-header">الملفات</h2>
                         <a href="FileList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>الملفات</a>
                         <a href="FileOp.aspx?op=add"><i class="fa fa-plus fl mr10px"></i>اضافة ملف جديد</a>
+                        <a href="FileNoticeList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض الابلاغات</a>
+                        <a href="FileCommentList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض التعليقات</a>
                     </div>
-                    
+                    <div class="item">
+                        <h2 class="nav-header">المعاملات</h2>
+                        <a href="DocumentList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>ادارة المعاملات</a>
+                        <a href="DocumentOp.aspx?op=add"><i class="fa fa-user-plus fl mr10px"></i>اضافة معاملة جديدة</a>
+                    </div>
+                    <div class="item">
+                        <h2 class="nav-header">رسائل مدير الموقع</h2>
+                        <a href="MsgList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض الرسائل</a>
+                        <a href="SendMsg.aspx"><i class="fa fa-user-plus fl mr10px"></i>رسالة جديدة</a>
+                    </div>
+                    <div class="item">
+                        <h2 class="nav-header">التصنيفات</h2>
+                        <a href="CategoryList.aspx"><i class="fa fa-pencil-square-o fl mr10px"></i>عرض التصنيفات</a>
+                        <a href="CategoryOp.aspx?op=add"><i class="fa fa-user-plus fl mr10px"></i>اضافة تصنيف جديد</a>
+                    </div>
                 </div>
                 <div class="span9">
                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

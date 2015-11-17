@@ -24,7 +24,7 @@
                             <%#Eval("Title") %>
                         </td>
                         <td>
-                            <%#Eval("UserName") %>
+                            <%#string.IsNullOrWhiteSpace(Eval("UserName").ToString()) ? "مدير الموقع" : Eval("UserName").ToString() %>
                         </td>
                         <td>
                             <%#Eval("AddDate","{0:dd/MM/yyyy}") %>

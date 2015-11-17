@@ -30,6 +30,12 @@ public partial class Admin_Default : System.Web.UI.Page
                 lblUsersCount.InnerText = String.Format("لديك {0} مستخدم غير مفعل", count.ToString());
             }
 
+            count = db.ExecuteScalar("select count(*) from Msg where isNull(toid,-1)=-1 and IsRead=0");
+            if (int.Parse(count.ToString()) > 0)
+            {
+                lblMsgCount.InnerText = String.Format("لديك {0} رسالة جديدة", count.ToString());
+            }
+
         }
     }
 }
