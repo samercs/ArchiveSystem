@@ -10,10 +10,10 @@
     <table class="tabler">
         <tr>
             <td class="input_td">
-                <asp:TextBox placeholder="كلمة السر الحالة" CssClass="form_class_input" ID="txtPassword1" runat="server"></asp:TextBox>
+                <asp:TextBox placeholder="كلمة السر الحالية" CssClass="form_class_input" ID="txtPassword1" runat="server"></asp:TextBox>
             </td>
             <td class="lable_td hme">
-                <label>كلمة السر الحالة</label>
+                <label>كلمة السر الحالية</label>
             </td>
         </tr>
         <tr>

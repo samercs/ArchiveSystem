@@ -42,7 +42,7 @@
                 </tr>
             </table>
 
-            <div class="space"></div>
+
             <table class="table table-striped">
                 <thead>
                     <tr id="green_background_color">
@@ -72,8 +72,8 @@
                                     </p>
                                 </td>
                                 <td id="width_10" class="green_background_color">
-                                    <a href="#" class="sub_link" data-toggle="modal" data-target="#myModal">تصفح  </a>&nbsp;&nbsp;
-                                    <a href="#" class="sub_link"> تحميل  </a>
+                                    <a href="#" class="sub_link floatR" data-toggle="modal" data-target="#myModal">تصفح  </a>&nbsp;&nbsp;
+                                    <a href="#" class="sub_link floatL"> تحميل  </a>
                                 </td>
                                 </td>
                             </tr>
@@ -83,7 +83,7 @@
                 </tbody>
             </table>
             <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
+                <div class="modal-dialog" style="margin:7em auto;">
 
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -122,11 +122,11 @@
                                         </td>
                                     </tr>
                                     <tr class="space txt_green align_right">
-                                        <td><i class="fa fa-mouse-pointer "></i>‫تصفح‬</td>
-                                        <td><i class="fa fa-download"></i>‫تحميل‬</td>
-                                        <td><i class="fa fa-archive"></i>‫أرشفة‬</td>
-                                        <td><i class="fa fa-star "></i>‫للمفضلة‬ ‫إضافة‬</td>
-                                        <td><a class="txt_green vis" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
+                                        <td><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح‬</td>
+                                        <td><i class="fa fa-download txt_green"></i>‫تحميل‬</td>
+                                        <td><i class="fa fa-archive txt_green"></i>‫أرشفة‬</td>
+                                        <td><i class="fa fa-star txt_green"></i>‫للمفضلة‬ ‫إضافة‬</td>
+                                        <td><a class="txt_green vis " href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
                                     </tr>
                                 </table>
                                 <div class="space"></div>
@@ -159,29 +159,32 @@
 
                                 <div class="commenter" id="demo" class="collapse">
                                     <div class="space"></div>
-                                    <form>
-                                        <div class="comment_box">
-                                            <table dir="rtl">
-                                                <tr>
-                                                    <td rowspan="4">
-                                                        <img src="img/user_pic.png" class=" small_user_pic" /></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <h4 class="txt_green font_small space align_right">د.ماجد عبدالله القصبي</h4>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="space align_right">
-                                                        <textarea class="comment_input" placeholder="كتابة رد... " multiple name="comment_txt"></textarea></td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class=" ">
-                                                        <input type="submit" class="comment_sub background_gray txt_left" name="comment_sub" value="كتابة رد" /><img src="img/goback_green.png" class="img-responsive txt_left" /></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </form>
+                                                        <div class="addcomment_box">
+                        <table style="width:100%;" dir="rtl">
+                            <tr>
+                                <td rowspan="4">
+                                    <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 class="txt_green font_small space align_right">
+                                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="space align_right">
+                                    <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class=" ">
+                                    <asp:LinkButton   CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">إضافة تعليق</asp:LinkButton>
+                               </td>
+                            </tr>
+                        </table>
+                    </div>
                                 </div>
                                 <button class="link btn-link font_small">إظهار جميع التعليقات </button>
                                 <div class="space"></div>
@@ -210,7 +213,7 @@
                                     </div>
                                 </div>
                                 <div class="space"></div>
-                                <div data-toggle="tooltip" title="عرض الملف " class="show_thefile">
+                                <div data-toggle="tooltip" title="عرض الملف " class="show_the_files_brow">
                                     <img src="img/uparrow.png" class="img-responsive up" />
                                 </div>
                             </div>

@@ -24,7 +24,7 @@
                             <%#Eval("Title") %>
                         </td>
                         <td>
-                            <%#string.IsNullOrWhiteSpace(Eval("UserName").ToString()) ? "مدير الموقع" : Eval("UserName").ToString() %>
+                            <%#Eval("UserName") %>
                         </td>
                         <td>
                             <%#Eval("AddDate","{0:dd/MM/yyyy}") %>
@@ -79,12 +79,15 @@
                             </td>
                         </tr>
                         <tr  class="form_table_tr ">
-                            <td colspan="2">
-                               
-                                <asp:HiddenField ID="userId" runat="server" />
-                                    <div class="comment_box">
+                            <td colspan="2">  
+                            </td>
+                        </tr>
+
+                    </table>
+                    <asp:HiddenField ID="userId" runat="server" />
+                                    <div class="comment_box" style="width:100%;">
                                         <table dir="rtl">
-                                            <tr>
+                                         <!--   <tr>
                                                 <td rowspan="4">
                                                     <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
                                                 </td>
@@ -95,27 +98,19 @@
                                                         <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
                                                     </h4>
                                                 </td>
-                                            </tr>
+                                            </tr>-->
                                             <tr>
                                                 <td class="space align_right">
                                                     <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="comment_input" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                                     <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">كتابة رد</asp:LinkButton>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2" class=" ">
-                                                    <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub background_gray txt_left" ID="btnSendComent" runat="server">كتابة رد
-                                                        <img src="img/goback_green.png" class="img-responsive txt_left" /></asp:LinkButton>
+                                                <td>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
-
-                               
-                            </td>
-                        </tr>
-
-                    </table>
-
                 </div>
 
             </div>

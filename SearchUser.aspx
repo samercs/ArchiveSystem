@@ -6,8 +6,11 @@
     <div class="space"></div>
 
     <section class="main">
+        <div class="">
         <div class="space"></div>
-        <h4 class="align_right margin_12em font_14_em mobile_center space">نتائج البحث</h4>
+        
+            <div class="container">
+                <h4 class="align_right margin_12em font_14_em mobile_center space">نتائج البحث</h4>
         <table class="chating_result margin_12e_bottom">
             <tr dir="rtl">
                 <th dir="rtl" colspan="2" class=" hme">
@@ -29,6 +32,7 @@
                 </th>
             </tr>
         </table>
+                </div>
         <div class="container">
 
 
@@ -96,7 +100,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="margin:7em auto;">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -117,7 +121,7 @@
                             </td>
                             <td class="">
                                 <div class="input_box">
-                                    <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox ID="txtSubject" CssClass="input_txt" runat="server"></asp:TextBox>
+                                    <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox ID="txtSubject" placeholder="عنوان الرسالة" CssClass="report_input_txt" runat="server"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -129,7 +133,7 @@
                             </td>
                             <td colspan="6">
                                 <div class="input_box">
-                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" TextMode="MultiLine" CssClass="input_txtarea" runat="server"></asp:TextBox>
+                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" placeholder="الرسالة" TextMode="MultiLine" CssClass="input_txtarea" runat="server"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>

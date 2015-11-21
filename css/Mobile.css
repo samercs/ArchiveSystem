@@ -118,6 +118,18 @@ textarea:focus, input:focus {
     width: 100%;
     text-align: center;
 }
+    .report_input_txt {
+    clear: left;
+    padding: 0 0.4em;
+    vertical-align: central;
+    color: gray;
+    border: 0;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 1.428571429em;
+    height: 2.1em;
+    width: 100%;
+    text-align: center;
+}
 
 .input_img {
     margin: 0;
@@ -285,7 +297,7 @@ header {
 
 .notifications {
     margin: 2.5em auto;
-    font-size: 0.6em;
+    font-size: 0.8em;
     display: none;
 }
 
@@ -301,16 +313,22 @@ header {
     padding: 0.5em;
     margin-top: 0.7em;
 }
-
+.menu_btn {
+    font-size:1.7em;
+}
 .menunotifications {
     float: right;
     font-size: 1em;
     direction: rtl;
+    font-size:1.4em;
 }
 
     .menunotifications td {
         padding: 0 0.25em;
     }
+        .menunotifications td a {
+            color:#333;
+        }
 
 .menu_btn:hover {
     color: #88c16c;
@@ -342,6 +360,16 @@ header {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+}
+.addcomment_box {
+    background: #e6e7e8;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 0.5em;
+    border-radius: 0.357142857em;
+    max-height: 170px;
+    overflow: hidden;
 }
 
 .dropdownmenu {
@@ -737,7 +765,11 @@ article {
     height: 2.285714286em;
     color: #88c16c;
 }
-
+.commenter_btn {
+    background-color: #88c16c;
+    color: white;
+    border: 1px solid #88c16c;
+}
 .txt_green {
     color: #88c16c;
 }
@@ -1147,13 +1179,13 @@ article {
 }
 /*-----------------------------------------------------------------------chating.html-----------------------------------------------------------------------*/
 .person {
-    float: right;
+    
     position: relative;
-    width: 100%;
+    width: 90%;
     height: auto;
     border-radius: 1.428571429em;
     border: 1px solid #88c16c;
-    margin-top: 1em;
+    margin: 1em auto;
 }
 
 .th {
@@ -1355,7 +1387,6 @@ article {
 
 .green_background_color {
     background-color: #88C16C;
-    margin-bottom: 1em;
 }
 
 #width_20 {

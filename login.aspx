@@ -32,10 +32,10 @@
                         <table dir="rtl" class="form_table">
                             <tr><td colspan="2" class="center"><h4  dir="rtl">الدخول</h4></td></tr>
                             <tr class="form_table_tr ">
-                                <td class="hme"><img class="img-responsive label_img" src="img/arro.png"/><div  class="arrow_box" ><label class="text_color_white_smoke ">إسم المستخدم</label></div> </td><td class=""><div class="input_box"><img src="img/input.png" class="input_img img-responsive"/><asp:TextBox CssClass="input_txt" ID="txtUserName" placeholder="إسم المستخدم" runat="server"></asp:TextBox></div></td>
+                                <td class="hme"><div  class="arrow_box" ><label class="text_color_white_smoke ">إسم المستخدم</label></div> </td><td class=""><div class="input_box"><asp:TextBox CssClass="input_txt" ID="txtUserName" placeholder="إسم المستخدم" runat="server"></asp:TextBox></div></td>
                             </tr >
                             <tr >
-                                <td class="hme"><img class="img-responsive label_img" src="img/arro.png"/><div class="arrow_box " ><label class="text_color_white_smoke ">كلمة السر</label></div></td><td class=""><div class="input_box"><img src="img/input.png" class="input_img img-responsive"/><asp:TextBox CssClass="input_txt" placeholder="كلمة السر" TextMode="Password" ID="txtPassword" runat="server"></asp:TextBox></div></td>
+                                <td class="hme"><div class="arrow_box " ><label class="text_color_white_smoke ">كلمة السر</label></div></td><td class=""><div class="input_box"><asp:TextBox CssClass="input_txt" placeholder="كلمة السر" TextMode="Password" ID="txtPassword" runat="server"></asp:TextBox></div></td>
                             </tr>
                             <tr class="form_table_tr " >
                                 <td >

@@ -10,13 +10,26 @@
     <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-    <script src="/js/jquery.min.js"></script>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />-->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="/js/jquery.min.js"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/tooltip.js"></script>
+    <script>$(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".menu_btn").click(function () {
+        $(".dropdownmenu").slideToggle("slow");
+    });
+    $(' .picker').datepicker({ format: 'dd/mm/yyyy' });
+    /*$('.link').click(function(){
+        $('.commenter').slideToggle("slow");
+    });*/
+    /*$('.up').click(function(){
+        $('.collapse').slideToggle("slow");
+    });*/
+
+});</script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -34,9 +47,9 @@
                         <i class="fa fa-bars menu_btn"></i>
                         <table class="menunotifications">
                             <tr>
-                                <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
-                                <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font" title="الصندوق الوارد"></i></a> </td>
-                                <td class="bell"><i class="fa fa-bell font" title="التنبهات"></i></td>
+                                <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font logout" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
+                                <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font emplow" title="الصندوق الوارد"></i></a></td>
+                                <td class="bell"><i class="fa fa-bell font bell" title="التنبهات"></i></td>
                             </tr>
                         </table>
                     </div>
@@ -123,7 +136,7 @@
                                     <%#Eval("title") %>
                                 </td>
                                 <td>
-                                    <%#string.IsNullOrWhiteSpace(Eval("UserName").ToString()) ? "مدير الموقع" : Eval("UserName").ToString() %>
+                                    <%#Eval("UserName") %>
                                 </td>
                                 <td>
                                     <%#Eval("AddDate","{0:dd/MM/yyyy}") %>
@@ -142,7 +155,7 @@
 
                 </tbody>
             </table>
-            
+
         </div>
 
 
@@ -171,20 +184,20 @@
                                 </td>
                                 <td class="">
                                     <div class="input_box">
-                                        <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox CssClass="input_txt" ID="txtTitle" placeholder="العنوان" runat="server"></asp:TextBox>
+                                        <img src="img/input.png" class="input_img img-responsive" /><asp:TextBox CssClass="report_input_txt" ID="txtTitle" placeholder="العنوان" runat="server"></asp:TextBox>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr class="form_table_tr ">
                                 <td class="hme top_align">
-                                    <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs ">
+                                    <img class="img-responsive label_img_model_admin_chat" src="img/arro.png" /><div class="arrow_boxs ">
                                         <label class="text_color_white_smoke ">الرسالة</label>
                                     </div>
                                 </td>
                                 <td colspan="6">
                                     <div class="input_box">
-                                        <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine" Height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
+                                        <img src="img/textarea.png" class="input_img_text_area_admin_chat img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine" Height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
                                     </div>
                                 </td>
                             </tr>

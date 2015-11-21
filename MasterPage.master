@@ -48,7 +48,8 @@
             <div class="space gray"></div>
             <div class="space gray"></div>
             <div class="file_header">
-                <h4>‫مستخدم‬ ‫عن‬ ‫بحث‬<img src="img/search.png" /></h4>
+                <h4>البحث عن المستخدمين
+                        <img src="img/search.png" /></h4>
             </div>
             <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
             <div class="search_form">

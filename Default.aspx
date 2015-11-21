@@ -28,13 +28,13 @@
                             </p>
                         </td>
                     </tr>
-                    <tr class="space txt_green align_right">
-                        <td><i class="fa fa-mouse-pointer "></i>‫تصفح‬</td>
-                        <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
+                    <tr class="space txt_green align_right ">
+                        <td><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح‬</td>
+                        <td><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
                         
                         <td>
-                            <asp:LinkButton OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
-                                <i class="fa fa-star "></i>‫ إضافة للمفضلة
+                            <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
+                                <i class="fa fa-star txt_green"></i>‫ إضافة للمفضلة
                             </asp:LinkButton>‬‫‬</td>
                         <td><a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
                     </tr>
@@ -96,8 +96,8 @@
                 <div class="commenter" id="commenter_<%#Container.DataItemIndex+1 %>">
                     <div class="space"></div>
 
-                    <div class="comment_box">
-                        <table dir="rtl">
+                    <div class="addcomment_box">
+                        <table style="width:100%;" dir="rtl">
                             <tr>
                                 <td rowspan="4">
                                     <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
@@ -117,8 +117,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" class=" ">
-                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand"  CssClass="comment_sub background_gray txt_left" ID="btnSendComent" runat="server">كتابة رد
-                                        <img src="img/goback_green.png" class="img-responsive txt_left" /></asp:LinkButton>
+                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand"  CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">إضافة تعليق</asp:LinkButton>
                                </td>
                             </tr>
                         </table>
@@ -185,7 +184,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="    margin: 7em auto;">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -196,7 +195,7 @@
                     <img src="img/model_arrow.png" class="img-responsive arrow_model" />
                 </div>
                 <div class="arrow_model_form"></div>
-                <div class="modal-body">
+                <div class="modal-body" >
                     <table dir="rtl" class="form_table">
                         <tr class="form_table_tr ">
                             <td class="hme">
@@ -207,7 +206,7 @@
                             <td class="">
                                 <div class="input_box">
                                     <img src="img/input.png" class="input_img img-responsive" />
-                                    <asp:TextBox ReadOnly="True" Enabled="False"  ID="txtFileName" CssClass="input_txt" runat="server"></asp:TextBox>
+                                    <asp:TextBox ReadOnly="True" Enabled="False"  ID="txtFileName" CssClass="report_input_txt" runat="server"></asp:TextBox>
                                 </div>
                             </td>
                         </tr>
@@ -220,7 +219,7 @@
                             <td class="">
                                 <div class="input_box">
                                     <img src="img/input.png" class="input_img img-responsive" />
-                                    <asp:DropDownList CssClass="input_txt txt_gray_light" ID="ddlType" runat="server"></asp:DropDownList>
+                                    <asp:DropDownList CssClass="report_input_txt txt_gray_light" ID="ddlType" runat="server"></asp:DropDownList>
                                     
                                     
                                 </div>
@@ -235,7 +234,7 @@
                             <td colspan="6">
                                 <div class="input_box">
                                     <img src="img/textarea.png" class="input_img_text_area img-responsive" />
-                                    <asp:TextBox ID="txtNote" CssClass="input_txtarea" runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtNote" CssClass="input_txtarea" runat="server" TextMode="MultiLine"></asp:TextBox>
                                     
                                 </div>
                             </td>
