@@ -11,13 +11,17 @@ public partial class MasterPage : System.Web.UI.MasterPage
     
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            Database db=new Database();
+            db.LoadDDL("category","title",ref ddlField,"المجال","catId=5");
+        }
     }
 
     protected void btnSearchFile_OnClick(object sender, EventArgs e)
     {
         Dates datets = new Dates();
-        if (string.IsNullOrWhiteSpace(txtFileName.Text) && string.IsNullOrWhiteSpace(txtTarget.Text) &&
+        if (string.IsNullOrWhiteSpace(txtFileName.Text) && ddlField.SelectedValue.Equals("-1") &&
             string.IsNullOrWhiteSpace(txtDate.Text))
         {
             DivError.Visible = true;
@@ -29,9 +33,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         DateTime tmp;
         if (!string.IsNullOrWhiteSpace(txtFileName.Text) ||
-            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !string.IsNullOrWhiteSpace(txtTarget.Text))
+            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !ddlField.SelectedValue.Equals("-1"))
         {
-            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}",txtFileName.Text,txtDate.Text,txtTarget.Text));
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}",txtFileName.Text,txtDate.Text,ddlField.SelectedValue));
         }
     }
 

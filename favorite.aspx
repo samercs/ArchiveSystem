@@ -15,13 +15,13 @@
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
                     </th>
                     <th dir="rtl">
-                        <label>‫تاريخ الاضافة‬</label>
+                        <label>‫تاريخ الملف‬</label>
                         <uc1:hijriCalender  Class="txtCal search_input_page search_input_page_width datepicker"  runat="server" ID="txtFileDate" />
 
                     </th>
 
                     <th dir="rtl">
-                        <label>‫المجال‬</label><asp:TextBox ID="txtTarget" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></th>
+                        <label>‫المجال‬</label><asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList></th>
                     <th dir="rtl">
                         <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox>/<asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></th>
                     <th dir="rtl">
@@ -68,7 +68,7 @@
                                 </td>
                                 <td style="width: 150px;"><%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
                                 <td >
-                                    <p id="sub_cont"><%#Eval("target") %></p>
+                                    <p id="sub_cont"><%#Eval("FieldName") %></p>
                                 </td>
                                 <td >
                                     <p id="sub_cont">

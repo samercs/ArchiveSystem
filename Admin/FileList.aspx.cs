@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,14 +18,37 @@ public partial class Admin_FilesList : AdminPages
     {
         if (!Page.IsPostBack)
         {
+            Database db=new Database();
+            db.LoadDDL("category","title",ref ddlField,"المجال" , "catId=5");
             HyperLink3.NavigateUrl = addPage;
             LoadData();
         }
     }
-    void LoadData()
+    void LoadData(string filename="",string no="",string field="")
     {
         Database db = new Database();
-        System.Data.DataSet ds = db.ExecuteDataSet("Select * from Files inner join Users on (Files.AddedBy=Users.Id) Order By Files.Id desc");
+        string where = "where 1=1 ";
+        if (!string.IsNullOrWhiteSpace(filename))
+        {
+            where += " and Files.title like '%' + @title + '%' ";
+            db.AddParameter("@title", filename);
+        }
+
+        if (!string.IsNullOrWhiteSpace(no))
+        {
+            where += " and Files.[no] like '%' + @no + '%' ";
+            db.AddParameter("@no", no);
+        }
+
+        if (!field.Equals("-1") && !string.IsNullOrWhiteSpace(field))
+        {
+            where += " and Files.[field] = @Field ";
+            db.AddParameter("@Field", field);
+        }
+
+        string sql = "Select * from Files inner join Users on (Files.AddedBy=Users.Id) "+where+" Order By Files.Id desc";
+
+        System.Data.DataSet ds = db.ExecuteDataSet(sql);
         RepeaterLists.DataSource = ds.Tables[0];
         RepeaterLists.DataBind();
         Cache["dt1"] = ds.Tables[0];
@@ -60,19 +84,40 @@ public partial class Admin_FilesList : AdminPages
     }
     protected void btnDelete_Command(object sender, CommandEventArgs e)
     {
+        Database db = new Database(); string sql = string.Empty;
         if (!string.IsNullOrWhiteSpace(e.CommandName))
         {
             System.IO.File.Delete(Server.MapPath("~/SystemFiles/Files/"+ e.CommandName));
         }
 
-        Database db = new Database(); string sql = string.Empty;
-
-        sql = "delete from " + tablename + " where id =" + e.CommandArgument;
-
-        if (db.ExecuteNonQuery(sql) >= 1)
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        DataTable dt = db.ExecuteDataTable("select * from FilesAttach where fileId=@id");
+        foreach (DataRow row in dt.Rows)
         {
-            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
+            if (!string.IsNullOrWhiteSpace(row["fileUrl"].ToString()))
+            {
+                System.IO.File.Delete(Server.MapPath("~/SystemFiles/FilesAttach/" + row["fileUrl"].ToString()));
+            }
         }
+
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from FilesAttach where fileId=@id");
+
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from FileComment where fileId=@id");
+
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from FileNotice where fileId=@id");
+
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from UserFav where fileId=@id");
+
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from files where id=@id");
+
+
+        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
+        
         LoadData();
     }
     protected void btnEdit_Command(object sender, CommandEventArgs e)
@@ -105,9 +150,9 @@ public partial class Admin_FilesList : AdminPages
             x++;
         }
 
-        string sql = string.Empty;
+        string insql="(";
 
-        sql = "delete from " + tablename + " where id in (";
+        
 
         if (arrlist.Count > 0)
         {
@@ -115,20 +160,37 @@ public partial class Admin_FilesList : AdminPages
             {
                 if (i == 0)
                 {
-                    sql += arrlist[i].ToString();
+                    insql += arrlist[i].ToString();
                 }
                 else
                 {
-                    sql += "," + arrlist[i].ToString();
+                    insql += "," + arrlist[i].ToString();
+                    
                 }
 
             }
 
-            sql += ")";
-            if (db.ExecuteNonQuery(sql) >= 1)
+            insql += ")";
+
+            
+
+            DataTable dt = db.ExecuteDataTable("select * from filesAttach where fileId in " + insql);
+            foreach (DataRow row in dt.Rows)
             {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح\")</SCRIPT>", false);
+                if (!string.IsNullOrWhiteSpace(row["fileUrl"].ToString()))
+                {
+                    System.IO.File.Delete(Server.MapPath("~/SystemFiles/FilesAttach/" + row["fileUrl"].ToString()));
+                }
             }
+
+            db.ExecuteNonQuery("delete from filesAttach where fileId in " + insql);
+            db.ExecuteNonQuery("delete from FileComment where fileId in " + insql);
+            db.ExecuteNonQuery("delete from FileNotice where fileId in " + insql);
+            db.ExecuteNonQuery("delete from UserFav where fileId in " + insql);
+            db.ExecuteNonQuery("delete from " + tablename + " where id in " + insql);
+
+            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح\")</SCRIPT>", false);
+            
             LoadData();
             CheckBox10.Checked = false;
         }
@@ -141,5 +203,16 @@ public partial class Admin_FilesList : AdminPages
         db.AddParameter("@id", e.CommandArgument.ToString());
         db.ExecuteNonQuery("update files set status=(1-status) where id = @id");
         LoadData();
+    }
+
+    protected void btnSearch_OnClick(object sender, EventArgs e)
+    {
+        int no1, no2;
+        string no=String.Empty;
+        if (int.TryParse(txtFileNo1.Text, out no1) || int.TryParse(txtFileNo2.Text, out no2))
+        {
+            no = txtFileNo1.Text + "/" + txtFileNo2.Text;
+        }
+        LoadData(txtFileName.Text,no,ddlField.SelectedValue);
     }
 }

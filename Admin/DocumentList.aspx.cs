@@ -61,13 +61,9 @@ public partial class Admin_DocumentList : AdminPages
     protected void btnDelete_Command(object sender, CommandEventArgs e)
     {
         Database db = new Database(); string sql = string.Empty;
-
-        sql = "delete from " + tablename + " where id =" + e.CommandArgument;
-
-        if (db.ExecuteNonQuery(sql) >= 1)
-        {
-            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
-        }
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from " + tablename + " where id =@id;delete from ConectedDoc where masterdocid =@id");
+        ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
         LoadData();
     }
     protected void btnEdit_Command(object sender, CommandEventArgs e)
@@ -94,9 +90,10 @@ public partial class Admin_DocumentList : AdminPages
             x++;
         }
 
-        string sql = string.Empty;
+        string sql = string.Empty,sql2=String.Empty;
 
         sql = "delete from " + tablename + " where id in (";
+        sql2 = "delete from ConectedDoc where masterdocid in (";
 
         if (arrlist.Count > 0)
         {
@@ -105,19 +102,21 @@ public partial class Admin_DocumentList : AdminPages
                 if (i == 0)
                 {
                     sql += arrlist[i].ToString();
+                    sql2 += arrlist[i].ToString();
                 }
                 else
                 {
                     sql += "," + arrlist[i].ToString();
+                    sql2 += "," + arrlist[i].ToString();
                 }
 
             }
 
             sql += ")";
-            if (db.ExecuteNonQuery(sql) >= 1)
-            {
-                ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح\")</SCRIPT>", false);
-            }
+            sql2 += ")";
+            db.ExecuteNonQuery(sql + ";" + sql2);
+            ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح\")</SCRIPT>", false);
+            
             LoadData();
             CheckBox10.Checked = false;
         }

@@ -13,13 +13,15 @@ public partial class SearchFile : UICaltureBase
     {
         if(!Page.IsPostBack)
         {
+            Database db = new Database();
+            db.LoadDDL("category", "title", ref ddlField, "المجال", "catId=5");
             string title = Request.QueryString["name"];
             string date = Request.QueryString["date"];
             string target = Request.QueryString["category"];
             txtTitle.Text = title;
-            txtTarget.Text = target;
+            ddlField.SelectedValue = target;
             txtFileDate.Text = date;
-            LoadData(txtTitle.Text,"",txtTarget.Text,txtFileDate.Text);
+            LoadData(txtTitle.Text,"",ddlField.SelectedValue,txtFileDate.Text);
         }
     }
 
@@ -29,7 +31,7 @@ public partial class SearchFile : UICaltureBase
         Database db = new Database();
         Users u = Session["User"] as Users;
         db.AddParameter("@id", u.Id);
-        string sql = "select * from  files where 1=1";
+        string sql = "select files.*,category.title as fieldName from  files left join category on files.Field=category.id where 1=1";
         if (!string.IsNullOrWhiteSpace(title))
         {
             sql += " and files.title like '%' + @title + '%'";
@@ -40,10 +42,10 @@ public partial class SearchFile : UICaltureBase
             sql += " and files.no like '%' + @no + '%'";
             db.AddParameter("@no", no);
         }
-        if (!string.IsNullOrWhiteSpace(target))
+        if (!string.IsNullOrWhiteSpace(target) && !target.Equals("-1"))
         {
-            sql += " and files.target like '%' + @target + '%'";
-            db.AddParameter("@target", target);
+            sql += " and files.[Field] = @Field";
+            db.AddParameter("@Field", target);
         }
         DateTime tmp;
         if (DateTime.TryParseExact(dates.HijriToGreg(txtFileDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
@@ -64,11 +66,11 @@ public partial class SearchFile : UICaltureBase
 
     protected void Repeater1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, txtTarget.Text, txtFileDate.Text);
+        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text);
     }
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, txtTarget.Text, txtFileDate.Text);
+        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text);
     }
 }

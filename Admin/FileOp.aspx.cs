@@ -22,9 +22,11 @@ public partial class Admin_FileOp : AdminPages
         if (!Page.IsPostBack)
         {
             Database db = new Database();
+            db.LoadDDL("Category","title",ref ddlField,"اختر المجال","catId=5");
             if (Request.QueryString["Op"].Equals("Edit"))
             {
                 LoadData();
+                rowAttache.Visible = false;
             }
             else
             {
@@ -50,6 +52,7 @@ public partial class Admin_FileOp : AdminPages
         txtFileDate.Text = datets.GregToHijri(DateTime.Parse(ds.Tables[0].Rows[0]["FileDate"].ToString()).ToString("d/M/yyyy"), "d/M/yyyy");
         ddlStatus.SelectedValue = ds.Tables[0].Rows[0]["Status"].ToString();
         ddlType.SelectedValue = ds.Tables[0].Rows[0]["type"].ToString();
+        ddlField.SelectedValue = ds.Tables[0].Rows[0]["Field"].ToString();
         ViewState["file"] = ds.Tables[0].Rows[0]["fileurl"].ToString();
     }
     protected void btnSave_Click(object sender, EventArgs e)
@@ -91,6 +94,12 @@ public partial class Admin_FileOp : AdminPages
             return;
         }
 
+        if (ddlField.SelectedValue.Equals("-1"))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار مجال الملف\")</SCRIPT>", false);
+            return;
+        }
+
         if (fileFile.HasFile)
         {
             if (!Tools.IsDoc(fileFile.PostedFile.FileName))
@@ -129,6 +138,7 @@ public partial class Admin_FileOp : AdminPages
         db.AddParameter("@addedDate", tmp);
         db.AddParameter("@status", ddlStatus.SelectedValue);
         db.AddParameter("@type", ddlType.SelectedValue);
+        db.AddParameter("@Field", ddlField.SelectedValue);
         db.AddParameter("@fileurl", ViewState["file"].ToString());
 
 
@@ -138,7 +148,7 @@ public partial class Admin_FileOp : AdminPages
             try
             {
                 db.AddParameter("@id", Request.QueryString["id"]);
-                db.ExecuteNonQuery("Update " + tablename + " Set title=@title,[Type]=@Type,[FileUrl]=@FileUrl,status=@status,[no]=@no,[from]=@from,[to]=@to,[target]=@target,[fileDate]=@FileDate,[desc]=@desc,[AddedDate]=@AddedDate,AddedBy=@AddedBy where Id=@id");
+                db.ExecuteNonQuery("Update " + tablename + " Set title=@title,[Type]=@Type,[FileUrl]=@FileUrl,status=@status,[no]=@no,[from]=@from,[to]=@to,[target]=@target,Field=@Field,[fileDate]=@FileDate,[desc]=@desc,[AddedDate]=@AddedDate,AddedBy=@AddedBy where Id=@id");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم التعديل ','تم التعديل بنجاح').set('onok', function(closeEvent){ location.href='" + listpage+"'; } );", true);
             }
             catch (Exception ex)
@@ -149,7 +159,48 @@ public partial class Admin_FileOp : AdminPages
         }
         else if (Request.QueryString["Op"] == "Add")
         {
-            db.ExecuteNonQuery("Insert into " + tablename + "(Title,no,[from],[to],target,status,[Type],[Fileurl],addeddate,filedate,addedby,[desc]) Values(@Title,@no,@from,@to,@target,@status,@Type,@Fileurl,@addeddate,@filedate,@addedby,@desc)");
+            long fileId = db.ExecuteNonQuery_id("Insert into " + tablename + "(Title,no,[from],[to],target,Field,status,[Type],[Fileurl],addeddate,filedate,addedby,[desc]) Values(@Title,@no,@from,@to,@target,@Field,@status,@Type,@Fileurl,@addeddate,@filedate,@addedby,@desc)");
+            if (attachedFile1.HasFile && Tools.IsDoc(attachedFile1.PostedFile.FileName))
+            {
+                string fileName = DateTime.Now.Ticks + "_" +
+                                  System.IO.Path.GetFileName(attachedFile1.PostedFile.FileName);
+                attachedFile1.PostedFile.SaveAs(Server.MapPath("~/SystemFiles/FilesAttach/" + fileName));
+
+                db.AddParameter("@fileId", fileId);
+                string title = string.IsNullOrWhiteSpace(txtAttachedTitle1.Text) ? fileName : txtAttachedTitle1.Text;
+                db.AddParameter("@Title", title);
+                db.AddParameter("@FileUrl", fileName);
+                db.ExecuteNonQuery("insert into FilesAttach(fileId,Title,FileUrl) values(@fileId,@Title,@FileUrl)");
+
+            }
+            if (attachedFile2.HasFile && Tools.IsDoc(attachedFile2.PostedFile.FileName))
+            {
+                string fileName = DateTime.Now.Ticks + "_" +
+                                  System.IO.Path.GetFileName(attachedFile2.PostedFile.FileName);
+                attachedFile2.PostedFile.SaveAs(Server.MapPath("~/SystemFiles/FilesAttach/" + fileName));
+
+                string title = string.IsNullOrWhiteSpace(txtAttachedTitle2.Text) ? fileName : txtAttachedTitle2.Text;
+
+                db.AddParameter("@fileId", fileId);
+                db.AddParameter("@Title", title);
+                db.AddParameter("@FileUrl", fileName);
+                db.ExecuteNonQuery("insert into FilesAttach(fileId,Title,FileUrl) values(@fileId,@Title,@FileUrl)");
+
+            }
+            if (attachedFile3.HasFile && Tools.IsDoc(attachedFile3.PostedFile.FileName))
+            {
+                string fileName = DateTime.Now.Ticks + "_" +
+                                  System.IO.Path.GetFileName(attachedFile3.PostedFile.FileName);
+                attachedFile3.PostedFile.SaveAs(Server.MapPath("~/SystemFiles/FilesAttach/" + fileName));
+
+                string title = string.IsNullOrWhiteSpace(txtAttachedTitle3.Text) ? fileName : txtAttachedTitle3.Text;
+
+                db.AddParameter("@fileId", fileId);
+                db.AddParameter("@Title", title);
+                db.AddParameter("@FileUrl", fileName);
+                db.ExecuteNonQuery("insert into FilesAttach(fileId,Title,FileUrl) values(@fileId,@Title,@FileUrl)");
+
+            }
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم الاضافة ','تم الاضافة بنجاح').set('onok', function(closeEvent){ location.href='" + listpage + "'; } );", true);
         }
     }

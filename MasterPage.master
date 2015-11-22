@@ -33,7 +33,7 @@
                 <asp:TextBox ID="txtFileName" CssClass="search_input" runat="server"></asp:TextBox>
                 <div class="space"></div>
                 <label class="search_label">المجال:</label><br/>
-                <asp:TextBox ID="txtTarget" CssClass="search_input" runat="server"></asp:TextBox>
+                <asp:DropDownList CssClass="search_input" ID="ddlField" runat="server"></asp:DropDownList>
                 <br/>
                 <div class="space"></div>
                 <label class="search_label">التايخ :</label><br/>

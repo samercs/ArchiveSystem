@@ -17,6 +17,7 @@ public class CategoryDic
         Dictionary.Add("2", "سرية المعاملة ");
         Dictionary.Add("3", "الوضع القانوني للمعاملة");
         Dictionary.Add("4", "انواع البلاغات");
+        Dictionary.Add("5", "المجال - الملفات");
     }
 
     
