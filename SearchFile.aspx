@@ -67,7 +67,7 @@
                                 <td id="width_20">
                                     <p id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
-                                <td id="width_10"><%#Eval("FileDate","{0:dd/MM/yyyy}") %></td>
+                                <td id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
                                 <td id="width_20">
                                     <p id="sub_cont"><%#Eval("fieldname") %></p>
                                 </td>
