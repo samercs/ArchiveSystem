@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_CategoryList : System.Web.UI.Page
+public partial class Admin_CategoryList : AdminPages
 {
     string tablename = "Category";
     private string editPage = "CategoryOp.aspx?Op=Edit&id={0}";

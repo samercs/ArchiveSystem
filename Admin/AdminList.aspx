@@ -53,7 +53,11 @@
                             <td><%# Eval("Name") %></td>
                             <td><%#Eval("UserName") %></td>
                             <td><%# Eval("Email") %></td>
-                            <td><%# Eval("permition").ToString().Equals("1") ? "مدير" : "محرر" %></td>
+                            <td>
+                                <%# Eval("permition").ToString().Equals("*") ? "مدير" : "" %>
+                                <%# Eval("permition").ToString().Equals("1") ? "محرر" : "" %>
+                                <%# Eval("permition").ToString().Equals("2") ? "نظام المعاملات" : "" %>
+                            </td>
                             <td>
                                 <asp:LinkButton ID="btnDelete" OnCommand="btnDelete_Command" CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-trash fs20px"></i> حذف</asp:LinkButton>
                                 <asp:LinkButton ID="btnEdit" OnCommand="btnEdit_Command" CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-pencil-square-o fs20px"></i> تعديل</asp:LinkButton>

@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_UsersList : System.Web.UI.Page
+public partial class Admin_UsersList : AdminPages
 {
     string tablename = "Users";
     private string editPage = "UsersOp.aspx?Op=Edit&id={0}";

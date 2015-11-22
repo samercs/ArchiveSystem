@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_AdminOp : System.Web.UI.Page
+public partial class Admin_AdminOp : AdminPages
 {
     string tablename = "AdminUsers";
     Database db = new Database();
@@ -39,6 +39,7 @@ public partial class Admin_AdminOp : System.Web.UI.Page
         txtPassword.Text = ds.Tables[0].Rows[0]["password"].ToString();
         txtEmail.Text = ds.Tables[0].Rows[0]["email"].ToString();
         ddlPermition.SelectedValue= ds.Tables[0].Rows[0]["permition"].ToString();
+
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {

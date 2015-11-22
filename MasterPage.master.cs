@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -15,7 +16,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void btnSearchFile_OnClick(object sender, EventArgs e)
     {
-
+        Dates datets = new Dates();
         if (string.IsNullOrWhiteSpace(txtFileName.Text) && string.IsNullOrWhiteSpace(txtTarget.Text) &&
             string.IsNullOrWhiteSpace(txtDate.Text))
         {
@@ -28,8 +29,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
         DateTime tmp;
         if (!string.IsNullOrWhiteSpace(txtFileName.Text) ||
-            DateTime.TryParseExact(txtDate.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None,
-                out tmp) || !string.IsNullOrWhiteSpace(txtTarget.Text))
+            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !string.IsNullOrWhiteSpace(txtTarget.Text))
         {
             Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}",txtFileName.Text,txtDate.Text,txtTarget.Text));
         }

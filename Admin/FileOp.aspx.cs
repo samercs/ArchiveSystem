@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_FileOp : System.Web.UI.Page
+public partial class Admin_FileOp : AdminPages
 {
     string tablename = "Files";
     string listpage = "FileList.aspx";
@@ -38,7 +38,10 @@ public partial class Admin_FileOp : System.Web.UI.Page
         db.AddParameter("@id", Request.QueryString["id"]);
         System.Data.DataSet ds = db.ExecuteDataSet("select * from " + tablename + " where id=@id" + ";" + "");
         txtTitle.Text = ds.Tables[0].Rows[0]["title"].ToString();
-        txtNo.Text = ds.Tables[0].Rows[0]["no"].ToString();
+        string fileNo= ds.Tables[0].Rows[0]["no"].ToString();
+        string[] fileNoArray = fileNo.Split('/');
+        txtNo1.Text = fileNoArray[0];
+        txtNo2.Text = fileNoArray[1];
         txtFrom.Text = ds.Tables[0].Rows[0]["from"].ToString();
         txtTo.Text = ds.Tables[0].Rows[0]["to"].ToString();
         txtTarget.Text = ds.Tables[0].Rows[0]["target"].ToString();
@@ -61,9 +64,16 @@ public partial class Admin_FileOp : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار العنوان.\")</SCRIPT>", false);
             return;
         }
-        if (string.IsNullOrEmpty(txtNo.Text))
+        if (string.IsNullOrWhiteSpace(txtNo1.Text) || string.IsNullOrWhiteSpace(txtNo2.Text))
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء ادخال رقم الملف.\")</SCRIPT>", false);
+            return;
+        }
+
+        int no1, no2;
+        if(!int.TryParse(txtNo1.Text,out no1) || !int.TryParse(txtNo2.Text, out no2))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء التأكد من رقم الملف.\")</SCRIPT>", false);
             return;
         }
         
@@ -109,7 +119,7 @@ public partial class Admin_FileOp : System.Web.UI.Page
         AdminInfo admin=Session["AdminInfo"] as AdminInfo; ;
 
         db.AddParameter("@title", txtTitle.Text);
-        db.AddParameter("@no", txtNo.Text);
+        db.AddParameter("@no", txtNo1.Text +"/"+txtNo2.Text);
         db.AddParameter("@from", txtFrom.Text);
         db.AddParameter("@to", txtTo.Text);
         db.AddParameter("@target", txtTarget.Text);

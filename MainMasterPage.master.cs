@@ -30,13 +30,14 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         if(ValidateData())
         {
+            string baseClass = "alert msgBox text-center";
             Users u=Session["User"] as Users;
             Database db=new Database();
             db.AddParameter("@from", u.Id);
             db.AddParameter("@title", txtTitle.Text);
             db.AddParameter("@msg", txtMsg.Text);
             db.ExecuteNonQuery("insert into msg([from],title,msg) values(@from,@title,@msg)");
-            msg.CssClass += " alert-success";
+            msg.CssClass = baseClass + " alert-success";
             msg.Visible = true;
             lblMsg.Text = "تم ارسال الرسالة بنجاح";
 

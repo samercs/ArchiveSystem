@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_Login : System.Web.UI.Page
+public partial class Admin_Login : AdminPages
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -38,6 +38,13 @@ public partial class Admin_Login : System.Web.UI.Page
                     txtPassword.Text = dt.Rows[0]["password"].ToString();
                     btnLogin_Click(null, null);
                 }
+            }
+
+            if(Request.QueryString["msg"]!=null)
+            {
+                ErrorDiv.Visible = true;
+                sp1.Visible = true;
+                lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i>  " + Request.QueryString["msg"];
             }
 
         }
@@ -97,14 +104,14 @@ public partial class Admin_Login : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect(Request.QueryString.ToString().Replace("url=", "").Replace("%2f", "").Replace("Admin", "").Replace("admin", "").Replace("%3f", "?").Replace("%3d", "="));
+                Response.Redirect(Request.QueryString["url"]);
             }
         }
         else
         {
             ErrorDiv.Visible = true;
             sp1.Visible = true;
-            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> Error Login :  Check Your Login Information And Try again ";
+            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> خطا في بيانات الدخول الرجاء التاكد من اسم المستخدم و كلمة المرور ";
         }
 
     }
@@ -119,7 +126,7 @@ public partial class Admin_Login : System.Web.UI.Page
         {
             ErrorDiv.Visible = true;
             sp1.Visible = true;
-            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> invalid email address format";
+            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> الرجاء التأكد من البريد الالكتروني.";
             return;
         }
 
@@ -130,18 +137,21 @@ public partial class Admin_Login : System.Web.UI.Page
         {
             ErrorDiv.Visible = true;
             sp1.Visible = true;
-            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> invalid email address";
+            lblError.Text = "<i class=\"fa fa-exclamation-triangle fcRed\"></i> هذا البريد الالكتروني غير مسجل في النظام";
             return;
         }
 
         string body = "<h2>";
-        body += "هذة معلومات الدخول الى لوحة التحكم الخاصة بموقع المركز الوطني للبحوث الاجتماعية<br/>";
+        body += "هذة معلومات الدخول الى لوحة التحكم الخاصة بموقع الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية<br/>";
         body += "اسم المستخدم : " + dt.Rows[0]["username"].ToString() + "<br/>";
         body += "البريد الالكتروني : " + dt.Rows[0]["email"].ToString() + "<br/>";
         body += "كلمة السر : " + dt.Rows[0]["password"].ToString() + "<br/>";
         body += "</h2>";
         SendMail mail = new SendMail();
-        mail.SendMsg(txtEmail.Text, "المركز الوطني للبحوث الاجتماعية", body);
+        mail.SendMsg(txtEmail.Text, "الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية", body);
+        ScriptManager.RegisterClientScriptBlock(this,GetType(), "writeMsg", "alert('تم ارسال كلمة السر الي البريد الالكتروني " + txtEmail.Text + " ');", true);
+        
+
 
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_ConectedDocOp : System.Web.UI.Page
+public partial class Admin_ConectedDocOp : AdminPages
 {
     string tablename = "ConectedDoc";
     string listpage = "ConectedDocList.aspx";

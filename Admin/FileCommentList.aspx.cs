@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_FileCommentList : System.Web.UI.Page
+public partial class Admin_FileCommentList : AdminPages
 {
     string tablename = "FileComment";
     private string editPage = "FileCommentOp.aspx?Op=Edit&id={0}";
@@ -18,7 +18,7 @@ public partial class Admin_FileCommentList : System.Web.UI.Page
     {
         if (!Page.IsPostBack)
         {
-            HyperLink3.NavigateUrl = addPage;
+            
             LoadData();
             
         }

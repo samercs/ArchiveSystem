@@ -571,6 +571,7 @@ footer {
     width:  100%}
 .article table {
     padding: 0.5em;
+    width: 100% !important;
 }
 
 .article table p {
@@ -1740,4 +1741,8 @@ label{    font-weight: normal;}
 .tbl thead th {
     
     text-align: center !important;
+}
+
+.noborder,.noborder td {
+    border: none !important;
 }

@@ -37,13 +37,19 @@ public partial class login : UICaltureBase
 
 
         DateTime tmp;
-
-        if (DateTime.TryParseExact(dt.Rows[0]["LockedTo"].ToString(),"dd/MM/yyyy",CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) )
+        if(!string.IsNullOrWhiteSpace(dt.Rows[0]["LockedTo"].ToString()))
         {
-            ErrorDiv.Visible = true;
-            lblError.Text = String.Format("الرجاء الانتظار حتى {0} كي تتمكن من تسجيل الدخول",tmp.ToString("dd/MM/yyyy hh:mm"));
-            return;
+            tmp=DateTime.Parse(dt.Rows[0]["LockedTo"].ToString());
+            if(tmp.CompareTo(DateTime.Now)>=0)
+            {
+                Dates dates=new Dates();
+                ErrorDiv.Visible = true;
+                lblError.Text = String.Format("الرجاء الانتظار حتى {0} كي تتمكن من تسجيل الدخول", dates.GregToHijri(tmp.ToString("dd/MM/yyyy"),"dd/MMM/yyyy hh:mm"));
+                return;
+            }
         }
+
+        
         if (!dt.Rows[0]["IsActive"].ToString().Equals("True"))
         {
             ErrorDiv.Visible = true;
@@ -59,6 +65,7 @@ public partial class login : UICaltureBase
         u.Image = dt.Rows[0]["Img"].ToString();
         u.Phone = dt.Rows[0]["Phone"].ToString();
         u.JobTitle = dt.Rows[0]["JobTitle"].ToString();
+        u.RequeriedChangePassword = bool.Parse(dt.Rows[0]["RequerChange"].ToString());
         Session["User"] = u;
         if(Request.QueryString["url"]!=null)
         {

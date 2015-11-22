@@ -25,7 +25,7 @@ public partial class UserInbox : UICaltureBase
         Users u = Session["User"] as Users;
         Database db = new Database();
         db.AddParameter("@to", u.Id);
-        DataTable dt = db.ExecuteDataTable("select  msg.*,Users.name as username from (Msg inner join users on (users.id=msg.[from]) ) where msg.ToId=@to order by msg.Id desc");
+        DataTable dt = db.ExecuteDataTable("select  msg.*,Users.name as username from (Msg left join users on (users.id=msg.[from]) ) where msg.ToId=@to order by msg.Id desc");
         ListView1.DataSource = dt;
         ListView1.DataBind();
     }
@@ -47,5 +47,14 @@ public partial class UserInbox : UICaltureBase
     protected void ListView1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
         LoadMsg();
+    }
+
+    protected void btnDelete_OnCommand(object sender, CommandEventArgs e)
+    {
+        Database db=new Database();
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from msg where id=@id");
+        LoadMsg();
+        ShowAlert("تم حذف الرسالة",MsgType.Success);
     }
 }

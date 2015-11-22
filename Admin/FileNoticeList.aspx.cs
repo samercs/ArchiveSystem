@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_FileNoticeList : System.Web.UI.Page
+public partial class Admin_FileNoticeList : AdminPages
 {
     string tablename = "FileNotice";
     private string editPage = "FileNoticeOp.aspx?Op=Edit&id={0}";

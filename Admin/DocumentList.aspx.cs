@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_DocumentList : System.Web.UI.Page
+public partial class Admin_DocumentList : AdminPages
 {
     string tablename = "Document";
     private string editPage = "DocumentOp.aspx?Op=Edit&id={0}";

@@ -632,6 +632,16 @@ label {
     text-align: center;
 }
 
+.search_input2 {
+    padding: 2px 10px;
+    background-color: #bcbec0;
+    border: 1px solid #bcbec0;
+    color: gray;
+    width: 88%;
+    text-align: center;
+}
+
+
 .file_header img {
     height: 1.142857143em;
     width: 1.142857143em;
@@ -677,11 +687,12 @@ label {
     width: 100%;
 }
 
-    .article table {
+    .article  table {
         padding: 0.5em;
+        width: 100% !important;
     }
 
-        .article table .p {
+        .article  table .p {
             padding: 0.5em;
             text-align: right;
         }
@@ -1680,3 +1691,9 @@ label {
     .tbl thead th {
         text-align: center !important;
     }
+
+.noborder,.noborder td {
+    border: none !important;
+}
+
+

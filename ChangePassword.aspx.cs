@@ -10,7 +10,11 @@ public partial class ChangePassword : UICaltureBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        Users u = Session["User"] as Users;
+        if(u.RequeriedChangePassword)
+        {
+            ShowAlert("يجب تغير كلمة السر كي تتمكن من تصفح الموقع",MsgType.Warning);
+        }
     }
 
     protected void btnSubmit_OnClick(object sender, EventArgs e)
@@ -21,8 +25,8 @@ public partial class ChangePassword : UICaltureBase
             Database db=new Database();
             db.AddParameter("@password", txtPassword2.Text);
             db.AddParameter("@id", u.Id);
-            db.ExecuteNonQuery("update users set password=@password where id=@id");
-
+            db.ExecuteNonQuery("update users set password=@password,RequerChange=0 where id=@id");
+            u.RequeriedChangePassword = false;
             u.Password = txtPassword2.Text;
             Session["User"] = u;
 

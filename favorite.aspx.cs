@@ -19,6 +19,8 @@ public partial class favorite : UICaltureBase
 
     private void LoadData(string title="",string no="",string target="",string date="")
     {
+        
+        Dates dates=new Dates();
         Database db=new Database();
         Users u = Session["User"] as Users;
         db.AddParameter("@id", u.Id);
@@ -39,7 +41,7 @@ public partial class favorite : UICaltureBase
             db.AddParameter("@target", target);
         }
         DateTime tmp;
-        if (DateTime.TryParseExact(date,"d/M/yyyy",CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
+        if (DateTime.TryParseExact(dates.HijriToGreg(txtFileDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
         {
             sql += " and (day(files.fileDate)=@day and month(files.fileDate)=@month and year(files.fileDate)=@year)";
             db.AddParameter("@day", tmp.Day);
@@ -57,7 +59,12 @@ public partial class favorite : UICaltureBase
 
     protected void Repeater1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, txtTarget.Text, txtFileDate.Text);
+        string no = String.Empty;
+        if (!string.IsNullOrWhiteSpace(txtNo1.Text) || !string.IsNullOrWhiteSpace(txtNo2.Text))
+        {
+            no = txtNo1.Text + "/" + txtNo2.Text;
+        }
+        LoadData(txtTitle.Text, no , txtTarget.Text, txtFileDate.Text);
     }
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
@@ -65,8 +72,17 @@ public partial class favorite : UICaltureBase
         string no=String.Empty;
         if(!string.IsNullOrWhiteSpace(txtNo1.Text) || !string.IsNullOrWhiteSpace(txtNo2.Text))
         {
-            no = txtNo1.Text + "/" + txtNo2.Text;
+            no = txtNo1.Text+"/"+txtNo2.Text;
         }
         LoadData(txtTitle.Text,no,txtTarget.Text,txtFileDate.Text);
+    }
+
+    protected void btnDelete_OnCommand(object sender, CommandEventArgs e)
+    {
+        Database db=new Database();
+        db.AddParameter("@id", e.CommandArgument.ToString());
+        db.ExecuteNonQuery("delete from UserFav where id=@id");
+        LoadData();
+        ShowAlert("تم حذف الملف من قائمة الملفات المفضلة",MsgType.Success);
     }
 }

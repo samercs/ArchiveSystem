@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_UserDetail : System.Web.UI.Page
+public partial class Admin_UserDetail : AdminPages
 {
     string tablename = "ContactUs";
     string listpage = "Default.aspx";

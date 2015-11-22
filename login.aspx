@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
+    <title>الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية</title>
     <meta charset="UTF-8" />
     
     

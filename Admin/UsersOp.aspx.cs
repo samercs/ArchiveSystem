@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_UsersOp : System.Web.UI.Page
+public partial class Admin_UsersOp : AdminPages
 {
     string tablename = "Users";
     string listpage = "UsersList.aspx";

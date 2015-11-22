@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_FilesAttachList : System.Web.UI.Page
+public partial class Admin_FilesAttachList : AdminPages
 {
     string tablename = "FilesAttach";
     private string editPage = "FilesAttachOp.aspx?Op=Edit&id={0}";

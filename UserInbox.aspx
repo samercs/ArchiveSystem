@@ -15,6 +15,12 @@
                 </th>
                 <th>التاريخ
                 </th>
+                <th>
+                    
+                </th>
+                <th>
+                    
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -26,15 +32,18 @@
                             <%#Eval("Title") %>
                         </td>
                         <td>
-                            <%#Eval("UserName") %>
+                            <%#(string.IsNullOrWhiteSpace(Eval("from").ToString()) || Eval("from").ToString().Equals("-1")) ? "مدير الموقع" :  Eval("UserName") %>
                         </td>
                         <td>
-                            <%#Eval("AddDate","{0:dd/MM/yyyy}") %>
+                            <%#(new Dates()).GregToHijri(Eval("AddDate","{0:dd/MM/yyyy}"),"dd/MM/yyyy") %>
                         </td>
                         <td>
                             <a data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#">
                                 <i class="fa fa-eye"></i>قراءة
                             </a>
+                        </td>
+                        <td>
+                            <asp:LinkButton OnClientClick="return confirm('هل متأكد من حذف هذة الرسالة');" OnCommand="btnDelete_OnCommand" ID="btnDelete" CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-trash"></i> حذف</asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>

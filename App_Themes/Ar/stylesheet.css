@@ -72,6 +72,12 @@ label {
     margin-bottom: 20px;
 }
 
+.table {
+    direction: rtl !important;
+}
+
+
+
 
 
 

@@ -16,6 +16,8 @@ public class Users
     public string Phone { get; set; }
     public string JobTitle { get; set; }
 
+    public bool RequeriedChangePassword { get; set; }
+
     public Users()
     {
         //

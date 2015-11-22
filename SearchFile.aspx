@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="SearchFile.aspx.cs" Inherits="SearchFile" %>
+<%@ Register TagPrefix="uc1" TagName="hijriCalender" Src="~/Controls/hijriCalender.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -15,7 +16,8 @@
                     </th>
                     <th dir="rtl">
                         <label>‫تاريخ الاضافة‬</label>
-                        <asp:TextBox ID="txtFileDate" CssClass="search_input_page search_input_page_width datepicker" runat="server"></asp:TextBox></th>
+                        <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
+                    </th>
                     <th dir="rtl">
                         <label>‫المجال‬</label><asp:TextBox ID="txtTarget" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></th>
                     <th dir="rtl">
@@ -235,7 +237,7 @@
     <script type="text/javascript">
         $(function () {
             
-            $('.datepicker').datepicker({ format: 'dd/mm/yyyy' });
+            $(".calendars-trigger").hide();
 
         });
     </script>

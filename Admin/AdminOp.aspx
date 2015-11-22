@@ -52,7 +52,8 @@
                     <td>
                         <asp:DropDownList ID="ddlPermition" CssClass="ddl1" runat="server">
                             <asp:ListItem Text="مدير" Value="*"></asp:ListItem>
-                            
+                            <asp:ListItem Text="محرر" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="نظام المعاملات" Value="2"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
                     <td></td>

@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_SendMsg : System.Web.UI.Page
+public partial class Admin_SendMsg : AdminPages
 {
     
     public string name = "مراسلة المستخدمين";

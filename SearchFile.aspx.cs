@@ -25,6 +25,7 @@ public partial class SearchFile : UICaltureBase
 
     private void LoadData(string title="",string no="",string target="",string date="")
     {
+        Dates dates =new Dates();
         Database db = new Database();
         Users u = Session["User"] as Users;
         db.AddParameter("@id", u.Id);
@@ -45,7 +46,7 @@ public partial class SearchFile : UICaltureBase
             db.AddParameter("@target", target);
         }
         DateTime tmp;
-        if (DateTime.TryParseExact(date, "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
+        if (DateTime.TryParseExact(dates.HijriToGreg(txtFileDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
         {
             sql += " and (day(files.fileDate)=@day and month(files.fileDate)=@month and year(files.fileDate)=@year)";
             db.AddParameter("@day", tmp.Day);

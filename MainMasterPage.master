@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
+    <title>الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -15,13 +15,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="js/bootstrap-datepicker.min.js"></script>
+    
+    
+    
+    <script type="text/javascript" src="/js/calender/jquery.calendars.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.plus.js"></script>
+    <link rel="stylesheet" type="text/css" href="/js/calender/jquery.calendars.picker.css" />
+    <script type="text/javascript" src="/js/calender/jquery.plugin.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.picker.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.picker-ar.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.islamic.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.islamic-ar.js"></script>
+    <script type="text/javascript" src="/js/calender/jquery.calendars.islamic-ar.js"></script>
+    
     <script>$(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
     $(".menu_btn").click(function () {
         $(".dropdownmenu").slideToggle("slow");
     });
-    $(' .picker').datepicker({ format: 'dd/mm/yyyy' });
+    
     /*$('.link').click(function(){
         $('.commenter').slideToggle("slow");
     });*/
@@ -138,8 +150,8 @@
                                 <td>
                                     <%#Eval("UserName") %>
                                 </td>
-                                <td>
-                                    <%#Eval("AddDate","{0:dd/MM/yyyy}") %>
+                                <td >
+                                    <%#(new Dates()).GregToHijri(Eval("AddDate","{0:dd/MM/yyyy}"),"dd/MM/yyyy") %>
                                 </td>
                             </tr>
                         </ItemTemplate>

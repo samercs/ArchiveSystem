@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_CategoryOp : System.Web.UI.Page
+public partial class Admin_CategoryOp : AdminPages
 {
     string tablename = "Category";
     string listpage = "CategoryList.aspx";

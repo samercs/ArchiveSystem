@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_MsgOp : System.Web.UI.Page
+public partial class Admin_MsgOp : AdminPages
 {
     string tablename = "Msg";
     string listpage = "MsgList.aspx";

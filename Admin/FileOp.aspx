@@ -74,7 +74,8 @@
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="الرقم" CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtNo" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                        <asp:TextBox Width="100" ID="txtNo1" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox> / 
+                        <asp:TextBox Width="100" ID="txtNo2" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>

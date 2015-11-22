@@ -30,7 +30,7 @@
                         <div class="one_file_container">
                             <a target="_blank" href="/SystemFiles/Files/<%#Eval("fileUrl") %>">
                                 <h5 style="color: #000000;" dir="ltr"><%#Eval("title") %> </h5>
-                                <span class="datename">تاريخ الاصدار : </span><span class="datedes"><%#Eval("FileDate","{0:dd/MM/yyyy}") %></span>
+                                <span class="datename">تاريخ الاصدار : </span><span class="datedes"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></span>
                             </a>
                         </div>
                     </li>

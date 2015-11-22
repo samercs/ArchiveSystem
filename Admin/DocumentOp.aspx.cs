@@ -6,8 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_DocumentOp : System.Web.UI.Page
-{
+public partial class Admin_DocumentOp : AdminPages
+{ 
     string tablename = "Document";
     string listpage = "DocumentList.aspx";
     public string name = "المعاملات";

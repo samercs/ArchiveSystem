@@ -9,7 +9,7 @@
         <ItemTemplate>
             <asp:HiddenField ID="id" Value='<%#Eval("id") %>' runat="server" />
             <div class="article">
-                <table dir="rtl">
+                <table class="table table-responsive noborder">
                     <tr>
                         <td colspan="5">
                             <h4 class="header_h4"><%#Eval("title") %></h4>
@@ -20,12 +20,12 @@
                         <td><i class="fa fa-list-alt"></i>‫<%#Eval("No") %>‬</td>
                         <td><i class="fa fa-file-o"></i>‫<%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>‬</td>
                         <td><i class="fa fa-bullseye"></i>‫<%#Eval("Target") %>‬</td>
-                        <td><i class="fa fa-calendar"></i>‫<%#Eval("FileDate","{0:dd/MM/yyyy}") %>‬</td>
+                        <td><i class="fa fa-calendar"></i>‫<%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>‬</td>
                     </tr>
                     <tr class="space txt_gray">
                         <td colspan="5">
                             <p class="p">
-                                <%#Eval("desc") %>
+                                <%#Server.HtmlEncode(Eval("desc").ToString()) %>
                             </p>
                         </td>
                     </tr>
