@@ -97,7 +97,7 @@
         <img src="img/undernav.png" class="undernav img-responsive" />
         <div class="clearfix"></div>
         <div class="container">
-            <asp:Panel ID="msg" CssClass="alert msgBox text-center" Visible="False" runat="server">
+            <asp:Panel ID="msg" CssClass="" Visible="False" runat="server">
                 <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
             </asp:Panel>
         </div>

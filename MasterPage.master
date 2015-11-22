@@ -44,6 +44,13 @@
                     <asp:Button OnClick="btnSearchFile_OnClick" ID="btnSearchFile" CssClass="green_submit" runat="server" Text="بحث" />
                     
                 </div>
+                
+                <div class="clearfix"></div>
+                
+                <asp:Panel Visible="False" ID="DivError" CssClass="alert alert-danger error" runat="server">
+                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+
             </div>
             <div class="space gray"></div>
             <div class="space gray"></div>
@@ -63,6 +70,13 @@
                 <div class="submit_box">
                     <img src="img/green_serach.png" class="green_search" /><asp:Button OnClick="btnSearchUsers_OnClick" ID="btnSearchUsers" CssClass="green_submit" runat="server" Text="بحث" />
                 </div>
+                
+                <div class="clearfix"></div>
+                
+                <asp:Panel Visible="False" ID="DivError2" CssClass="alert alert-danger error" runat="server">
+                    <asp:Label ID="lblError2" runat="server" Text=""></asp:Label>
+                </asp:Panel>
+
             </div>
         </aside>
 

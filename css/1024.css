@@ -591,6 +591,7 @@ label {
 
 .one_file_container {
     padding: 0.4em;
+    padding-right: 15px;
 }
 
 .datename {

@@ -47,8 +47,8 @@
                                     <input type="checkbox" name="keepmeonline" value="keepmeonline">  <label class="text_color_white_smoke">البقاء متصلا</label>
                                 </td>
                             </tr>
-                            <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="دخول" /></td><td class="hme"><a href="#"  class="hyperlink_login_form">هل نسيت كلمة المرور ؟</a></td></tr>
-                            <tr><td class="moblie_hide align_center"><a href="#" class="hyperlink_login_form" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a></td></tr>
+                            <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="دخول" /></td><td class="hme"><a href="forgetPassword.aspx"  class="hyperlink_login_form">هل نسيت كلمة المرور ؟</a></td></tr>
+                            <tr><td class="moblie_hide align_center"><a href="forgetPassword.aspx" class="hyperlink_login_form" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a></td></tr>
                             <tr>
                                 <td colspan="2" class="text-center">
                                     <asp:Panel CssClass="alert alert-danger error" ID="ErrorDiv" Visible="False" runat="server">

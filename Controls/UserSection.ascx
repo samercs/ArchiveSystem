@@ -28,8 +28,10 @@
                 <ItemTemplate>
                     <li class="filer">
                         <div class="one_file_container">
-                            <h5 dir="ltr"><%#Eval("title") %> </h5>
-                            <span class="datename">تاريخ الاصدار : </span><span class="datedes"><%#Eval("FileDate","{0:dd/MM/yyyy}") %></span>
+                            <a target="_blank" href="/SystemFiles/Files/<%#Eval("fileUrl") %>">
+                                <h5 style="color: #000000;" dir="ltr"><%#Eval("title") %> </h5>
+                                <span class="datename">تاريخ الاصدار : </span><span class="datedes"><%#Eval("FileDate","{0:dd/MM/yyyy}") %></span>
+                            </a>
                         </div>
                     </li>
                     <img src="img/grayspliter.png" class="split img-responsive">

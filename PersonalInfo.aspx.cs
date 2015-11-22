@@ -56,7 +56,7 @@ public partial class PersonalInfo : UICaltureBase
             Session["User"] = u;
 
             ShowAlert("تم التعديل بنجاح . شكرا لك",MsgType.Success);
-
+            Response.Redirect("PersonalInfo.aspx");
 
         }
     }

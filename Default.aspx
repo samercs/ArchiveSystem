@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
@@ -29,7 +30,7 @@
                         </td>
                     </tr>
                     <tr class="space txt_green align_right ">
-                        <td><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح‬</td>
+                        <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬</td>
                         <td><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
                         
                         <td>
@@ -46,7 +47,7 @@
                 <div class="space"></div>
                 
                 <div class="comment_box" id="comment_box_<%#Container.DataItemIndex +1 %>">
-                    <table dir="rtl">
+                    <table  dir="rtl">
                         <asp:ListView ID="Repeater1" runat="server">
                             <ItemTemplate>
 
@@ -92,6 +93,8 @@
                     </table>
 
                 </div>
+                
+                
 
                 <div class="commenter" id="commenter_<%#Container.DataItemIndex+1 %>">
                     <div class="space"></div>
@@ -124,7 +127,7 @@
                     </div>
 
                 </div>
-                <a class="link btn-link font_small btn-show-all-comment" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
+                <a id="btnShowAllComment<%#Eval("id") %>" class="link btn-link font_small btn-show-all-comment" data-text="اخفاء التعليقات" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
                 <div class="space"></div>
                 <div class="space"></div>
                 <div class="collapse" id="attached-<%#Container.DataItemIndex + 1 %>">
@@ -270,11 +273,18 @@
 
                 var commentId = $(this).attr("data-id");
                 $("#" + commentId).toggleClass("full-hieght");
+                if ($(this).attr("data-text") == "اخفاء التعليقات") {
+                    $(this).text($(this).attr("data-text"));
+                    $(this).attr("data-text","اظهار التعليقات");
+                } else {
+                    $(this).text($(this).attr("data-text"));
+                    $(this).attr("data-text", "اخفاء التعليقات");
+                }
 
             });
 
             $(".comment_sub").click(function() {
-                 $(this).parent().parent().parent().parent().parent().next().toggle(300);
+                $(this).parent().parent().parent().parent().parent().next().toggle(300);
 
             });
 
@@ -302,6 +312,11 @@
             }
             return true;
             
+        }
+
+
+        function hiddenShowAllComment(id) {
+            $("#btnShowAllComment" + id).hide();
         }
     </script>
 
