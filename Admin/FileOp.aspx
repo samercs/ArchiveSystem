@@ -108,6 +108,18 @@
                 </tr>
                 <tr>
                     <td>
+                        <asp:Label ID="Label12" runat="server" Text="المجال " CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Label ID="Label3" runat="server" Text="تاريخ الملف" CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <uc1:hijriCalender  Class="txtCal" ValidationGroup="Option3" runat="server" ID="txtFileDate" />
@@ -151,6 +163,46 @@
                             <asp:ListItem Text="ملف" Value="1"></asp:ListItem>
                             <asp:ListItem Text="تعميم" Value="0"></asp:ListItem>
                         </asp:DropDownList>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr id="rowAttache" runat="server">
+                    <td>
+                        <asp:Label ID="Label11" runat="server" Text="الملفات المرفقه" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>عنوان المرفق</td>
+                                <td>الملف المرفق</td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    <asp:TextBox ID="txtAttachedTitle1"   ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:FileUpload ID="attachedFile1" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    <asp:TextBox ID="txtAttachedTitle2"   ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:FileUpload ID="attachedFile2" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    <asp:TextBox ID="txtAttachedTitle3"   ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:FileUpload ID="attachedFile3" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                     <td></td>
                 </tr>

@@ -28,7 +28,8 @@
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="رقم القيد" CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtNo" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNo1" Width="150" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox> / 
+                        <asp:TextBox ID="txtNo2" Width="150" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>
@@ -62,6 +63,43 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>
+                        المعاملات المرتبطة
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    المعاملة رقم 1
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlRDoc1" CssClass="ddl1" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    المعاملة رقم 2
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlRDoc2" CssClass="ddl1" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    المعاملة رقم 3
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlRDoc3" CssClass="ddl1" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
                 
                 <tr>
                     <td colspan="2">

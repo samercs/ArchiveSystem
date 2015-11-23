@@ -13,6 +13,8 @@ public partial class favorite : UICaltureBase
     {
         if(!Page.IsPostBack)
         {
+            Database db = new Database();
+            db.LoadDDL("category", "title", ref ddlField, "المجال", "catId=5");
             LoadData();
         }
     }
@@ -24,7 +26,7 @@ public partial class favorite : UICaltureBase
         Database db=new Database();
         Users u = Session["User"] as Users;
         db.AddParameter("@id", u.Id);
-        string sql = "select * from UserFav inner join files on (files.id=Userfav.FileId) where UserFav.UserId=@id";
+        string sql = "select *,category.title as FieldName from (UserFav inner join files on (files.id=Userfav.FileId)) left join category on files.Field=category.id where UserFav.UserId=@id";
         if(!string.IsNullOrWhiteSpace(title))
         {
             sql += " and files.title like '%' + @title + '%'";
@@ -35,10 +37,10 @@ public partial class favorite : UICaltureBase
             sql += " and files.no like '%' + @no + '%'";
             db.AddParameter("@no", no);
         }
-        if (!string.IsNullOrWhiteSpace(target))
+        if (!string.IsNullOrWhiteSpace(target) && !target.Equals("-1"))
         {
-            sql += " and files.target like '%' + @target + '%'";
-            db.AddParameter("@target", target);
+            sql += " and files.Field=@Field ";
+            db.AddParameter("@Field", target);
         }
         DateTime tmp;
         if (DateTime.TryParseExact(dates.HijriToGreg(txtFileDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp))
@@ -64,7 +66,7 @@ public partial class favorite : UICaltureBase
         {
             no = txtNo1.Text + "/" + txtNo2.Text;
         }
-        LoadData(txtTitle.Text, no , txtTarget.Text, txtFileDate.Text);
+        LoadData(txtTitle.Text, no , ddlField.SelectedValue, txtFileDate.Text);
     }
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
@@ -74,7 +76,7 @@ public partial class favorite : UICaltureBase
         {
             no = txtNo1.Text+"/"+txtNo2.Text;
         }
-        LoadData(txtTitle.Text,no,txtTarget.Text,txtFileDate.Text);
+        LoadData(txtTitle.Text,no,ddlField.SelectedValue,txtFileDate.Text);
     }
 
     protected void btnDelete_OnCommand(object sender, CommandEventArgs e)

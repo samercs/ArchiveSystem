@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="Title BorderBottom"><%=name %></h1>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager  ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdateProgress runat="server" ID="PageUpdateProgress" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="0">
         <ProgressTemplate>
             <div class="LoadingCenter">
@@ -18,6 +18,35 @@
             <asp:HyperLink ID="HyperLink3" NavigateUrl="" CssClass="tdn fr" runat="server"><h5><i class="fa fa-plus-square-o"></i> اضافة ملف </h5></asp:HyperLink>
             <asp:LinkButton ID="btnContactDelete" OnClick="btnContactDelete_Click" runat="server" CssClass="tdn fr mr10px btnDelete"><h5><i class="fa fa-times"></i> حذف الملفات المختارة</h5></asp:LinkButton>
             <div class="clear"></div>
+            <table class="SearchTable">
+                <tr>
+                    <td>
+                        اسم الملف
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtFileName"  CssClass="txt1" Width="200" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        رقم الملف
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtFileNo1" ValidationGroup="Option3" CssClass="txt1" Width="100" runat="server"></asp:TextBox> /
+                        <asp:TextBox ID="txtFileNo2" ValidationGroup="Option3" CssClass="txt1" Width="100" runat="server"></asp:TextBox> 
+                    </td>
+                    <td>
+                        المجال
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:Button OnClick="btnSearch_OnClick" CssClass="btnLogin" ID="btnSearch" runat="server" Text="بحث" />
+                    </td>
+                </tr>
+            </table>
+            
+            
             <table cellspacing='0' class="LoginTbl tblList">
                 <!-- cellspacing='0' is important, must stay -->
                 <tr>
@@ -39,7 +68,7 @@
                     <LayoutTemplate>
                         <asp:PlaceHolder ID="iph" runat="server"></asp:PlaceHolder>
                         <tr>
-                            <td colspan="10">
+                            <td colspan="11">
                                 <div class="Pager AC">
                                     <asp:DataPager ID="DataPager2" PagedControlID="RepeaterLists" PageSize="10" runat="server">
                                         <Fields>
@@ -90,9 +119,7 @@
                             <td style="width: 150px;">
                                 <asp:LinkButton CssClass="btnDelete" ID="btnDelete" OnCommand="btnDelete_Command" CommandName='<%#Eval("FileUrl") %>' CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-trash fs20px"></i> حذف</asp:LinkButton>
                                 <asp:LinkButton ID="btnEdit" OnCommand="btnEdit_Command" CommandArgument='<%#Eval("id") %>' runat="server"><i class="fa fa-pencil-square-o fs20px"></i> تعديل</asp:LinkButton>
-                                <div style="padding-top: 10px;">
-                                    <a href="ConectedDocList.aspx?id=<%#Eval("id") %>"><i class="fa fa-link"></i> الملفات المرتبطة </a>
-                                </div>
+                               
                                 <div style="padding-top: 10px;">
                                     <a href="FilesAttachList.aspx?id=<%#Eval("id") %>"><i class="fa fa-paperclip"></i> الملفات المرفقه </a>
                                 </div>
