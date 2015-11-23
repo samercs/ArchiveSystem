@@ -24,7 +24,7 @@ public partial class Admin_FilesList : AdminPages
     void LoadData()
     {
         Database db = new Database();
-        System.Data.DataSet ds = db.ExecuteDataSet("Select * from Files inner join Users on (Files.AddedBy=Users.Id) Order By Files.Id desc");
+        System.Data.DataSet ds = db.ExecuteDataSet("Select * from Files left join AdminUsers on (Files.AddedBy=AdminUsers.Id) Order By Files.Id desc");
         RepeaterLists.DataSource = ds.Tables[0];
         RepeaterLists.DataBind();
         Cache["dt1"] = ds.Tables[0];
