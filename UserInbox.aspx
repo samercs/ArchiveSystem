@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h1 class="text-right">
-        الرسائل المستلمة
+    <h1 class="text-right">الرسائل المستلمة
     </h1>
     <table class="tbl table table-responsive ">
         <thead>
@@ -15,12 +14,8 @@
                 </th>
                 <th>التاريخ
                 </th>
-                <th>
-                    
-                </th>
-                <th>
-                    
-                </th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -38,7 +33,7 @@
                             <%#(new Dates()).GregToHijri(Eval("AddDate","{0:dd/MM/yyyy}"),"dd/MM/yyyy") %>
                         </td>
                         <td>
-                            <a data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#">
+                            <a data-id="<%#Eval("id") %>" data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#">
                                 <i class="fa fa-eye"></i>قراءة
                             </a>
                         </td>
@@ -59,28 +54,26 @@
             </asp:ListView>
         </tbody>
     </table>
-    
+
     <div class="pager text-center">
         <asp:DataPager class="btn-group btn-group-sm" ID="DataPager1" PagedControlID="ListView1" PageSize="6" runat="server">
-                <Fields>
-                    <asp:NumericPagerField ButtonType="Link" CurrentPageLabelCssClass="btn btn-primary disabled" RenderNonBreakingSpacesBetweenControls="false"
+            <Fields>
+                <asp:NumericPagerField ButtonType="Link" CurrentPageLabelCssClass="btn btn-primary disabled" RenderNonBreakingSpacesBetweenControls="false"
                     NumericButtonCssClass="btn btn-default" ButtonCount="10" NextPageText="..." NextPreviousButtonCssClass="btn btn-default" />
-                </Fields>
-            </asp:DataPager>
+            </Fields>
+        </asp:DataPager>
     </div>
-    
-    
+
+
     <div style="padding: 10px 20px;">
-        <a href="UserOutbox.aspx" class="btn btn-block btn-primary">
-            الرسائل المرسلة
+        <a href="UserOutbox.aspx" class="btn btn-block btn-primary">الرسائل المرسلة
         </a>
     </div>
     <div style="padding: 10px 20px;">
-        <a href="UserSendMsg.aspx" class="btn btn-block btn-success">
-            رسالة جديدة
+        <a href="UserSendMsg.aspx" class="btn btn-block btn-success">رسالة جديدة
         </a>
     </div>
-    
+
 
     <div class="modal fade" id="myModalInbox" role="dialog">
         <div class="modal-dialog">
@@ -100,49 +93,44 @@
                             <td>عنوان الرسالة
                             </td>
                             <td>
-                                <asp:Label ID="lblTitle" runat="server" CssClass=" text-success" Text="sdfsdf"></asp:Label>
+                                <asp:Label ID="lblTitle" runat="server" CssClass=" text-success" Text=""></asp:Label>
                             </td>
                         </tr>
                         <tr class="form_table_tr ">
                             <td>الرسالة
                             </td>
                             <td>
-                                <asp:Label ID="lblMsg" runat="server" CssClass=" text-success" Text="sdfsdf"></asp:Label>
+                                <asp:Label ID="lblMsg" runat="server" CssClass=" text-success" Text=""></asp:Label>
                             </td>
                         </tr>
-                        <tr  class="form_table_tr ">
-                            <td colspan="2">  
-                            </td>
+                        <tr class="form_table_tr ">
+                            <td colspan="2"></td>
                         </tr>
 
                     </table>
                     <asp:HiddenField ID="userId" runat="server" />
-                                    <div class="comment_box" style="width:100%;">
-                                        <table dir="rtl">
-                                         <!--   <tr>
-                                                <td rowspan="4">
-                                                    <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h4 class="txt_green font_small space align_right">
-                                                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
-                                                    </h4>
-                                                </td>
-                                            </tr>-->
-                                            <tr>
-                                                <td class="space align_right">
-                                                    <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="comment_input" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                                     <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">كتابة رد</asp:LinkButton>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
+                    <table dir="rtl" class="table table-responsive">
+                        <tr>
+                            <td class="space align_right">
+                                <asp:TextBox ID="txtTitle" placeholder="عنوان الرسالة" CssClass="form-control" runat="server"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="space align_right">
+                                <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">ارسال الرد</asp:LinkButton>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+
                 </div>
 
             </div>
@@ -158,15 +146,21 @@
 
                 var $this = $(this);
                 $("#<%=lblTitle.ClientID%>").text($this.data("title"));
+                $("#<%=txtTitle.ClientID%>").val('رد : ' + $this.data("title"));
                 $("#<%=lblMsg.ClientID%>").text($this.data("text"));
                 $("#<%=userId.ClientID%>").val($this.data("from"));
+                $.ajax({
+                    url: "ajax/updateMsg.ashx?id=" + $this.data("id"), success: function (result) {
+
+                    }
+                });
 
             });
 
         });
 
         function validateSendMsg() {
-            
+
             var msg = $("#<%=txtComment.ClientID%>").val();
             if (isNullOrWhitespace(msg)) {
                 alert("الرجاء ادخال الرد");

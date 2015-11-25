@@ -12,9 +12,7 @@ public partial class UserInbox : UICaltureBase
     {
         if(!Page.IsPostBack)
         {
-            Users u = Session["User"] as Users;
-            imgUser.ImageUrl = "~/SystemFiles/Users/" + u.Image;
-            lblUserName.Text = u.Name;
+            
             LoadMsg();
             txtComment.Attributes.Add("onkeydown", "if(event.which || event.keyCode){if ((event.which == 13) || (event.keyCode == 13)) { if(validateSendMsg())  __doPostBack('" + btnSendComent.UniqueID + "','');}} ");
         }
@@ -22,6 +20,7 @@ public partial class UserInbox : UICaltureBase
 
     private void LoadMsg()
     {
+        
         Users u = Session["User"] as Users;
         Database db = new Database();
         db.AddParameter("@to", u.Id);
@@ -36,7 +35,7 @@ public partial class UserInbox : UICaltureBase
         Users u = Session["User"] as Users;
         db.AddParameter("@from", u.Id);
         db.AddParameter("@toId", userId.Value);
-        db.AddParameter("@Title", "رد : " + lblTitle.Text);
+        db.AddParameter("@Title",  txtTitle.Text);
         db.AddParameter("@Msg",txtComment.Text );
         db.ExecuteNonQuery("insert into msg([from],toId,Title,Msg) values (@from,@toId,@Title,@Msg)");
         txtComment.Text = "";

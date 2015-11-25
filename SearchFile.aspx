@@ -8,7 +8,7 @@
     <div id="full_width_white">
         <div class="container">
 
-            <h4 class="align_right margin_12em font_14_em">المفضله</h4>
+            <h4 class="align_right margin_12em font_14_em">نتائج البحث عن ملف</h4>
             <table class="search_result margin_12e_bottom">
                 <tr dir="rtl">
                     <th dir="rtl" colspan="2">
@@ -63,7 +63,7 @@
                     <asp:ListView OnPagePropertiesChanged="Repeater1_OnPagePropertiesChanged" ID="Repeater1" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td id="width_10"><%#Eval("no") %></td>
+                                <td id="width_10"><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
                                 <td id="width_20">
                                     <p id="sub_cont"><%#Eval("Title") %></p>
                                 </td>

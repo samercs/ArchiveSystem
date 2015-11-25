@@ -17,7 +17,7 @@
                     </tr>
                     <tr class="space txt_gray">
                         <td><i class="fa fa-microphone"></i>‫<%#Eval("From") %>‬</td>
-                        <td><i class="fa fa-list-alt"></i>‫<%#Eval("No") %>‬</td>
+                        <td><i class="fa fa-list-alt"></i>‫<%# Tools.RecierveNo( Eval("No").ToString()) %>‬</td>
                         <td><i class="fa fa-file-o"></i>‫<%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>‬</td>
                         <td><i class="fa fa-bullseye"></i>‫<%#Eval("Target") %>‬</td>
                         <td><i class="fa fa-calendar"></i>‫<%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>‬</td>
@@ -25,14 +25,13 @@
                     <tr class="space txt_gray">
                         <td colspan="5">
                             <p class="p">
-                                <%#Server.HtmlEncode(Eval("desc").ToString()) %>
+                                <%#Eval("desc").ToString() %>
                             </p>
                         </td>
                     </tr>
                     <tr class="space txt_green align_right ">
                         <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬</td>
                         <td><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
-                        
                         <td>
                             <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
                                 <i class="fa fa-star txt_green"></i>‫ إضافة للمفضلة

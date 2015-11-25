@@ -90,7 +90,7 @@
                                 <%#Eval("title") %> 
                             </td>
                             <td>
-                                <%#Eval("No") %>
+                                <%#Tools.RecierveNo( Eval("No").ToString()) %>
                             </td>
                             <td>
                                 <%#Eval("From") %>

@@ -22,7 +22,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         Dates datets = new Dates();
         if (string.IsNullOrWhiteSpace(txtFileName.Text) && ddlField.SelectedValue.Equals("-1") &&
-            string.IsNullOrWhiteSpace(txtDate.Text))
+            string.IsNullOrWhiteSpace(txtDate.Text) && string.IsNullOrWhiteSpace(txtNo1.Text) && string.IsNullOrWhiteSpace(txtNo2.Text))
         {
             DivError.Visible = true;
             lblError.Text = "الرجاء ادخال قيم البحث";
@@ -32,10 +32,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
         DivError.Visible = false;
 
         DateTime tmp;
+        int no1, no2;
         if (!string.IsNullOrWhiteSpace(txtFileName.Text) ||
-            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !ddlField.SelectedValue.Equals("-1"))
+            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !ddlField.SelectedValue.Equals("-1") || int.TryParse(txtNo1.Text,out no1) || int.TryParse(txtNo2.Text, out no2))
         {
-            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}",txtFileName.Text,txtDate.Text,ddlField.SelectedValue));
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}",txtFileName.Text,txtDate.Text,ddlField.SelectedValue,txtNo1.Text+"/"+txtNo2.Text));
         }
     }
 

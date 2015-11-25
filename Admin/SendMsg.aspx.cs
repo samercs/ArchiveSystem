@@ -36,6 +36,8 @@ public partial class Admin_SendMsg : AdminPages
             json += "]";
             ViewState["json"] = json;
 
+            
+
             if (Request.QueryString["toid"] != null)
             {
                 string name = db.GetProName("users", "name", "id", Request.QueryString["toid"]);
@@ -43,7 +45,15 @@ public partial class Admin_SendMsg : AdminPages
                 {
                     ViewState["toid"] = "[{id: " + Request.QueryString["toid"] + ", name: \"" + name + "\"}]";
                 }
+                else
+                {
+                    ViewState["toid"] = "[]";
+                }
                 
+            }
+            else
+            {
+                ViewState["toid"] = "[]";
             }
         }
     }
@@ -83,7 +93,7 @@ public partial class Admin_SendMsg : AdminPages
         foreach (DataRow row in dt.Rows)
         {
             db.AddParameter("@from", "-1");
-            db.AddParameter("@Title", txtTxt.Text);
+            db.AddParameter("@Title", txtSubject.Text);
             db.AddParameter("@msg", txtTxt.Text);
             db.AddParameter("@toId", row["id"].ToString());
             db.ExecuteNonQuery("insert into msg ([from],title,msg,toId) values(@from,@title,@msg,@toId)");

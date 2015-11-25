@@ -74,4 +74,11 @@ public class Tools
         get { return new List<string>() { ".pdf", ".doc", ".docx" }; }
     }
 
+    public static string RecierveNo(string no)
+    {
+        string[] noArray = no.Split('/');
+        return noArray[1] + "/" + noArray[0];
+
+    }
+
 }

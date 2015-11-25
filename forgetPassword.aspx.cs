@@ -38,7 +38,7 @@ public partial class login : UICaltureBase
         strBuild.Append("<h4>معلومات الدخول الخاص بك الى النظام</h4>");
         strBuild.Append(String.Format("<p>اسم المستخدم : <b>{0}</b></p>",dt.Rows[0]["username"].ToString()));
         strBuild.Append(String.Format("<p>كلمة السر : <b>{0}</b></p>",dt.Rows[0]["password"]));
-        strBuild.Append(String.Format("<p>لتسجيل الدخول <a href'{0}'>من هنا</a></p>", loginUrl));
+        strBuild.Append(String.Format("<p>لتسجيل الدخول <a href=\"{0}\">من هنا</a></p>", loginUrl));
         SendMail mail=new SendMail();
         mail.SendMsg(dt.Rows[0]["username"].ToString(), "استعادة كلمة المرور", strBuild.ToString());
         ClientScript.RegisterClientScriptBlock(this.GetType(),"msgBox","alert('تم ارسال كلمة السر على بريدك الالكتروني');",true);

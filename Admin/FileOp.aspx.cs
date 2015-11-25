@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -99,6 +100,16 @@ public partial class Admin_FileOp : AdminPages
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار مجال الملف\")</SCRIPT>", false);
             return;
         }
+
+        string no = txtNo1.Text + "/" + txtNo2.Text;
+        db.AddParameter("@no", no);
+        DataTable dt = db.ExecuteDataTable("select * from files where no=@no");
+        if(dt.Rows.Count!=0)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"رقم الملف مدخل من قبل\")</SCRIPT>", false);
+            return;
+        }
+
 
         if (fileFile.HasFile)
         {

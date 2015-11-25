@@ -17,14 +17,36 @@ public partial class Admin_DocumentList : AdminPages
     {
         if (!Page.IsPostBack)
         {
+            Database db = new Database();
+            db.LoadDDL("category", "title", ref ddlField, "فئة المعاملة", "catId=1");
             HyperLink3.NavigateUrl = addPage;
             LoadData();
         }
     }
-    void LoadData()
+    void LoadData(string title="",string no="",string type="")
     {
         Database db = new Database();
-        System.Data.DataSet ds = db.ExecuteDataSet("Select Document.*,Cat1.title as CatName,cat2.title as SecName,cat3.title as LegalName from (((Document left join category as cat1 on (Document.Category=cat1.id)) left join category as cat2 on (Document.Security=cat2.id)) left join category as cat3 on (document.LegalStaus=cat3.id))  Order By Document.Id desc");
+        string where = " 1=1 ";
+        if(!string.IsNullOrWhiteSpace(title))
+        {
+            where += " and Document.title like '%' + @title + '%' ";
+            db.AddParameter("@title", title);
+        }
+
+        if (!string.IsNullOrWhiteSpace(no))
+        {
+            where += " and Document.no like '%' + @no + '%' ";
+            db.AddParameter("@no", no);
+        }
+
+        if (!string.IsNullOrWhiteSpace(no))
+        {
+            where += " and Document.category=@category ";
+            db.AddParameter("@category", type);
+        }
+
+        string sql = "Select Document.*,Cat1.title as CatName,cat2.title as SecName,cat3.title as LegalName from (((Document left join category as cat1 on (Document.Category=cat1.id)) left join category as cat2 on (Document.Security=cat2.id)) left join category as cat3 on (document.LegalStaus=cat3.id))  where "+where+" Order By Document.Id desc";
+        System.Data.DataSet ds = db.ExecuteDataSet(sql);
         RepeaterLists.DataSource = ds.Tables[0];
         RepeaterLists.DataBind();
         Cache["dt1"] = ds.Tables[0];
@@ -123,5 +145,14 @@ public partial class Admin_DocumentList : AdminPages
     }
 
 
-    
+    protected void btnSearch_OnClick(object sender, EventArgs e)
+    {
+        int no1, no2;
+        string no = String.Empty;
+        if (int.TryParse(txtFileNo1.Text, out no1) || int.TryParse(txtFileNo2.Text, out no2))
+        {
+            no = txtFileNo1.Text + "/" + txtFileNo2.Text;
+        }
+        LoadData(txtFileName.Text,no,ddlField.SelectedValue);
+    }
 }

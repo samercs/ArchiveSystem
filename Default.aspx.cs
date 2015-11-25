@@ -140,4 +140,6 @@ public partial class _Default : UICaltureBase
         db.ExecuteNonQuery("insert into FileNotice(UserId,Rason,Note,FileId) values (@UserId,@Rason,@Note,@FileId)");
         ShowAlert("تم ارسال البلاغ بنجاح",MsgType.Success);
     }
+
+   
 }

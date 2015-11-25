@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.ServiceModel.Security;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -31,17 +32,23 @@ public partial class Admin_DocumentOp : AdminPages
             ddlRDoc1.Items.Add(new ListItem("اختر معاملة", "-1"));
             ddlRDoc2.Items.Add(new ListItem("اختر معاملة", "-1"));
             ddlRDoc3.Items.Add(new ListItem("اختر معاملة", "-1"));
+            ddlRDoc4.Items.Add(new ListItem("اختر معاملة", "-1"));
+            ddlRDoc5.Items.Add(new ListItem("اختر معاملة", "-1"));
             foreach (DataRow row in dt.Rows)
             {
                 ddlRDoc1.Items.Add(new ListItem(row["title"].ToString()+"-"+row["no"].ToString(),row["id"].ToString()));
                 ddlRDoc2.Items.Add(new ListItem(row["title"].ToString() + "-" + row["no"].ToString(), row["id"].ToString()));
                 ddlRDoc3.Items.Add(new ListItem(row["title"].ToString() + "-" + row["no"].ToString(), row["id"].ToString()));
+                ddlRDoc4.Items.Add(new ListItem(row["title"].ToString() + "-" + row["no"].ToString(), row["id"].ToString()));
+                ddlRDoc5.Items.Add(new ListItem(row["title"].ToString() + "-" + row["no"].ToString(), row["id"].ToString()));
             }
 
             if (Request.QueryString["Op"].Equals("Edit"))
             {
                 LoadData();
             }
+
+            
            
         }
     }
@@ -75,6 +82,14 @@ public partial class Admin_DocumentOp : AdminPages
             else if (cout == 2)
             {
                 ddlRDoc3.SelectedValue = row["DetailDocId"].ToString();
+            }
+            else if (cout == 3)
+            {
+                ddlRDoc4.SelectedValue = row["DetailDocId"].ToString();
+            }
+            else if (cout == 4)
+            {
+                ddlRDoc5.SelectedValue = row["DetailDocId"].ToString();
             }
 
             ++cout;
@@ -147,6 +162,18 @@ public partial class Admin_DocumentOp : AdminPages
         {
             db.AddParameter("@MasterDocId", docId);
             db.AddParameter("@DetailDocId", ddlRDoc3.SelectedValue);
+            db.ExecuteNonQuery("insert into ConectedDoc(MasterDocId,DetailDocId) values(@MasterDocId,@DetailDocId)");
+        }
+        if (!ddlRDoc4.SelectedValue.Equals("-1") && CanInsert(docId.ToString(), ddlRDoc4.SelectedValue))
+        {
+            db.AddParameter("@MasterDocId", docId);
+            db.AddParameter("@DetailDocId", ddlRDoc4.SelectedValue);
+            db.ExecuteNonQuery("insert into ConectedDoc(MasterDocId,DetailDocId) values(@MasterDocId,@DetailDocId)");
+        }
+        if (!ddlRDoc5.SelectedValue.Equals("-1") && CanInsert(docId.ToString(), ddlRDoc5.SelectedValue))
+        {
+            db.AddParameter("@MasterDocId", docId);
+            db.AddParameter("@DetailDocId", ddlRDoc5.SelectedValue);
             db.ExecuteNonQuery("insert into ConectedDoc(MasterDocId,DetailDocId) values(@MasterDocId,@DetailDocId)");
         }
     }

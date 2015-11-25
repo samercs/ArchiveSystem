@@ -18,10 +18,14 @@ public partial class SearchFile : UICaltureBase
             string title = Request.QueryString["name"];
             string date = Request.QueryString["date"];
             string target = Request.QueryString["category"];
+            string no = Request.QueryString["no"];
             txtTitle.Text = title;
             ddlField.SelectedValue = target;
             txtFileDate.Text = date;
-            LoadData(txtTitle.Text,"",ddlField.SelectedValue,txtFileDate.Text);
+            string[] noArray = no.Split('/');
+            txtNo1.Text = noArray[0];
+            txtNo2.Text = noArray[1];
+            LoadData(txtTitle.Text,no,ddlField.SelectedValue,txtFileDate.Text);
         }
     }
 

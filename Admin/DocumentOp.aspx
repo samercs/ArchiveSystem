@@ -74,26 +74,59 @@
                                     المعاملة رقم 1
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlRDoc1" CssClass="ddl1" runat="server">
+                                    <asp:DropDownList  ID="ddlRDoc1" CssClass="ddl1  ddlExe ddlExe1" data-id="1" runat="server">
                                     </asp:DropDownList>
                                 </td>
+                                <td>
+                                    
+                                </td>
                             </tr>
-                            <tr>
+                            <tr id="tr2">
                                 <td>
                                     المعاملة رقم 2
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlRDoc2" CssClass="ddl1" runat="server">
+                                    <asp:DropDownList ID="ddlRDoc2" CssClass="ddl1 ddlExe ddlExe2" data-id="2" runat="server">
                                     </asp:DropDownList>
                                 </td>
+                                <td>
+                                    <a href="#"><img data-id="2" class="btnRemove" src="Images/remove.png" /></a>
+                                </td>
                             </tr>
-                            <tr>
+                            <tr id="tr3">
                                 <td>
                                     المعاملة رقم 3
                                 </td>
                                 <td>
-                                    <asp:DropDownList ID="ddlRDoc3" CssClass="ddl1" runat="server">
+                                    <asp:DropDownList ID="ddlRDoc3" CssClass="ddl1 ddlExe ddlExe3" data-id="3" runat="server">
                                     </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <a href="#"><img data-id="3" class="btnRemove" src="Images/remove.png" /></a>
+                                </td>
+                            </tr>
+                            <tr id="tr4">
+                                <td>
+                                    المعاملة رقم 4
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlRDoc4" CssClass="ddl1 ddlExe ddlExe4" data-id="4" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <a href="#"><img data-id="4" class="btnRemove" src="Images/remove.png" /></a>
+                                </td>
+                            </tr>
+                            <tr id="tr5">
+                                <td>
+                                    المعاملة رقم 5
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="ddlRDoc5" CssClass="ddl1 ddlExe ddlExe5" data-id="5" runat="server">
+                                    </asp:DropDownList>
+                                </td>
+                                <td>
+                                    <a href="#"><img data-id="5" class="btnRemove" src="Images/remove.png" /></a>
                                 </td>
                             </tr>
                         </table>
@@ -112,6 +145,82 @@
         </asp:Panel>
     </section>
     
+    
+    <script>
+        
+        $(function () {
+            
+            
+            ini_page();
+
+
+            $(".ddlExe").change(function () {
+                var $val = $(this).val();
+                if($val != "-1") {
+                    $id = $(this).data("id");
+                    $next = (parseInt($id) + 1);
+                    $("#tr" + $next).show();
+                } else {
+
+                }
+               
+                  
+
+            });
+
+            $(".btnRemove").click(function (e) {
+                e.preventDefault();
+                $id = $(this).data("id");
+                $("#tr" + $id).hide();
+                $(".ddlExe" + $id).val("-1");
+
+            });
+
+        });
+
+
+        function ini_page() {
+            
+
+            $("#tr2").hide();
+            $("#tr3").hide();
+            $("#tr4").hide();
+            $("#tr5").hide();
+            var $val2=$("#<%=ddlRDoc2.ClientID%>").val();
+            var $val3=$("#<%=ddlRDoc3.ClientID%>").val();
+            var $val4=$("#<%=ddlRDoc4.ClientID%>").val();
+            var $val5=$("#<%=ddlRDoc5.ClientID%>").val();
+
+
+
+
+            <%
+            if(Request.QueryString["Op"].Equals("Edit"))
+            {
+                %>
+                if($val2 != "-1" ) {
+                    $("#tr2").show();
+                }
+                if ($val3 != "-1") {
+                    $("#tr3").show();
+                }
+                if ($val4 != "-1") {
+                    $("#tr4").show();
+                }
+                if ($val5 != "-1") {
+                    $("#tr5").show();
+                }
+            
+            
+                <%
+            }
+
+            %>
+
+        }
+
+    </script>
+
 </asp:Content>
 
 

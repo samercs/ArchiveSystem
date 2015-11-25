@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MasterPage.master" AutoEventWireup="true" CodeFile="SendMsg.aspx.cs" Inherits="Admin_SendMsg" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <script src="Scripts/jquery.tokeninput.js"></script>
-    <link href="Styles/token-input.css" rel="stylesheet" />
-    <link href="Styles/token-input-facebook.css" rel="stylesheet" />
+    <script src="/js/jquery.tokeninput.js"></script>
+    <link href="/css/token-input.css" rel="stylesheet" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="Title BorderBottom"><%=name %></h1>
@@ -71,7 +71,7 @@
 
                 });
 
-                $("#<%=txtResearchList.ClientID%>").tokenInput(<%=ViewState["json"]%>, { theme: "facebook",prePopulate : <%=ViewState["toid"]%> });
+                $("#<%=txtResearchList.ClientID%>").tokenInput(<%=ViewState["json"]%>, { prePopulate : <%=ViewState["toid"]%> });
         }
 
         $(function () {

@@ -18,6 +18,36 @@
             <asp:HyperLink ID="HyperLink3" NavigateUrl="" CssClass="tdn fr" runat="server"><h5><i class="fa fa-plus-square-o"></i> اضافة معاملة </h5></asp:HyperLink>
             <asp:LinkButton ID="btnContactDelete" OnClick="btnContactDelete_Click" runat="server" CssClass="tdn fr mr10px btnDelete"><h5><i class="fa fa-times"></i> حذف المعاملات المختارة</h5></asp:LinkButton>
             <div class="clear"></div>
+            <table class="SearchTable">
+                <tr>
+                    <td>
+                        عنوان المعاملة
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtFileName"  CssClass="txt1" Width="200" runat="server"></asp:TextBox>
+                    </td>
+                    <td>
+                        رقم المعاملة
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtFileNo1" ValidationGroup="Option3" CssClass="txt1" Width="100" runat="server"></asp:TextBox> /
+                        <asp:TextBox ID="txtFileNo2" ValidationGroup="Option3" CssClass="txt1" Width="100" runat="server"></asp:TextBox> 
+                    </td>
+                    <td>
+                        فئة المعاملة
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        <asp:Button OnClick="btnSearch_OnClick" CssClass="btnLogin" ID="btnSearch" runat="server" Text="بحث" />
+                    </td>
+                </tr>
+            </table>
+            
+            
+
             <table cellspacing='0' class="LoginTbl tblList">
                 <!-- cellspacing='0' is important, must stay -->
                 <tr>
@@ -56,7 +86,7 @@
                                 <%#Eval("title") %> 
                             </td>
                             <td>
-                                <%#Eval("No") %>
+                                <%#Tools.RecierveNo(Eval("No").ToString()) %>
                             </td>
                             <td>
                                 <%#Eval("CatName") %>

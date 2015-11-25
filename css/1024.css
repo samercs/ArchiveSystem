@@ -642,6 +642,8 @@ label {
 }
 
 
+
+
 .file_header img {
     height: 1.142857143em;
     width: 1.142857143em;
@@ -1694,6 +1696,20 @@ label {
 
 .noborder,.noborder td {
     border: none !important;
+}
+
+.badge {
+   position: absolute;
+   top: -5px;
+   left: 15px;
+}
+
+.emplow {
+    position: relative;
+}
+.badge-info {
+    background-color: #88C16C;
+    color: #fff;
 }
 
 

@@ -30,7 +30,7 @@ public partial class Admin_Default : AdminPages
                 lblUsersCount.InnerText = String.Format("لديك {0} مستخدم غير مفعل", count.ToString());
             }
 
-            count = db.ExecuteScalar("select count(*) from Msg where isNull(toid,-1)=-1 and IsRead=0");
+            count = db.ExecuteScalar("select count(*) from Msg inner join users on (msg.[from]=users.id) where isNull(msg.toid,-1)=-1 and msg.IsRead=0");
             if (int.Parse(count.ToString()) > 0)
             {
                 lblMsgCount.InnerText = String.Format("لديك {0} رسالة جديدة", count.ToString());

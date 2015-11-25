@@ -60,8 +60,8 @@
                         <table class="menunotifications">
                             <tr>
                                 <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font logout" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
-                                <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font emplow" title="الصندوق الوارد"></i></a></td>
-                                <td class="bell"><i class="fa fa-bell font bell" title="التنبهات"></i></td>
+                                <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font emplow" title="الصندوق الوارد"></i><i class="badge">2</i></a></td>
+                                
                             </tr>
                         </table>
                     </div>
@@ -99,8 +99,8 @@
                     <table class="notifications">
                         <tr>
                             <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" title="تسجيل خروج"></i></a></td>
-                            <td class="emplow"><a class="btnInbox" href="#"><i class="fa fa-envelope font" title="الصندوق الوارد"></i></a></td>
-                            <td class="bell"><i class="fa fa-bell font" title="التنبهات"></i></td>
+                            <td class="emplow"><a class="btnInbox" href="#"><i class="fa fa-envelope font" title="الصندوق الوارد"></i><span id="lblMsgCount" runat="server" class="badge badge-info"></span></a></td>
+                            
                         </tr>
                     </table>
                 </div>
@@ -148,7 +148,7 @@
                                     <%#Eval("title") %>
                                 </td>
                                 <td>
-                                    <%#Eval("UserName") %>
+                                    <%#Eval("UserName").ToString().Equals("-1") ||  string.IsNullOrWhiteSpace(Eval("UserName").ToString()) ? "مدير الموقع" : Eval("UserName")  %>
                                 </td>
                                 <td >
                                     <%#(new Dates()).GregToHijri(Eval("AddDate","{0:dd/MM/yyyy}"),"dd/MM/yyyy") %>

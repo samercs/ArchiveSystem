@@ -62,7 +62,7 @@
                     <asp:ListView OnPagePropertiesChanged="Repeater1_OnPagePropertiesChanged" ID="Repeater1" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td ><%#Eval("no") %></td>
+                                <td ><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
                                 <td >
                                     <p id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
@@ -78,7 +78,7 @@
                                 <td  class="green_background_color">
                                     <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link"><i class="fa fa-file"></i> تصفح &nbsp;&nbsp;&nbsp;&nbsp; </a>
                                     <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>"> <i class="fa fa-download"></i> تحميل &nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                    <asp:LinkButton CssClass="sub_link" OnClientClick="return confirm('هل متأكد من حذف ه1ا الملف من الملفات المضلة ؟');" ID="btnDelete" CommandArgument='<%#Eval("id") %>' OnCommand="btnDelete_OnCommand" runat="server"><i class="fa fa-trash"></i> &nbsp;&nbsp;حذف</asp:LinkButton>
+                                    <asp:LinkButton CssClass="sub_link" OnClientClick="return confirm('هل متأكد من حذف  الملف من الملفات المفضلة ؟');" ID="btnDelete" CommandArgument='<%#Eval("id") %>' OnCommand="btnDelete_OnCommand" runat="server"><i class="fa fa-trash"></i> &nbsp;&nbsp;حذف</asp:LinkButton>
                                 </td>
                                 
                             </tr>

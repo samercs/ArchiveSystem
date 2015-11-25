@@ -8,20 +8,33 @@ using System.Web.UI.WebControls;
 
 public partial class MainMasterPage : System.Web.UI.MasterPage
 {
+    
+
+   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if(!Page.IsPostBack)
         {
+            Users u= Session["User"] as Users; ;
             LoadMsg();
+            Database db=new Database();
+            db.AddParameter("@id", u.Id);
+            object count= db.ExecuteScalar("select count(*) from msg  where msg.toid=@id and msg.isread=0");
+            int tmp;
+            if (int.TryParse(count.ToString(),out tmp))
+            {
+                lblMsgCount.InnerText = tmp.ToString();
+            }
         }
     }
 
     private void LoadMsg()
     {
-        Users u = Session["User"] as Users;
+        Users u = Session["User"] as Users; ;
         Database db = new Database();
         db.AddParameter("@to", u.Id);
-        DataTable dt = db.ExecuteDataTable("select top(5) msg.*,Users.name as username from (Msg inner join users on (users.id=msg.[from]) ) where msg.ToId=@to order by msg.Id desc");
+        DataTable dt = db.ExecuteDataTable("select top(5) msg.*,Users.name as username from (Msg left join users on (users.id=msg.[from]) ) where msg.ToId=@to order by msg.Id desc");
         ListView1.DataSource = dt;
         ListView1.DataBind();
     }
