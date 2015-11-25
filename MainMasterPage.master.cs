@@ -24,7 +24,15 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
             int tmp;
             if (int.TryParse(count.ToString(),out tmp))
             {
-                lblMsgCount.InnerText = tmp.ToString();
+                if (tmp != 0)
+                {
+                    lblMsgCount.InnerText = tmp.ToString();
+                }
+                else
+                {
+                    lblMsgCount.InnerHtml = "";
+                }
+                
             }
         }
     }

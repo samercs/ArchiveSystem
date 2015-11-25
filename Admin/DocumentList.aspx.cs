@@ -39,7 +39,7 @@ public partial class Admin_DocumentList : AdminPages
             db.AddParameter("@no", no);
         }
 
-        if (!string.IsNullOrWhiteSpace(no))
+        if (!string.IsNullOrWhiteSpace(type) && !type.Equals("-1"))
         {
             where += " and Document.category=@category ";
             db.AddParameter("@category", type);
@@ -50,6 +50,7 @@ public partial class Admin_DocumentList : AdminPages
         RepeaterLists.DataSource = ds.Tables[0];
         RepeaterLists.DataBind();
         Cache["dt1"] = ds.Tables[0];
+        
     }
     protected void CheckBox10_CheckedChanged(object sender, EventArgs e)
     {

@@ -103,7 +103,13 @@ public partial class Admin_FileOp : AdminPages
 
         string no = txtNo1.Text + "/" + txtNo2.Text;
         db.AddParameter("@no", no);
-        DataTable dt = db.ExecuteDataTable("select * from files where no=@no");
+        string sql = "select * from files where no=@no";
+        if (Request.QueryString["Op"].Equals("Edit"))
+        {
+            sql += " and not id=@id";
+            db.AddParameter("@id", Request.QueryString["id"]);
+        }
+        DataTable dt = db.ExecuteDataTable(sql);
         if(dt.Rows.Count!=0)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"رقم الملف مدخل من قبل\")</SCRIPT>", false);
