@@ -34,8 +34,8 @@
                             <tr class="form_table_tr ">
                                 <td class="hme"><div  class="arrow_box" ><label class="text_color_white_smoke ">البريد الالكتروني</label></div> </td><td class=""><div class="input_box"><asp:TextBox CssClass="input_txt" ID="txtUserName" placeholder="البريد الالكتروني" runat="server"></asp:TextBox></div></td>
                             </tr >
-                            <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="ارسال كلمة السر" /></td><td class="hme"><a href="login.aspx"  class="hyperlink_login_form">تسجيل الدخول</a></td></tr>
-                            <tr><td class="moblie_hide align_center"><a href="#" class="hyperlink_login_form" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a></td></tr>
+                            <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="إرسال" /></td><td class="align_center" ><a href="login.aspx"  class="hyperlink_login_form">تسجيل الدخول</a></td></tr>
+                            <tr><td class="moblie_hide  hme" ><a href="#" class="hyperlink_login_form MobileHide" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a></td></tr>
                             <tr>
                                 <td colspan="2" class="text-center">
                                     <asp:Panel CssClass="alert alert-danger error" ID="ErrorDiv" Visible="False" runat="server">

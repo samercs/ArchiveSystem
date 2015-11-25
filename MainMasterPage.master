@@ -71,7 +71,7 @@
                             <li class="menuitem_mobile"><a href="PersonalInfo.aspx">الملف الشخصي <i class="fa fa-user font"></i></a></li>
                             <li class="menuitem_mobile"><a href="favorite.aspx">المفضلة<i class="fa fa-star font"></i></a></li>
                             <li class="menuitem_mobile"><a href="#" data-toggle="modal" data-target="#myModal2">مراسلة مدير الموقع<i class="fa fa-envelope font"></i></a></li>
-                            <li class="menuitem_mobile"><a href="default.html">تصفح الموقع<i class="fa fa-mouse-pointer font"></i></a></li>
+                            <li class="menuitem_mobile"><a href="http://ncss.gov.sa/">موقع المركز<i class="fa fa-mouse-pointer font"></i></a></li>
                         </ul>
                     </div>
                     <div class="logo_p">
@@ -90,9 +90,9 @@
                         <li class="menuitem"><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-envelope font"></i>
                             <br>
                             مراسلة مدير الموقع</a></li>
-                        <li class="menuitem"><a href="default.html"><i class="fa fa-mouse-pointer font"></i>
+                        <li class="menuitem"><a target="_blank" href="http://ncss.gov.sa/"><i class="fa fa-mouse-pointer font"></i>
                             <br>
-                            تصفح الموقع</a></li>
+                            موقع المركز</a></li>
                     </ul>
 
 
@@ -183,14 +183,14 @@
 
 
                         <h4 class="modal-title">مراسة مدير الموقع</h4>
-                        <img src="img/model_arrow.png" class="img-responsive arrow_model" />
+                        <img src="img/model_arrow.png" class="img-responsive arrow_model MobileHide" />
                     </div>
                     <div class="arrow_model_form"></div>
                     <div class="modal-body">
                         <table dir="rtl" class="form_table">
                             <tr class="form_table_tr ">
                                 <td class="hme">
-                                    <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs">
+                                    <img class="img-responsive label_img_model MobileHide" src="img/arro.png" /><div class="arrow_boxs">
                                         <label class="text_color_white_smoke ">عنوان الرسالة</label>
                                     </div>
                                 </td>
@@ -209,7 +209,7 @@
                                 </td>
                                 <td colspan="6">
                                     <div class="input_box">
-                                        <img src="img/textarea.png" class="input_img_text_area_admin_chat img-responsive" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine" Height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
+                                        <img src="img/textarea.png" class="input_img_text_area_admin_chat img-responsive MobileHide" /><asp:TextBox ID="txtMsg" CssClass="input_txtarea" TextMode="MultiLine" Height="150" placeholder="الرسالة" runat="server"></asp:TextBox>
                                     </div>
                                 </td>
                             </tr>

@@ -39,12 +39,12 @@
                             </tr>
                             <tr class="form_table_tr " >
                                 <td >
-                                    <input type="checkbox" name="rememberme" value="rememberme">    <label class="text_color_white_smoke">تذكرني  </label>
+                                    <input type="checkbox" class="Mobile_width" name="rememberme" value="rememberme">    <label class="text_color_white_smoke">تذكرني  </label>
                                 </td>
                             </tr>
                             <tr class="form_table_tr">
                                 <td>
-                                    <input type="checkbox" name="keepmeonline" value="keepmeonline">  <label class="text_color_white_smoke">البقاء متصلا</label>
+                                    <input type="checkbox"  class="Mobile_width" name="keepmeonline" value="keepmeonline">  <label class="text_color_white_smoke">البقاء متصلا</label>
                                 </td>
                             </tr>
                             <tr class="form_table_tr_extra"><td><asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="دخول" /></td><td class="hme"><a href="forgetPassword.aspx"  class="hyperlink_login_form">هل نسيت كلمة المرور ؟</a></td></tr>

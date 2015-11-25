@@ -21,7 +21,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="Title BorderBottom"><%=name %></h1>
 
-    <asp:HyperLink ID="HyperLink2" CssClass="tdn fl" NavigateUrl="LibraryList.aspx" runat="server"><h5><i class="fa fa-backward"></i> رجوع</h5></asp:HyperLink>
+    <asp:HyperLink ID="HyperLink2" CssClass="tdn fl" NavigateUrl="UsersList.aspx" runat="server"><h5><i class="fa fa-backward"></i> رجوع</h5></asp:HyperLink>
     <div class="clear PT20"></div>
     <section>
         <asp:Panel ID="Panel1" DefaultButton="btnSave" runat="server">

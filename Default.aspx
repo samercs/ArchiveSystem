@@ -70,7 +70,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class=" ">
-                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة رد  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
 
                             </ItemTemplate>
@@ -86,7 +86,7 @@
 
                                 <tr>
                                     <td colspan="2" class=" ">
-                                        <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة رد  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                        <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
                             </EmptyDataTemplate>
                         </asp:ListView>
@@ -115,7 +115,7 @@
                             </tr>
                             <tr>
                                 <td class="space align_right">
-                                    <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtComment" placeholder="كتابة تعليق... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
