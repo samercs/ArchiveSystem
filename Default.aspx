@@ -16,11 +16,11 @@
                         </td>
                     </tr>
                     <tr class="space txt_gray">
-                        <td><i class="fa fa-microphone"></i>‫<%#Eval("From") %>‬</td>
-                        <td><i class="fa fa-list-alt"></i>‫<%# Tools.RecierveNo( Eval("No").ToString()) %>‬</td>
-                        <td><i class="fa fa-file-o"></i>‫<%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>‬</td>
-                        <td><i class="fa fa-bullseye"></i>‫<%#Eval("Target") %>‬</td>
-                        <td><i class="fa fa-calendar"></i>‫<%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>‬</td>
+                        <td class="MobileWidth"><i class="fa fa-microphone"></i>‫<%#Eval("From") %>‬</td>
+                        <td  class="MobileWidth"><i class="fa fa-list-alt"></i>‫<%# Tools.RecierveNo( Eval("No").ToString()) %>‬</td>
+                        <td  class="MobileWidth"><i class="fa fa-file-o"></i>‫<%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>‬</td>
+                        <td  class="MobileWidth"><i class="fa fa-bullseye"></i>‫<%#Eval("Target") %>‬</td>
+                        <td  class="MobileWidth"><i class="fa fa-calendar"></i>‫<%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>‬</td>
                     </tr>
                     <tr class="space txt_gray">
                         <td colspan="5">
@@ -47,19 +47,23 @@
                 
                 <div class="comment_box" id="comment_box_<%#Container.DataItemIndex +1 %>">
                     <table  dir="rtl">
+                          <tr>
+                                    <td  colspan="2">
+                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                </tr>
                         <asp:ListView ID="Repeater1" runat="server">
                             <ItemTemplate>
 
-                                <tr>
-                                    <td class="width_50_px" rowspan="4">
+                                <tr style=" vertical-align:top;">
+                                    <td style="vertical-align:top;" class="width_50_px" rowspan="4">
                                         <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <h4 class="txt_green font_small space align_right"><%#Eval("name") %></h4>
+                                <tr   >
+                                    <td  >
+                                        <h4 style="padding:0; margin:0;" class="txt_green font_small space align_right"><%#Eval("name") %></h4>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr >
                                     <td class="space align_right">
                                         <p>
                                             ‫
@@ -68,9 +72,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class=" ">
+                                    <td style="visibility:hidden;" colspan="2" class=" ">
                                         <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
+                                 
 
                             </ItemTemplate>
                             <EmptyDataTemplate>
@@ -83,12 +88,13 @@
                                     </td>
                                 </tr>
 
-                                <tr>
+                                <tr style="visibility:hidden;">
                                     <td colspan="2" class=" ">
                                         <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
                             </EmptyDataTemplate>
                         </asp:ListView>
+                           
                     </table>
 
                 </div>
@@ -101,19 +107,19 @@
                     <div class="addcomment_box">
                         <table style="width:100%;" dir="rtl">
                             <tr>
-                                <td rowspan="4">
-                                    <asp:Image CssClass="small_user_pic" ID="imgUser" runat="server" />
+                                <td style=" vertical-align:top;" rowspan="4">
+                                    <asp:Image CssClass="small_user_pic" BorderStyle="Solid" BorderWidth="2" BorderColor="#88c16c" ID="imgUser" runat="server" />
                                 </td>
                             </tr>
                             <tr>
-                                <td>
-                                    <h4 class="txt_green font_small space align_right">
+                                <td style=" width:84%;"">
+                                    <h4 style="padding:0; margin:0;" class="txt_green font_small space align_right">
                                         <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
                                     </h4>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="space align_right">
+                                <td style=" width:84%; " class="space align_right">
                                     <asp:TextBox ID="txtComment" placeholder="كتابة تعليق... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
                                 </td>
                             </tr>

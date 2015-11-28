@@ -34,8 +34,8 @@
                 <div class="space"></div>
                 <label class="search_label">رقم الملف: </label>
                 <br/>
-                <asp:TextBox ID="txtNo1" CssClass="search_input" Width="80" runat="server"></asp:TextBox> / 
-                <asp:TextBox ID="txtNo2" CssClass="search_input" Width="80" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtNo1" CssClass="search_input3" runat="server"></asp:TextBox><div style="float:right; text-align :center ; width:10%;"> / </div>
+                <asp:TextBox ID="txtNo2" CssClass="search_input4"  runat="server"></asp:TextBox>
                 <div class="space"></div>
                 <label class="search_label">المجال:</label><br/>
                 <asp:DropDownList CssClass="search_input" ID="ddlField" runat="server"></asp:DropDownList>

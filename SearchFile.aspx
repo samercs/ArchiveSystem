@@ -56,7 +56,7 @@
                         <td id="width_10">التاريخ</td>
                         <td id="width_20">المجال</td>
                         <td id="width_30">الوصف</td>
-                        <td id="width_10">العملايات</td>
+                        <td id="width_10">العمليات</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,14 +65,14 @@
                             <tr>
                                 <td id="width_10"><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
                                 <td id="width_20">
-                                    <p id="sub_cont"><%#Eval("Title") %></p>
+                                    <p class="fontsize" id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
                                 <td id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
                                 <td id="width_20">
-                                    <p id="sub_cont"><%#Eval("fieldname") %></p>
+                                    <p  class="fontsize"  id="sub_cont"><%#Eval("fieldname") %></p>
                                 </td>
                                 <td id="width_30">
-                                    <p id="sub_cont">
+                                    <p  class="fontsize"  id="sub_cont">
                                         <%#Eval("desc") %>
                                     </p>
                                 </td>
