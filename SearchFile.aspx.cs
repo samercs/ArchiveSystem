@@ -15,21 +15,24 @@ public partial class SearchFile : UICaltureBase
         {
             Database db = new Database();
             db.LoadDDL("category", "title", ref ddlField, "المجال", "catId=5");
+            db.LoadDDL("country", "name", ref ddlCountry, "الدولة", "lang=2");
             string title = Request.QueryString["name"];
             string date = Request.QueryString["date"];
             string target = Request.QueryString["category"];
+            string country = Request.QueryString["country"];
             string no = Request.QueryString["no"];
             txtTitle.Text = title;
             ddlField.SelectedValue = target;
+            ddlCountry.SelectedValue = country;
             txtFileDate.Text = date;
             string[] noArray = no.Split('/');
             txtNo1.Text = noArray[0];
             txtNo2.Text = noArray[1];
-            LoadData(txtTitle.Text,no,ddlField.SelectedValue,txtFileDate.Text);
+            LoadData(txtTitle.Text,no,ddlField.SelectedValue,txtFileDate.Text,ddlCountry.SelectedValue);
         }
     }
 
-    private void LoadData(string title="",string no="",string target="",string date="")
+    private void LoadData(string title="",string no="",string target="",string date="",string country="")
     {
         Dates dates =new Dates();
         Database db = new Database();
@@ -60,6 +63,11 @@ public partial class SearchFile : UICaltureBase
             db.AddParameter("@year", tmp.Year);
 
         }
+        if (!string.IsNullOrWhiteSpace(country) && !country.Equals("-1"))
+        {
+            sql += " and files.[country] = @country";
+            db.AddParameter("@country", country);
+        }
 
 
         DataTable dt = db.ExecuteDataTable(sql);
@@ -70,11 +78,11 @@ public partial class SearchFile : UICaltureBase
 
     protected void Repeater1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text);
+        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
     }
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text);
+        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
     }
 }

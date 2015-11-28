@@ -44,7 +44,7 @@ public partial class _Default : UICaltureBase
             r.DataSource = dt;
             r.DataBind();
 
-            if (dt.Rows.Count == 0)
+            if (dt.Rows.Count <= 1)
             {
                 ClientScript.RegisterStartupScript(this.GetType(),DateTime.Now.Ticks.ToString(),"hiddenShowAllComment("+id.Value+");",true);
             }

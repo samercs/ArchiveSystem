@@ -24,6 +24,7 @@ public partial class Admin_FileOp : AdminPages
         {
             Database db = new Database();
             db.LoadDDL("Category","title",ref ddlField,"اختر المجال","catId=5");
+            db.LoadDDL("Country", "name", ref ddlCountry, "اختر الدولة", "lang=2");
             if (Request.QueryString["Op"].Equals("Edit"))
             {
                 LoadData();
@@ -33,6 +34,7 @@ public partial class Admin_FileOp : AdminPages
             {
                 txtFileDate.Text = datets.GregToHijri(DateTime.Now.ToString("d/M/yyyy"), "d/M/yyyy");
                 txtAddedDate.Text = datets.GregToHijri(DateTime.Now.ToString("d/M/yyyy"), "d/M/yyyy");
+                ddlCountry.SelectedValue = "2";
             }
         }
     }
@@ -54,6 +56,7 @@ public partial class Admin_FileOp : AdminPages
         ddlStatus.SelectedValue = ds.Tables[0].Rows[0]["Status"].ToString();
         ddlType.SelectedValue = ds.Tables[0].Rows[0]["type"].ToString();
         ddlField.SelectedValue = ds.Tables[0].Rows[0]["Field"].ToString();
+        ddlCountry.SelectedValue = ds.Tables[0].Rows[0]["Country"].ToString();
         ViewState["file"] = ds.Tables[0].Rows[0]["fileurl"].ToString();
     }
     protected void btnSave_Click(object sender, EventArgs e)
@@ -98,6 +101,11 @@ public partial class Admin_FileOp : AdminPages
         if (ddlField.SelectedValue.Equals("-1"))
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار مجال الملف\")</SCRIPT>", false);
+            return;
+        }
+        if (ddlCountry.SelectedValue.Equals("-1"))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار الدولة \")</SCRIPT>", false);
             return;
         }
 
@@ -156,6 +164,7 @@ public partial class Admin_FileOp : AdminPages
         db.AddParameter("@status", ddlStatus.SelectedValue);
         db.AddParameter("@type", ddlType.SelectedValue);
         db.AddParameter("@Field", ddlField.SelectedValue);
+        db.AddParameter("@country", ddlCountry.SelectedValue);
         db.AddParameter("@fileurl", ViewState["file"].ToString());
 
 
@@ -165,7 +174,7 @@ public partial class Admin_FileOp : AdminPages
             try
             {
                 db.AddParameter("@id", Request.QueryString["id"]);
-                db.ExecuteNonQuery("Update " + tablename + " Set title=@title,[Type]=@Type,[FileUrl]=@FileUrl,status=@status,[no]=@no,[from]=@from,[to]=@to,[target]=@target,Field=@Field,[fileDate]=@FileDate,[desc]=@desc,[AddedDate]=@AddedDate,AddedBy=@AddedBy where Id=@id");
+                db.ExecuteNonQuery("Update " + tablename + " Set title=@title,[Type]=@Type,[FileUrl]=@FileUrl,status=@status,[no]=@no,[from]=@from,[to]=@to,[target]=@target,Field=@Field,Country=@Country,[fileDate]=@FileDate,[desc]=@desc,[AddedDate]=@AddedDate,AddedBy=@AddedBy where Id=@id");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم التعديل ','تم التعديل بنجاح').set('onok', function(closeEvent){ location.href='" + listpage+"'; } );", true);
             }
             catch (Exception ex)
@@ -176,7 +185,7 @@ public partial class Admin_FileOp : AdminPages
         }
         else if (Request.QueryString["Op"] == "Add")
         {
-            long fileId = db.ExecuteNonQuery_id("Insert into " + tablename + "(Title,no,[from],[to],target,Field,status,[Type],[Fileurl],addeddate,filedate,addedby,[desc]) Values(@Title,@no,@from,@to,@target,@Field,@status,@Type,@Fileurl,@addeddate,@filedate,@addedby,@desc)");
+            long fileId = db.ExecuteNonQuery_id("Insert into " + tablename + "(Title,no,[from],[to],target,Field,Country,status,[Type],[Fileurl],addeddate,filedate,addedby,[desc]) Values(@Title,@no,@from,@to,@target,@Field,@Country,@status,@Type,@Fileurl,@addeddate,@filedate,@addedby,@desc)");
             if (attachedFile1.HasFile && Tools.IsDoc(attachedFile1.PostedFile.FileName))
             {
                 string fileName = DateTime.Now.Ticks + "_" +

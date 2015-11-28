@@ -41,6 +41,10 @@
                 <asp:DropDownList CssClass="search_input" ID="ddlField" runat="server"></asp:DropDownList>
                 <br/>
                 <div class="space"></div>
+                <label class="search_label">الدولة:</label><br/>
+                <asp:DropDownList CssClass="search_input" ID="ddlCountry" runat="server"></asp:DropDownList>
+                <br/>
+                <div class="space"></div>
                 <label class="search_label">التايخ :</label><br/>
                 <div class="input-group date ">
                     <uc1:hijriCalender  Class="txtCal search_input2"  runat="server" ID="txtDate" />

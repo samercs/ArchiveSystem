@@ -14,6 +14,11 @@
                     <th dir="rtl" colspan="2">
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
                     </th>
+                    <th dir="rtl"  >
+                        <label>‫الدولة‬</label> 
+                        <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlCountry" runat="server"></asp:DropDownList>
+
+                    </th>
                     <th dir="rtl">
                         <label>‫تاريخ الملف‬</label>
                         <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
@@ -28,6 +33,7 @@
                     <th dir="rtl">
                         <label>‫اسم البحث‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></th>
                 </tr>
+                
             </table>
 
             <table class=" moble_search_box_page margin_12e_bottom">

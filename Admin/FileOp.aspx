@@ -166,6 +166,16 @@
                     </td>
                     <td></td>
                 </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label13" runat="server" Text="الدولة" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlCountry" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                </tr>
                 <tr id="rowAttache" runat="server">
                     <td>
                         <asp:Label ID="Label11" runat="server" Text="الملفات المرفقه" CssClass="label_xblack"></asp:Label></td>
