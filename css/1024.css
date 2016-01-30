@@ -11,7 +11,7 @@
 }
 
 
-table tr .vertical { vertical-align :central ;
+.table-striped tbody tr td { vertical-align :central ;
 }
 
 .search_input3 { float :right;
@@ -44,6 +44,11 @@ body {
     font-weight: normal;
 }
 
+
+.text-right {text-align :right ;
+             margin-right :0;
+             padding-right :0;
+}
 
 
 .fontsize { font-size :0.9em;  vertical-align:central ;
@@ -389,14 +394,20 @@ header {
 
 .notifications {
     margin-top: 2.1em;
-    float: right;
+    float: left ;
 }
+
+    .notifications tr { float :left;
+    }
 
     .notifications td {
         float: left;
-        padding: 0.34em;
         color: gray;
     }
+    
+
+
+
 
 .logout:hover {
     color: red;
@@ -500,12 +511,10 @@ footer {
 
 .yes {
     float: left;
-    border: 1px solid;
     border: 1px solid #87bf6b;
     background-color: #87bf6b;
     color: whitesmoke;
-    border-radius: 1.428571428571429em;
-    margin: 0 1em;
+    margin: 0em 1em 0em 0em;
 }
 
 label {
@@ -517,7 +526,6 @@ label {
     border: 1px solid #e88324;
     background-color: #e88324;
     margin: 0 0.2em;
-    border-radius: 1.428571428571429em;
     color: whitesmoke;
 }
 
@@ -533,13 +541,14 @@ label {
     height: 10.714285714em;
     margin-top: 1.6em;
 }
-
+.UersImageBorder {
+    border :3px solid #88c16c;
+}
     .user_pic img {
         border-radius: 50%;
         width: 10.714285714em;
         height: 10.714285714em;
-        border: 3px solid #e88627;
-        padding: 0.2em;
+        border:3px solid #88c16c;
     }
 
 .mian_user_info {
@@ -875,7 +884,7 @@ label {
 .show_thefile {
     width: 100%;
     height: auto;
-    //background: url(../img/uparrow.png);
+  margin-top  :0.5em;
     background-position: center;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -929,11 +938,13 @@ label {
 #modal-dialog {
     width: 40em;
     background-color: white;
+    
 }
 
 .modal-dialog {
     width: 32.142857143em;
     margin-top: 7em;
+    margin :7em auto ;
 }
 
 .arrow_model {
@@ -1074,10 +1085,7 @@ label {
 
 .search_result {
     width: 100%;
-    height: 28em;
     text-align: right;
-    //border:1px solid black;
-    height: auto;
     margin: 0 auto;
 }
 
@@ -1090,17 +1098,18 @@ label {
         font-size: 1em;
         font-weight: normal;
         text-align: right;
+          margin-top :0.3em;
     }
 
 .search_input_page {
-    border-radius: 1.428571429em;
-    border: 1px solid gray;
+   
+    border: 1px solid #ccc;
     padding: 0.25em;
     text-align: right;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: grey;
     font-weight: normal;
-    margin: 0.25em;
+    margin-right : 0.5em;
 }
 
 .search_input_page_width {
@@ -1113,7 +1122,6 @@ label {
     width: 7em;
     background: #88C16C;
     border: 1px solid #88c16c;
-    border-radius: 1.428571429em;
     font-size: 1em;
 }
 
@@ -1247,20 +1255,21 @@ label {
     }
 
     .search_result label {
-        font-size: 0.9em;
+        font-size: 1em;
         font-weight: normal;
         text-align: right;
+        margin-top :0.3em;
     }
 
 .search_input_page {
-    border-radius: 1.428571429em;
-    border: 1px solid gray;
+   
+    border: 1px solid #ccc;
     padding: 0.25em;
     text-align: right;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: grey;
     font-weight: normal;
-    margin: 0.25em;
+    margin-right : 0.5em;
 }
 
 .search_input_page_width {
@@ -1273,7 +1282,6 @@ label {
     width: 7em;
     background: #88C16C;
     border: 1px solid #88c16c;
-    border-radius: 1.428571429em;
 }
 
     .search_submit_page:hover {
@@ -1375,9 +1383,6 @@ label {
     margin: 1.2em auto;
 }
 
-.margin_12e_bottom {
-    margin-bottom: 1.2em;
-}
 
 .width_20 {
     width: 20%;
@@ -1510,9 +1515,42 @@ label {
     font-size: 1em;
 }
 
+.btn-show-all-comment { margin-left :2.8em;
+}
+
+
+
+.calendars-month-year { width :30%; float :right ;
+}
+
+
+.emplow {padding :0em 2em;
+}
+
+@-moz-document url-prefix() {
+
+    .search_input2 {
+    padding: 2px 10px;
+    background-color: #bcbec0;
+    border: 1px solid #bcbec0;
+    color: gray;
+    width:85%;
+    text-align: center;
+    float :left ;
+}
+}
+
+
+
+
 
 @media all and (max-width:1199px) and (min-width:110px) {
-
+        .search_result label {
+        font-size: 0.7em;
+        font-weight: normal;
+        text-align: right;
+        margin-top :0.5em;
+    }
 
     .search_input2 {
     padding: 2px 10px;
@@ -1695,6 +1733,8 @@ label {
 
     #width_10 a {
         font-size: 1em;
+        width :100%;
+      text-align :center ;
     }
 
 #green_background_color {
@@ -1729,8 +1769,8 @@ label {
 .inbox {
     width: 30%;
     position: absolute;
-    top: 80px;
-    left: 100px;
+    top: 60px;
+    left: 157px;
     z-index: 1000000;
     background-color: #c0c0c0;
     padding: 2%;

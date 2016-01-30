@@ -51,7 +51,7 @@ a {
 }
 
 h1 {
-    padding: 20px 30px;
+    padding: 20px 1em 20px 30px;
     font-size: 20px;
     color: #88c16c;
 }

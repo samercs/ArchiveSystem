@@ -28,7 +28,7 @@
             </div>
             <img src="img/grayshadow.png" class="gray_shadow img-responsive" />
             <div class="search_form">
-                <label class="search_label">اسم الملف: </label>
+                <label class="search_label">عنوان الملف: </label>
                 <br/>
                 <asp:TextBox ID="txtFileName" CssClass="search_input" runat="server"></asp:TextBox>
                 <div class="space"></div>

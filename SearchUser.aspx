@@ -11,25 +11,23 @@
         
             <div class="container">
                 <h4 class="align_right margin_12em font_14_em mobile_center space">نتائج البحث</h4>
-        <table class="chating_result margin_12e_bottom">
+        <table class="search_result margin_12e_bottom">
             <tr dir="rtl">
-                <th dir="rtl" colspan="2" class=" hme">
-                    <asp:Button OnClick="btnSearch_OnClick" ID="Button2" CssClass="chating_submit_page float_left" runat="server" Text="بحث" /></th>
+                <td  colspan="2">
+                    <asp:Button OnClick="btnSearch_OnClick" ID="Button2" CssClass="search_submit_page float_left" runat="server" Text="بحث" /></td>
+          
 
-                <th dir="rtl" class="th">
+                <td dir="rtl" class="th">
                     <label>المسمى الوظيفي</label>
-                    <asp:TextBox ID="txtJobTitle" palceholder="المسمى الوظيفي" CssClass="chating_input_page chating_input_page_width" runat="server"></asp:TextBox>
-                </th>
+                    <asp:TextBox ID="txtJobTitle" palceholder="المسمى الوظيفي" CssClass="search_input_page" runat="server"></asp:TextBox>
+                </td>
 
-                <th dir="rtl" class="th">
-                    <label>الشخص ‫إسم‬</label>
-                    <asp:TextBox ID="txtUserName" palceholder="اسم الشخص" CssClass="chating_input_page chating_input_page_width" runat="server"></asp:TextBox>
+                <td dir="rtl" class="th">
+                    <label> ‫إسم الشخص‬</label>
+                    <asp:TextBox ID="txtUserName" palceholder="اسم الشخص" CssClass="search_input_page" runat="server"></asp:TextBox>
 
-                </th>
-                <th dir="rtl" colspan="2" class="moblie_hide th">
-                    <asp:Button OnClick="btnSearch_OnClick" ID="btnSearch" CssClass="chating_submit_page float_left" runat="server" Text="بحث" />
-                    
-                </th>
+                </td>
+              
             </tr>
         </table>
                 </div>
@@ -100,7 +98,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog" style="margin:7em auto;">
+        <div class="modal-dialog" >
 
             <!-- Modal content-->
             <div class="modal-content">

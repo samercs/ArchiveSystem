@@ -17,6 +17,9 @@ body {
     direction: rtl;
 }
 
+
+
+
 .Content {
     width: 98%;
     margin: 0 auto;
@@ -102,9 +105,7 @@ h1.Title {
     width: 100%;
 }
 
-    .span3 .item a:hover {
-        background-color: #eeeeee;
-    }
+  
 
     .span3 .item a {
         text-decoration: none;
@@ -238,7 +239,7 @@ h1.Title {
         border-radius: 5px;
     }
 
-    .PagesItems .item:hover p {
+    /*.PagesItems .item:hover p {
         -webkit-background-clip: text;
         color: white;
         -webkit-text-fill-color: transparent;
@@ -263,7 +264,7 @@ h1.Title {
         -moz-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
-    }
+    }*/
 
     .PagesItems .item .fa {
         color: #c6d0da;
@@ -303,10 +304,10 @@ table.tblList a:visited {
 }
 
 table.tblList a:active,
-table.tblList a:hover {
+/*table.tblList a:hover {
     color: #bd5a35;
     text-decoration: underline;
-}
+}*/
 
 table.tblList {
     font-family: 'segoeuil';

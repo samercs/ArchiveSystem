@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UserSection.ascx.cs" Inherits="UserSection" %>
 <aside class="user_information">
     <div class="user_pic">
-        <asp:Image ID="ImgUser" runat="server" />
+        <asp:Image CssClass="UersImageBorder" ID="ImgUser" runat="server" />
     </div>
     <p class="mian_user_info">
         <span class="name">
@@ -43,6 +43,6 @@
         </ul>
     </div>
     <div class="load_more">
-        <a href="Favorite.aspx">تصفح جميع  الملفات</a> <br>
+        <a href="Favorite.aspx"> تصفح جميع  الملفات المفضلة</a> <br>
     </div>
 </aside>

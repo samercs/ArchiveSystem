@@ -9,53 +9,40 @@
         <div class="container">
 
             <h4 class="align_right margin_12em font_14_em">المفضله</h4>
-            <table class="search_result margin_12e_bottom">
-                <tr dir="rtl">
-                    <th dir="rtl" colspan="2">
+    <table class="search_result margin_12e_bottom">
+                <tr>
+                    <td  colspan="2">
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
-                    </th>
-                    <th dir="rtl">
+                    </td>
+                 
+                    <td>
                         <label>‫تاريخ الملف‬</label>
-                        <uc1:hijriCalender  Class="txtCal search_input_page search_input_page_width datepicker"  runat="server" ID="txtFileDate" />
+                        <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
+                    </td>
+                    <td >
+                        <label>‫المجال‬</label>
+                        <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList>
 
-                    </th>
-
-                    <th dir="rtl">
-                        <label>‫المجال‬</label><asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList></th>
-                    <th dir="rtl">
-                        <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox>/<asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></th>
-                    <th dir="rtl">
-                        <label>‫اسم الملف‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></th>
+                    </td>
+                    <td >
+                        <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox><asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        <label>‫عنوان الملف</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></td>
                 </tr>
+                
             </table>
+             <div class="space"></div>
+         
 
-            <table class=" moble_search_box_page margin_12e_bottom">
-                <tr dir="rtl">
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫البحث‬ ‫إسم‬</label><input type="text" placeholder="إسم البحث" class="full_width" name="filename"></td>
-                    <td dir="rtl" class="align_center padding_5em_bottom">
-                        <label>الرقم</label><input type="text" name="filename" class="half_width txt_right " size="4" placeholder="الرقم " maxlength="4">/<input type="text" class="half_width txt_left" placeholder="الرقم " size="4" name="filename" maxlength="4"></td>
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫المجال‬</label><input type="text" class="full_width" placeholder="‫المجال‬" name="filename"></td>
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫الاضافة‬ ‫تاريخ‬</label>
-                        <input type="text" class="full_width picker" placeholder="‫الاضافة‬ ‫تاريخ‬" name="search_date"></td>
-                    <td dir="rtl" colspan="2" class="padding_5em_bottom">
-                        <input type="submit" class="full_width search_sub_btn" name="search" value="بحث" /></td>
-
-                </tr>
-            </table>
-
-
-            <table  class="table table-bordered table-hover">
+            <table  class="table table-striped">
                 <thead>
                     <tr id="green_background_color">
-                        <td style="width: 10%;">الرقم </td>
-                        <td style="width: 10%;">اسم الملف</td>
-                        <td style="width: 13%;">التاريخ</td>
-                        <td style="width: 20%;">المجال</td>
-                        <td style="width: 30%;">الوصف</td>
-                        <td style="width: 17%;">العملايات</td>
+                        <td id="width_10">الرقم </td>
+                        <td id="width_20">عنوان الملف</td>
+                        <td id="width_10">التاريخ</td>
+                        <td id="width_20">المجال</td>
+                        <td id="width_30">الوصف</td>
+                        <td id="width_10">العمليات</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,19 +53,19 @@
                                 <td >
                                     <p id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
-                                <td style="width: 150px;"><%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
-                                <td >
+                                <td   class="Mobilehead"  style="width: 150px;"><%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
+                                <td   class="Mobilehead"  >
                                     <p id="sub_cont"><%#Eval("FieldName") %></p>
                                 </td>
-                                <td >
+                                <td   class="Mobilehead"  >
                                     <p id="sub_cont">
                                         <%#Eval("desc") %>
                                     </p>
                                 </td>
                                 <td  class="green_background_color">
-                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link"><i class="fa fa-file"></i> تصفح &nbsp;&nbsp;&nbsp;&nbsp; </a>
-                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>"> <i class="fa fa-download"></i> تحميل &nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                    <asp:LinkButton CssClass="sub_link" OnClientClick="return confirm('هل متأكد من حذف  الملف من الملفات المفضلة ؟');" ID="btnDelete" CommandArgument='<%#Eval("id") %>' OnCommand="btnDelete_OnCommand" runat="server"><i class="fa fa-trash"></i> &nbsp;&nbsp;حذف</asp:LinkButton>
+                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link"><i class="fa fa-file"></i> تصفح  </a><br />
+                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>"> <i class="fa fa-download"></i> تحميل </a><br />
+                                    <asp:LinkButton CssClass="sub_link" OnClientClick="return confirm('هل متأكد من حذف  الملف من الملفات المفضلة ؟');" ID="btnDelete" CommandArgument='<%#Eval("id") %>' OnCommand="btnDelete_OnCommand" runat="server"><i class="fa fa-trash"></i> حذف</asp:LinkButton>
                                 </td>
                                 
                             </tr>

@@ -18,6 +18,34 @@ body {
     direction: rtl;
 }
 
+@-moz-document url-prefix() {
+
+    .LoginBox .row {
+        height: 30px;
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+    }
+
+    .row i {  display: none;
+    }
+
+    
+    .LoginBox .row .txt {
+        padding: 5px 12px;
+        border: 1px solid #cccccc; 
+        border-radius :5px;
+          border-left: 1px solid #cccccc; 
+        border-right: 1px solid #cccccc; 
+        width:90%;
+    }
+   
+}
+
+
+
+
 * {
     font-family: 'segoeuil';
 }

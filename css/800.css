@@ -38,6 +38,63 @@ body {
 
 
 
+.table-striped thead {
+    font-size: 0.8em;
+}
+
+    .table-striped thead tr {
+        height: 2em;
+        width: 100%;
+        vertical-align:central ;
+    }
+
+.table-striped tr {
+    width: 100%;
+     height:auto;
+       vertical-align:central ;
+}
+
+    .table-striped tr td {
+        border: 3px solid #fff;
+        height: inherit;
+        padding: 0.5em;
+        vertical-align:middle ;
+    }
+
+#width_10 {
+    width: 10%;
+    font-weight: normal;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+    #width_10 a {
+        font-size: 0.8em;
+        width :100%;
+      text-align :center ;
+    }
+
+    
+#width_20 {
+     width: 20%;
+    font-weight: normal;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+#width_30 {
+    width: 30%;
+    font-weight: normal;
+    text-align: center;
+   font-size: 0.8em;
+}
+
+    #width_30 p { margin :0; 
+                  padding  :0 ;
+    }
+.search_label { width :100%;
+}
+
 .search_input3 { float :right;
                  width:45%;
                    padding: 0.25em;
@@ -119,7 +176,7 @@ body {
 }
 
 .input_box {
-    margin-right: -0.6em;
+    margin :0 auto ;
 }
 .label_img {
     height:  2.299em;
@@ -135,7 +192,6 @@ textarea:focus,  input:focus {
 
 .input_txt {
     width:  70%;
-    float:  right;
     padding: 0 0.15em;
     vertical-align:  central;
     color: gray;
@@ -144,19 +200,22 @@ textarea:focus,  input:focus {
     border-top-left-radius: 1.428571429em;
     border-bottom-left-radius:  1.428571429em;
     height:  2.3em;
-    width: 90%}
+    width: 90%;
+    margin :0 auto ;
+}
 .report_input_txt {
-    width:  70%;
-    float:  right;
-    padding: 0 0.15em;
+    margin :0 auto ;
+    padding: 0em 1em 0em 0em;
     vertical-align:  central;
     color: gray;
     border:  0;
     background: rgba(255, 255, 255, 0.75);
-    border-top-left-radius: 1.428571429em;
-    border-bottom-left-radius:  1.428571429em;
+    border-radius:  1.428571429em;
     height:  2.3em;
-    width: 90%}
+    width: 90%;
+    text-align :center ;
+    
+}
 .addcomment_box {
     background: #e6e7e8;
     width: 90%;
@@ -176,7 +235,13 @@ textarea:focus,  input:focus {
     margin:  0;
     float:  right;
         height: 2.3em;
+        display :none ;
 }
+
+
+.input_img_text_area_admin_chat { display :none ;
+}
+
 
 .form_table_tr_extra {
     margin: 3em 0;
@@ -546,10 +611,11 @@ footer {
     padding: 0.5em;
     direction:  rtl;
 }
-.search_label {
-    color: black;
-    font-size:  0.8em;
-}
+ .search_result label {
+        font-weight: normal;
+        text-align: right;
+        margin-top :0.3em;
+    }
 .search_input {
     padding: 0.25em;
     background-color:  #bcbec0;
@@ -741,6 +807,7 @@ footer {
     background-position:  center;
     background-repeat:  no-repeat;
     cursor:  pointer;
+    margin-top  :0.3em;
 }
 .up{
     margin: 0 auto;
@@ -810,7 +877,7 @@ footer {
 
 .modal-dialog {
     width: 32.142857143em;
-    margin-top:  7em;
+    margin:  7em auto ;
  }
 
 .arrow_model {
@@ -871,6 +938,7 @@ footer {
     width:  90%;
     padding:  0.302em;
     float:  left;
+    display :none ;
 }
 
 .label_img_model {
@@ -878,22 +946,25 @@ footer {
     float:  left;
     margin:  0;
     padding-top:0.2em;
+    display :none ;
 }
 
 .input_txtarea {
     width:  70%;
     float:  right;
-    padding: 0 0.15em;
+    padding: 0.5em 1em 0em 1em;
     vertical-align:  central;
     color: gray;
     border:  0;
     background: rgba(255, 255, 255, 0.75);
-    border-top-left-radius: 1.428571429em;
-    border-bottom-left-radius:  1.428571429em;
+    border-radius: 1.428571429em;
     width: 90%;
     z-index:  9;
     resize:  none;
-    height: 9.4em }
+    height: 9.4em;
+    text-align :right ;
+   
+}
 .submit_btn_report_form {
     width: 5.357142857em;
     height: 2.285714286em;
@@ -902,6 +973,7 @@ footer {
     border:  1px solid #f7941e;
     font-family:  'NewFont';
     color: whitesmoke;
+    margin-left :3em;
 }
 .submit_btn_report_form:hover {
     background-color: #88C16C;
@@ -936,10 +1008,25 @@ footer {
     float:  right;
     margin:  0;
     height:9.4em;
+    display :none ;
+}
+
+.label_img_model_admin_chat { display :none ;
 }
 @media all and (max-width:990px) and (min-width:110px)  {
 
-
+    .arrow_boxs  {
+    display:  block;
+    position:  relative;
+    background:  #88C16C none repeat scroll 0% 0%;
+    border-bottom-right-radius:  1.42857em;
+    border-top-right-radius:  1.42857em;
+    text-align:  center;
+    width:  90%;
+    padding:  0.302em;
+    float:  left;
+    display :none ;
+}
     
     .search_input2 {
     padding: 2px 10px;
@@ -1210,7 +1297,7 @@ footer {
 
 .modal-dialog {
     width: 32.142857143em;
-    margin-top:  7em;
+    margin:  7em auto ;
  }
 
 .arrow_model {
@@ -1237,17 +1324,7 @@ footer {
     background-position:  top center;
     margin-top: 0.40em;
 }
-.arrow_boxs  {
-    display:  block;
-    position:  relative;
-    background:  #88C16C none repeat scroll 0% 0%;
-    border-bottom-right-radius:  1.42857em;
-    border-top-right-radius:  1.42857em;
-    text-align:  center;
-    width:  90%;
-    padding:  0.302em;
-    float:  left;
-}
+
 
 .label_img_model {
     height:  2.1em;
@@ -1258,25 +1335,6 @@ footer {
 
 .top_align {
     vertical-align:  top;
-}
-
-.submit_btn_report_form {
-    width: 5.357142857em;
-    height: 2.285714286em;
-    background:  #f7941e;
-    border-radius:  1.428571429em;
-    border:  1px solid #f7941e;
-    font-family:  'NewFont';
-}
-
-.submit_btn_report_form:hover {
-    background-color: whitesmoke;
-    -webkit-transition:  all 0.3s ease-in-out;
-    -moz-transition:  all 0.3s ease-in-out;
-    -o-transition:  all 0.3s ease-in-out;
-    transition:  all 0.3s ease-in-out;
-    color: black;
-    border: 0.071428571em solid whitesmoke;
 }
 
 .modal-header {
@@ -1326,20 +1384,6 @@ footer {
     margin-top: 0.40em;
 }
 
-.input_txtarea {
-    width:  70%;
-    float:  right;
-    padding: 0 0.15em;
-    vertical-align:  central;
-    color: gray;
-    border:  0;
-    background: rgba(255, 255, 255, 0.75);
-    border-top-left-radius: 1.428571429em;
-    border-bottom-left-radius:  1.428571429em;
-    width: 90%;
-    z-index:  9;
-    height:  9.4em;
-}
 .submit_btn_report_form {
     width: 5.357142857em;
     height: 2.285714286em;
@@ -1381,10 +1425,7 @@ footer {
 }
 .search_result{
     width:100%;
-    height: 28em;
    text-align: right;
-    //border:1px solid black;
-    height: auto;
     margin:0 auto;
 }
 .search_result th{
@@ -1397,15 +1438,16 @@ padding-right: 0.25em;
     font-weight: normal;
     text-align: right;
 }
-.search_input_page{
-    border-radius: 1.428571429em;
-    border: 1px solid gray;
-    padding:0.25em;
+
+.search_input_page {
+   
+    border: 1px solid #ccc;
+    padding: 0.1em;
     text-align: right;
     font-size: 0.7em;
-    color:grey;
+    color: grey;
     font-weight: normal;
-    margin: 0.25em;
+    margin-right : 0.5em;
 }
 .search_input_page_width{
     width:7em;
@@ -1416,7 +1458,6 @@ padding-right: 0.25em;
     width: 7em;
     background:#88C16C;
     border: 1px solid #88c16c;
-    border-radius: 1.428571429em;
     font-size: 0.7em;
 }
 .search_submit_page:hover{
@@ -1714,47 +1755,22 @@ padding-right: 0.25em;
     border: 1px solid ;
        border: 1px solid #87bf6b;
      background-color:#87bf6b;
-     border-radius: 1.428571428571429em;
      color:white;
-     margin:0 1em;
+     margin:0 1em 0em 0em;
 }
 .no{
     float: left;
      border: 1px solid #e88324;
      background-color:#e88324;
      margin: 0 0.2em; 
-     border-radius: 1.428571428571429em;
      color:white;
 }
 label{    font-weight: normal;}
-   .table-striped tr{height: 3.5em;width: 100%;}
-           .table-striped tr td { float:right; border: 3px solid #fff; height: inherit;overflow: hidden;padding:0.5em;}
-           #width_10{
-               width:10%;
-
-                font-weight: normal;
-                font-size: 0.7em;
-                text-align: center;
-                
-           }
+  
            #green_background_color{background-color:#88C16C;}
-           #width_20{
-               width:20%;
-
-                font-weight: normal;
-                font-size: 0.7em;
-                text-align: center;
-           }
-            #width_30{
-               width:30%;
-
-                font-weight: normal;
-                font-size: 0.7em;
-                text-align: center;
-           }
-           #sub_cont{
-               height: 3.5em;
-           }
+        
+          
+          
            #full_width_white{
                 width:100%;
                 background:white;

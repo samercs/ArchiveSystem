@@ -10,48 +10,33 @@
 
             <h4 class="align_right margin_12em font_14_em">نتائج البحث عن ملف</h4>
             <table class="search_result margin_12e_bottom">
-                <tr dir="rtl">
-                    <th dir="rtl" colspan="2">
+                <tr>
+                    <td  colspan="2">
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
-                    </th>
-                    <th dir="rtl"  >
+                    </td>
+                    <td  >
                         <label>‫الدولة‬</label> 
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlCountry" runat="server"></asp:DropDownList>
 
-                    </th>
-                    <th dir="rtl">
+                    </td>
+                    <td>
                         <label>‫تاريخ الملف‬</label>
                         <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
-                    </th>
-                    <th dir="rtl">
+                    </td>
+                    <td >
                         <label>‫المجال‬</label>
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList>
 
-                    </th>
-                    <th dir="rtl">
-                        <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox>/<asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></th>
-                    <th dir="rtl">
-                        <label>‫اسم البحث‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></th>
+                    </td>
+                    <td >
+                        <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox><asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        <label>‫اسم البحث‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></td>
                 </tr>
                 
             </table>
 
-            <table class=" moble_search_box_page margin_12e_bottom">
-                <tr dir="rtl">
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫البحث‬ ‫إسم‬</label><input type="text" placeholder="إسم البحث" class="full_width" name="filename"></td>
-                    <td dir="rtl" class="align_center padding_5em_bottom">
-                        <label>الرقم</label><input type="text" name="filename" class="half_width txt_right " size="4" placeholder="الرقم " maxlength="4">/<input type="text" class="half_width txt_left" placeholder="الرقم " size="4" name="filename" maxlength="4"></td>
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫المجال‬</label><input type="text" class="full_width" placeholder="‫المجال‬" name="filename"></td>
-                    <td dir="rtl" class="padding_5em_bottom">
-                        <label>‫الاضافة‬ ‫تاريخ‬</label>
-                        <input type="text" class="full_width picker" placeholder="‫الاضافة‬ ‫تاريخ‬" name="search_date"></td>
-                    <td dir="rtl" colspan="2" class="padding_5em_bottom">
-                        <input type="submit" class="full_width search_sub_btn" name="search" value="بحث" /></td>
-
-                </tr>
-            </table>
+           
 
             <div class="space"></div>
             <table class="table table-striped">
@@ -73,18 +58,18 @@
                                 <td id="width_20">
                                     <p class="fontsize" id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
-                                <td id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
-                                <td id="width_20">
+                                <td  class="Mobilehead" id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
+                                <td  class="Mobilehead" id="width_20">
                                     <p  class="fontsize"  id="sub_cont"><%#Eval("fieldname") %></p>
                                 </td>
-                                <td id="width_30">
+                                <td  class="Mobilehead" id="width_30">
                                     <p  class="fontsize"  id="sub_cont">
                                         <%#Eval("desc") %>
                                     </p>
                                 </td>
                                 <td id="width_10" class="green_background_color">
-                                    <a href="#" class="sub_link" data-toggle="modal" data-target="#myModal">تصفح  </a>&nbsp;&nbsp;
-                                    <a href="#" class="sub_link"> تحميل  </a>
+                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link">تصفح  </a><br /><br />
+                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>"> تحميل  </a>
                                 </td>
                                 </td>
                             </tr>

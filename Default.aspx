@@ -11,7 +11,7 @@
             <div class="article">
                 <table class="table table-responsive noborder">
                     <tr>
-                        <td colspan="5">
+                        <td class="MobileDesign" colspan="5">
                             <h4 class="header_h4"><%#Eval("title") %></h4>
                         </td>
                     </tr>
@@ -30,13 +30,14 @@
                         </td>
                     </tr>
                     <tr class="space txt_green align_right ">
-                        <td><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬</td>
-                        <td><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
-                        <td>
+                        <td class="MobileChange"><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬</td>
+                        <td class="MobileChange"><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
+                        <td class="MobileChange">
                             <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
-                                <i class="fa fa-star txt_green"></i>‫ إضافة للمفضلة
+                                <i class="fa fa-star txt_green"></i>‫ مفضلة
                             </asp:LinkButton>‬‫‬</td>
-                        <td><a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
+                        <td  class="MobileChange"><a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
+                       
                     </tr>
                 </table>
                 <div class="space"></div>
@@ -49,13 +50,13 @@
                     <table  dir="rtl">
                           <tr>
                                     <td  colspan="2">
-                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
                         <asp:ListView ID="Repeater1" runat="server">
                             <ItemTemplate>
 
                                 <tr style=" vertical-align:top;">
-                                    <td style="vertical-align:top;" class="width_50_px" rowspan="4">
+                                    <td style="vertical-align:top;" class="width_50_px" rowspan="3">
                                         <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
                                 </tr>
                                 <tr   >
@@ -63,8 +64,8 @@
                                         <h4 style="padding:0; margin:0;" class="txt_green font_small space align_right"><%#Eval("name") %></h4>
                                     </td>
                                 </tr>
-                                <tr >
-                                    <td class="space align_right">
+                                <tr  >
+                                    <td style="border:none;" class="space align_right">
                                         <p>
                                             ‫
                                             <%#Eval("text") %>
@@ -73,7 +74,7 @@
                                 </tr>
                                 <tr>
                                     <td style="visibility:hidden;" colspan="2" class=" ">
-                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                        <a runat="server" ID="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
                                  
 
@@ -90,7 +91,7 @@
 
                                 <tr style="visibility:hidden;">
                                     <td colspan="2" class=" ">
-                                        <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp; كتابة تعليق  &nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                        <a runat="server" ID="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
                                 </tr>
                             </EmptyDataTemplate>
                         </asp:ListView>
@@ -112,7 +113,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style=" width:84%;"">
+                                <td>
                                     <h4 style="padding:0; margin:0;" class="txt_green font_small space align_right">
                                         <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
                                     </h4>
@@ -120,12 +121,12 @@
                             </tr>
                             <tr>
                                 <td style=" width:84%; " class="space align_right">
-                                    <asp:TextBox ID="txtComment" placeholder="كتابة تعليق... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
+                                    <asp:TextBox ID="txtComment" placeholder="تعليق... " CssClass="comment_input" TextMode="MultiLine"  runat="server"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" class=" ">
-                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand"  CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">إضافة تعليق</asp:LinkButton>
+                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand"  CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">تعليق</asp:LinkButton>
                                </td>
                             </tr>
                         </table>
@@ -134,7 +135,7 @@
                 </div>
                 <a id="btnShowAllComment<%#Eval("id") %>" class="link btn-link font_small btn-show-all-comment" data-text="اخفاء التعليقات" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
                 <div class="space"></div>
-                <div class="space"></div>
+                
                 <div class="collapse" id="attached-<%#Container.DataItemIndex + 1 %>">
                     <img src="img/arrow_attched.png" class="img-responsive attached_img " />
                     <div class="arrow_attached comment_input ">
@@ -169,7 +170,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="space"></div>
+                
                 <div data-toggle="tooltip" title="عرض المرفقات" class="show_thefile">
                     <img src="img/uparrow.png" class="img-responsive up" data-id="attached-<%#Container.DataItemIndex + 1 %>" />
                 </div>

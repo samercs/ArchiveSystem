@@ -10,15 +10,15 @@
     </h1>
     <div class="form-group">
         <label>المستلم</label>
-        <asp:TextBox ID="txtTo" placeholder="الرجاء ادخال المستلم" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtTo"   CssClass="form-control" runat="server"></asp:TextBox>
     </div>
     <div class="form-group">
         <label>العنوان</label>
-        <asp:TextBox ID="txtSubject" placeholder="الرجاء ادخال العنوان" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtSubject" CssClass="form-control" runat="server"></asp:TextBox>
     </div>
     <div class="form-group">
         <label>الرسالة</label>
-        <asp:TextBox ID="txtMsg" Height="120" TextMode="MultiLine" placeholder="الرجاء ادخال الرسالة" CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtMsg" Height="120" TextMode="MultiLine"  CssClass="form-control" runat="server"></asp:TextBox>
     </div>
     <div class="form-group">
         <asp:Button OnClick="btnSendMsg_OnClick" CssClass="btn btn-block btn-success" ID="btnSendMsg" runat="server" Text="ارسال الرسالة" />
