@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="UserSection.ascx.cs" Inherits="UserSection" %>
-<aside class="user_information">
+<aside id="UserSectionCon" runat="server" class="user_information">
     <div class="user_pic">
         <asp:Image CssClass="UersImageBorder" ID="ImgUser" runat="server" />
     </div>

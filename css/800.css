@@ -376,7 +376,7 @@ header {
 
 .logo_p {
     float:  right;
-    width: 12.857142857em;
+    
     padding:  0.5em;
     text-align:  right;
     margin: 1.4em 0;
@@ -386,15 +386,12 @@ header {
 }
 
 .menu {
-    list-style:  none;
-    display:  inline-block;
-    float:  right;
-    margin: 2.1em auto;
+    float: right;
+    margin: 1.8em auto;
+    padding-right: 0;
 }
 
-.menuitem {
-    display:  inline;
-}
+
 
 .menuimgs  {
     width:  1.428571429em;
@@ -404,17 +401,41 @@ header {
 .menuitem {
     display:  inline-table;
     text-align:  center;
-    margin:  0 1.2em;
+    margin:  0 0.5em;
     font-size:  0.8em;
 }
 
+
+.SocalIcon {
+    float: left;
+}
+.SocalIcon ul li {
+    padding: 0 !important;
+    margin: 2px 2px !important;
+}
+
+.loginBtn {
+    color: #4d4d4f;
+    font-size: 8px;
+}
+
+.loginBtn img {
+    width: 10px;
+    height: 10px;
+}
+
+.SocalIcon ul li img {
+    width: 15px;
+    height: 15px;
+}
+
 .notifications  {
-    margin: 3em auto;
+    margin: 5px auto;
     font-size:  0.8em;
 }
 
 .notifications td {
-    float:  left;
+    
     padding: 0.14em;
     color: gray;
 }
@@ -434,6 +455,12 @@ header {
 
 .menuitem a img {
     margin:  0 auto;
+}
+
+.menu.extended .menuitem {
+
+    margin: 0 0.9em;
+    
 }
 
 .notifications td {
@@ -494,6 +521,10 @@ footer {
      background: white;
     width:  50%;
     height:  auto;
+}
+
+.main_container_body.extended {
+    width: 70%;
 }
 
 .events {
@@ -1096,81 +1127,12 @@ footer {
     height:  3.5em;
 }
 
-    .logo_p {
-    float:  right;
-    width: 12.857142857em;
-    padding:  0.5em;
-    text-align:  right;
-    margin: 1.4em 0;
-    float:  right;
-    margin:  2.4em 0;
-    font-size: 0.6em;
-}
 
-    .menu {
-    list-style:  none;
-    display:  inline-block;
-    float:  right;
-    margin: 2em auto;
-}
 
-    .menuitem {
-    display:  inline;
-}
 
-    .menuimgs  {
-    width:  1.428571429em;
-    height: 1.428571429em;
-}
 
-    .menuitem {
-    display:  inline-table;
-    text-align:  center;
-    margin:  0 1em;
-    font-size:  0.6em;
-}
 
-    .notifications  {
-    margin: 4.5em auto;
-    font-size:  0.6em;
-}
 
-    .notifications td {
-    float:  left;
-    padding: 0.14em;
-    color: gray;
-}
-    .menuitem a {
-    text-align:  center;
-    color: gray;
-}
-
-    .menuitem a:hover {
-    color: #88c16c;
-     -webkit-transition:  all 0.3s ease-in-out;
-    -moz-transition:  all 0.3s ease-in-out;
-    -o-transition:  all 0.3s ease-in-out;
-    transition:  all 0.3s ease-in-out;
-    text-decoration:  none;
-}
-
-    .menuitem a img {
-    margin:  0 auto;
-}
-
-    .notifications td {
-    float:  left;
-    padding: 0.34em;
-    color: gray;
-}
-    .logout:hover {
-    color: red;
-    -webkit-transition:  all 0.3s ease-in-out;
-    -moz-transition:  all 0.3s ease-in-out;
-    -o-transition:  all 0.3s ease-in-out;
-    transition:  all 0.3s ease-in-out;
-    cursor:  pointer;
-}
     .bell:hover {
     color: goldenrod;
     -webkit-transition:  all 0.3s ease-in-out;

@@ -9,6 +9,13 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : UICaltureBase
 {
+    private readonly Tools t;
+
+    public _Default()
+    {
+        t=new Tools();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -62,11 +69,21 @@ public partial class _Default : UICaltureBase
             ls.DataSource = dt;
             ls.DataBind();
 
-            Label lblUser=e.Item.FindControl("lblUserName") as Label;
-            Users user=Session["User"] as Users;
-            lblUser.Text = user.Name;
-            Image imgUser = e.Item.FindControl("imgUser") as Image;
-            imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
+            if (t.IsUserLogin(Session))
+            {
+                Users user = t.GetUser(Session);
+                Label lblUser = e.Item.FindControl("lblUserName") as Label;
+                lblUser.Text = user.Name;
+                Image imgUser = e.Item.FindControl("imgUser") as Image;
+                imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
+            }
+            else
+            {
+                LinkButton btnAddToFav = e.Item.FindControl("btnAddToFav") as LinkButton;
+                btnAddToFav.Visible = false;
+            }
+
+            
         }
     }
 

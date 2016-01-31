@@ -8,6 +8,12 @@ using System.Web.UI.WebControls;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
+    private readonly Tools t;
+
+    public MasterPage()
+    {
+        t=new Tools();
+    }
     
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,6 +22,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
             Database db=new Database();
             db.LoadDDL("category","title",ref ddlField,"المجال","catId=5");
             db.LoadDDL("country", "name", ref ddlCountry, "الدولة", "lang=2");
+            if (!t.IsUserLogin(Session))
+            {
+                mainContainerBody.Attributes["class"] += " extended";
+            }
+            
         }
     }
 

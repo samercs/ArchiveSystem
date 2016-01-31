@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
+using System.Web.SessionState;
 
 /// <summary>
 /// Summary description for Tools
@@ -80,5 +81,20 @@ public class Tools
         return noArray[1] + "/" + noArray[0];
 
     }
+
+    public bool IsUserLogin(HttpSessionState session)
+    {
+        return session["User"] != null;
+    }
+
+    public Users GetUser(HttpSessionState session)
+    {
+        if (IsUserLogin(session))
+        {
+            Users u = session["User"] as Users;
+            return u;
+        }
+        return null;
+    } 
 
 }

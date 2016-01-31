@@ -14,11 +14,7 @@
 
 
 
-        <section class="main_container_body">
-
-            
-
-
+        <section class="main_container_body" runat="server" ID="mainContainerBody">
             <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
         </section>
         <aside class="events">

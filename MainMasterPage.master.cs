@@ -16,24 +16,42 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         if(!Page.IsPostBack)
         {
-            Users u= Session["User"] as Users; ;
-            LoadMsg();
-            Database db=new Database();
-            db.AddParameter("@id", u.Id);
-            object count= db.ExecuteScalar("select count(*) from msg  where msg.toid=@id and msg.isread=0");
-            int tmp;
-            if (int.TryParse(count.ToString(),out tmp))
+            Tools t = new Tools();
+            if (t.IsUserLogin(Session))
             {
-                if (tmp != 0)
+                Users u = Session["User"] as Users;
+                LoadMsg();
+                Database db = new Database();
+                db.AddParameter("@id", u.Id);
+                object count = db.ExecuteScalar("select count(*) from msg  where msg.toid=@id and msg.isread=0");
+                int tmp;
+                if (int.TryParse(count.ToString(), out tmp))
                 {
-                    lblMsgCount.InnerText = tmp.ToString();
+                    if (tmp != 0)
+                    {
+                        lblMsgCount.InnerText = tmp.ToString();
+                    }
+                    else
+                    {
+                        lblMsgCount.InnerHtml = "";
+                    }
+
                 }
-                else
-                {
-                    lblMsgCount.InnerHtml = "";
-                }
-                
+
+                UserSesction1.Visible = true;
+                UserSection2.Visible = true;
+                UserLoginSection1.Visible = false;
             }
+            else
+            {
+                profileLink.Visible = false;
+                favLink.Visible = false;
+                ProfileLink2.Visible = false;
+                FavLink2.Visible = false;
+
+                menu.Attributes["class"] += " extended";
+            }
+            
         }
     }
 

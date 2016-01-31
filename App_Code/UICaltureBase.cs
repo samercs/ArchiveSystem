@@ -16,21 +16,8 @@ public class UICaltureBase : System.Web.UI.Page
 {
     protected override void InitializeCulture()
     {
-        string pageName = System.IO.Path.GetFileName(Request.PhysicalPath);
-        Users u = Session["User"] as Users;
-        pageName = pageName.ToLower();
-        if (!(pageName.Equals("login.aspx") || pageName.Equals("forgetpassword.aspx")) &&  u == null)
-        {
-            Response.Redirect("login.aspx?url=" + Request.RawUrl);
-        }
-
-        else if(u!=null && u.RequeriedChangePassword && !pageName.Equals("changepassword.aspx"))
-        {
-            Response.Redirect("ChangePassword.aspx");
-        }
-
-
-
+        
+        
         HttpCookie CultureCookie = Request.Cookies["ASLang"];
 
         CultureInfo ci;

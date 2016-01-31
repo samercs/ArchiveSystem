@@ -340,12 +340,12 @@ header {
 
 .logo_p {
     float: right;
-    width: 12.857142857em;
     padding: 0.5em;
     text-align: right;
-    margin: 1.4em 0;
+    margin-top: 1.4em;
     float: right;
-    margin: 1.4em 0;
+    margin: 20px 0;
+    font-size: 20px;
 }
 
 .menu {
@@ -356,10 +356,18 @@ header {
     margin-right: -2em;
 }
 
+
 .menuitem {
     display: inline-table;
     text-align: center;
-    margin: 0 1.2em;
+    margin: 0 1em;
+}
+
+
+.menu.extended .menuitem {
+
+    margin: 0 2.2em;
+    
 }
 
     .menuitem a {
@@ -392,9 +400,33 @@ header {
     margin-top: 3em;
 }
 
+
+.SocalIcon {
+    float: left;
+}
+.SocalIcon ul li {
+    padding: 0 !important;
+    margin: 10px 2px !important;
+}
+
+.loginBtn {
+    color: #4d4d4f;
+}
+
+.loginBtn img {
+    width: 25px;
+    height: 25px;
+}
+
+.SocalIcon ul li img {
+    width: 25px;
+    height: 25px;
+}
+
+
 .notifications {
-    margin-top: 2.1em;
-    float: left ;
+    margin-top: 5px;
+    
 }
 
     .notifications tr { float :left;
@@ -473,6 +505,10 @@ footer {
     background: white;
     width: 50%;
     height: auto;
+}
+
+.main_container_body.extended {
+    width: 72.5%;
 }
 
     .main_container_body .tabler {
@@ -1584,24 +1620,9 @@ label {
         margin-top: 0.9em;
     }
 
-    .menuitem {
-        display: inline-table;
-        text-align: center;
-        margin: 0 1.2em;
-        font-size: 0.81em;
-    }
+   
 
-    .notifications {
-        margin-top: 3.1em;
-        font-size: 0.81em;
-        float: right;
-    }
-
-        .notifications td {
-            float: left;
-            padding: 0.14em;
-            color: gray;
-        }
+  
 
     header {
         width: 100%;
@@ -1621,41 +1642,9 @@ label {
         margin-right: 0.5em;
     }
 
-    .logo_p {
-        float: right;
-        width: 12.857142857em;
-        padding: 0.5em;
-        text-align: right;
-        margin: 1.4em 0;
-        float: right;
-        margin: 1.4em 0;
-    }
+    
 
-    .menu {
-        list-style: none;
-        display: inline-block;
-        float: right;
-        margin-top: 2.1em;
-        margin-right: -2em;
-    }
-
-    .menuitem a {
-        text-align: center;
-        color: gray;
-    }
-
-        .menuitem a:hover {
-            color: #88c16c;
-            -webkit-transition: all 0.3s ease-in-out;
-            -moz-transition: all 0.3s ease-in-out;
-            -o-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-            text-decoration: none;
-        }
-
-        .menuitem a img {
-            margin: 0 auto;
-        }
+    
 
     .font {
         font-size: 1.5em;
