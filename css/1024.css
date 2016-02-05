@@ -759,6 +759,17 @@ label {
     padding-left: 1em;
     padding-bottom: 0em;
     width: 100%;
+    position: relative;
+}
+
+.article .number {
+    position: absolute;
+    background-color: #e78224;
+    padding: 10px 15px;
+    top: -5px;
+    left: -5px;
+    color: #fff;
+    box-shadow: 3px 3px 3px #a75f15;
 }
 
     .article  table {

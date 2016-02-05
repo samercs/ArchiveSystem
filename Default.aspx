@@ -8,6 +8,9 @@
         <ItemTemplate>
             <asp:HiddenField ID="id" Value='<%#Eval("id") %>' runat="server" />
             <div class="article">
+                <div class="number">
+                    <%#Eval("id") %>
+                </div>
                 <table class="table table-responsive noborder">
                     <tr>
                         <td class="MobileDesign" colspan="5">
@@ -71,10 +74,7 @@
                                         </p>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="visibility: hidden;" colspan="2" class=" ">
-                                        <a runat="server" id="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
-                                </tr>
+                               
 
 
                             </ItemTemplate>
@@ -303,6 +303,10 @@
                 $("#<%=fileId.ClientID%>").val(id);
 
             });
+
+
+       
+
 
         });
 

@@ -76,11 +76,14 @@ public partial class _Default : UICaltureBase
                 lblUser.Text = user.Name;
                 Image imgUser = e.Item.FindControl("imgUser") as Image;
                 imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
+                
             }
             else
             {
                 LinkButton btnAddToFav = e.Item.FindControl("btnAddToFav") as LinkButton;
                 btnAddToFav.Visible = false;
+                HtmlAnchor btnShowCommenter1 = e.Item.FindControl("btnShowCommenter1") as HtmlAnchor;
+                btnShowCommenter1.Visible = false;
             }
 
             
