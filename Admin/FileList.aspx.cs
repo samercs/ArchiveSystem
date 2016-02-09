@@ -46,7 +46,7 @@ public partial class Admin_FilesList : AdminPages
             db.AddParameter("@Field", field);
         }
 
-        string sql = "Select * from Files left join AdminUsers on (Files.AddedBy=AdminUsers.Id) " + where+" Order By Files.Id desc";
+        string sql = "Select Files.*,FileType.Title as TypeName,FileTarget.Title as TargetName,FileStatus.Title as StatusName,FileSecurity.Title as SecurityName from ((((Files left join AdminUsers on (Files.AddedBy=AdminUsers.Id) inner join fileType on (Files.type=FileType.id) ) inner join FileTarget on (Files.Target=FileTarget.Id) ) inner join FileStatus on (files.Status=FileStatus.Id)) inner join FileSecurity on (Files.Security=FileSecurity.Id))" + where+" Order By Files.Id desc";
 
         System.Data.DataSet ds = db.ExecuteDataSet(sql);
         RepeaterLists.DataSource = ds.Tables[0];

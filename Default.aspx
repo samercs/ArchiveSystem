@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
@@ -20,9 +21,14 @@
                     <tr class="space txt_gray">
                         <td class="MobileWidth"><i class="fa fa-microphone"></i>‫<%#Eval("From") %>‬</td>
                         <td class="MobileWidth"><i class="fa fa-list-alt"></i>‫<%# Tools.RecierveNo( Eval("No").ToString()) %>‬</td>
-                        <td class="MobileWidth"><i class="fa fa-file-o"></i>‫<%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>‬</td>
-                        <td class="MobileWidth"><i class="fa fa-bullseye"></i>‫<%#Eval("Target") %>‬</td>
+                        <td class="MobileWidth"><i class="fa fa-file-o"></i>‫<%#Eval("TypeName") %>‬</td>
+                        <td class="MobileWidth"><i class="fa fa-bullseye"></i>‫<%#Eval("TargetName") %>‬</td>
                         <td class="MobileWidth"><i class="fa fa-calendar"></i>‫<%#(new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>‬</td>
+                    </tr>
+                    <tr class="space txt_gray">
+                        <td colspan="5">
+                            <hr class="hr1" />
+                        </td>
                     </tr>
                     <tr class="space txt_gray">
                         <td colspan="5">
@@ -32,14 +38,25 @@
                         </td>
                     </tr>
                     <tr class="space txt_green align_right ">
-                        <td class="MobileChange"><a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬</td>
-                        <td class="MobileChange"><a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬</td>
-                        <td class="MobileChange">
-                            <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
-                                <i class="fa fa-star txt_green"></i>‫ مفضلة
-                            </asp:LinkButton>‬‫‬</td>
-                        <td class="MobileChange"><a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a></td>
-
+                        <td colspan="5" class="links-list">
+                            <div class="row">
+                                
+                                <div class="col-md-6">
+                                   <!-- AddToAny BEGIN -->
+                                    <a class="a2a_dd" href="https://www.addtoany.com/share"><img src="//static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share"/></a>
+                                    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+                                    <!-- AddToAny END -->
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬
+                                    <a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬
+                                    <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
+                                        <i class="fa fa-star txt_green"></i>‫ مفضلة
+                                    </asp:LinkButton>
+                                            <a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 </table>
                 <div class="space"></div>
@@ -74,7 +91,7 @@
                                         </p>
                                     </td>
                                 </tr>
-                               
+
 
 
                             </ItemTemplate>
@@ -177,6 +194,18 @@
             <div class="space gray"></div>
             <div class="space gray"></div>
         </ItemTemplate>
+        <EmptyDataTemplate>
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="alert alert-warning text-center">
+                        لا يوجد ملفات مضافة
+                    </div>
+                </div>
+            </div>
+
+        </EmptyDataTemplate>
     </asp:ListView>
 
     <div class="space"></div>
@@ -305,7 +334,7 @@
             });
 
 
-       
+
 
 
         });

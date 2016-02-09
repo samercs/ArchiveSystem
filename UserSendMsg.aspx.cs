@@ -36,7 +36,7 @@ public partial class UserSendMsg : UICaltureBase
 
     protected void btnSendMsg_OnClick(object sender, EventArgs e)
     {
-
+      
         DivError.Visible = false;
         if (string.IsNullOrWhiteSpace(txtTo.Text))
         {
@@ -59,7 +59,13 @@ public partial class UserSendMsg : UICaltureBase
             lblError.Text = "الرجاء ادخال نص الرسالة";
             return;
         }
-
+        if (txtMsg.Text.Length > 500)
+        {
+            DivError.Visible = true;
+            DivError.CssClass = "alert alert-danger text-center";
+            lblError.Text = "نص الرسالة يجب الا يتخطى الـ500 حرف.";
+            return;
+        }
         Database db=new Database();
         Users u = Session["User"] as Users;
         DataTable dtUsers = db.ExecuteDataTable("select * from users where isActive=1 and (id in (" + txtTo.Text + "))");
@@ -70,13 +76,12 @@ public partial class UserSendMsg : UICaltureBase
             db.AddParameter("@title",txtSubject.Text);
             db.AddParameter("@msg", txtMsg.Text);
             db.ExecuteNonQuery("insert into msg([from],ToId,Title,Msg) values(@from,@ToId,@Title,@Msg)");
-
+           
             
         }
-
+ txtMsg.Text = string.Empty;
         DivError.Visible = true;
         DivError.CssClass = "alert alert-success text-center";
         lblError.Text = "تم ارسال الرسالة";
-
     }
 }

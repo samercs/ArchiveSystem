@@ -22,14 +22,24 @@ public partial class _Default : UICaltureBase
         {
             LoadData();
             Database db=new Database();
-            db.LoadDDL("category","title","id",ref ddlType,"اختر سبب الابلاغ","CatId=4");
+            db.LoadDDL("category","title","id",ref ddlType,"اختر سبب الابلاغ","CatId=1");
         }
     }
 
     private void LoadData()
     {
         Database db = new Database();
-        DataTable dt = db.ExecuteDataTable("select * from Files Order By FileDate Desc");
+        string sql =
+            "select FileTarget.Title as TargetName,FileType.Title as TypeName, Files.* from(Files inner join FileType on(files.Type = FileType.Id) inner join FileTarget on files.Target = FileTarget.Id)";
+
+        sql += " Where Files.Status=1";
+        if (!t.IsUserLogin(Session))
+        {
+            sql += " and Files.Security = 1";
+        }
+
+        sql += " Order By Files.FileDate Desc";
+        DataTable dt = db.ExecuteDataTable(sql);
         ListView1.DataSource = dt;
         ListView1.DataBind();
     }
@@ -76,13 +86,12 @@ public partial class _Default : UICaltureBase
                 lblUser.Text = user.Name;
                 Image imgUser = e.Item.FindControl("imgUser") as Image;
                 imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
-                
             }
             else
             {
                 LinkButton btnAddToFav = e.Item.FindControl("btnAddToFav") as LinkButton;
                 btnAddToFav.Visible = false;
-                HtmlAnchor btnShowCommenter1 = e.Item.FindControl("btnShowCommenter1") as HtmlAnchor;
+                HtmlAnchor  btnShowCommenter1 = e.Item.FindControl("btnShowCommenter1") as HtmlAnchor;
                 btnShowCommenter1.Visible = false;
             }
 
@@ -152,8 +161,13 @@ public partial class _Default : UICaltureBase
     protected void btnSendError_OnClick(object sender, EventArgs e)
     {
         Database db = new Database();
-        Users user = Session["User"] as Users;
-        db.AddParameter("@UserId", user.Id);
+        Users u = t.GetUser(Session);
+        object userId = DBNull.Value;
+        if (u != null)
+        {
+            userId = u.Id;
+        }
+        db.AddParameter("@UserId", userId);
         db.AddParameter("@Rason", ddlType.SelectedValue);
         db.AddParameter("@Note", txtNote.Text);
         db.AddParameter("@FileId", fileId.Value);

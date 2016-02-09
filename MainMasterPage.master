@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>الدليل الاإلكتروني لإرشفة القرارات و التعاميم الحكومية</title>
+    <title>دليل الأنظمة الإجتماعية</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -44,7 +44,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="background_color"></div>
         <header>
             <div class="container">
@@ -59,7 +59,7 @@
                                 <tr>
                                     <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font logout" data-toggle="tooltip" title="تسجيل خروج"></i></a></td>
                                     <td class="emplow"><a href="/UserInbox.aspx"><i class="fa fa-envelope font emplow" title="الصندوق الوارد"></i><i class="badge">2</i></a></td>
-
+                                    <td class="emplow"><a href="Notifications.aspx"><i class="fa fa-bell-o font emplow" title="المشاركات"></i></a></td>
                                 </tr>
                             </table>
                         </asp:Panel>
@@ -88,7 +88,7 @@
                             المفضلة</a></li>
                         <li class="menuitem"><a href="#" data-toggle="modal" data-target="#myModal2"><i class="fa fa-envelope font"></i>
                             <br>
-                            مراسلة مدير الموقع</a></li>
+                            مراسلة إدارة الموقع</a></li>
                         <li class="menuitem"><a target="_blank" href="http://ncss.gov.sa/"><i class="fa fa-mouse-pointer font"></i>
                             <br>
                             موقع المركز</a></li>
@@ -113,13 +113,19 @@
                             <a href="login.aspx" class="loginBtn"><img src="img/LoginIcon.jpg"/> تسجيل الدخول الى النظام</a>
                         </asp:Panel>
                         <asp:Panel Visible="False" ID="UserSection2" runat="server">
-                            <table class="notifications">
-                                <tr>
-                                    <td class="logout"><a href="logout.aspx"><i class="fa fa-sign-out font" title="تسجيل خروج"></i></a></td>
-                                    <td class="emplow"><a class="btnInbox" href="#"><i class="fa fa-envelope font" title="الصندوق الوارد"></i><span id="lblMsgCount" runat="server" class="badge badge-info"></span></a></td>
-
-                                </tr>
-                            </table>
+                            <ul class="list-inline notification">
+                                <li>
+                                    <a href="logout.aspx"><i class="fa fa-sign-out font logout" title="تسجيل خروج"></i></a>
+                                </li>
+                                <li>
+                                    <a class="btnInbox" href="#"><i class="fa fa-envelope font bell" title="الصندوق الوارد"></i><span id="lblMsgCount" runat="server" class="badge badge-info"></span></a>
+                                </li>
+                                <li>
+                                    <a  href="Notifications.aspx"><i class="fa fa-bell-o font emplow" title="المشاركات"></i></a>
+                                </li>
+                            </ul>
+                            
+                            
                         </asp:Panel>
                     </div>
 
@@ -141,7 +147,9 @@
         <div class="space"></div>
 
         <footer>
-            <div class=" footer_img img-responsive"></div>
+            <div style="text-align:center; color :#fff;" class=" footer_img img-responsive"><br />
+                الحقوق محفوظة © المركز الوطني للدراسات والبحوث الاجتماعية 2016
+            </div>
         </footer>
 
 

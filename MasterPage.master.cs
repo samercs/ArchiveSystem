@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -20,11 +21,22 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (!Page.IsPostBack)
         {
             Database db=new Database();
-            db.LoadDDL("category","title",ref ddlField,"المجال","catId=5");
+            db.AddParameter("@pageKey", "ContactUs");
+            DataTable dt = db.ExecuteDataTable("select * from Pages where PageKey=@pageKey");
+            if (dt.Rows.Count > 0)
+            {
+                Repeater1.DataSource = dt;
+                Repeater1.DataBind();
+            }
+            db.LoadDDL("Filetarget","title",ref ddlField,"المجال");
             db.LoadDDL("country", "name", ref ddlCountry, "الدولة", "lang=2");
             if (!t.IsUserLogin(Session))
             {
                 mainContainerBody.Attributes["class"] += " extended";
+            }
+            else
+            {
+                Panel1.Visible = true;
             }
             
         }
@@ -54,7 +66,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void btnSearchUsers_OnClick(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(txtUserName.Text) && string.IsNullOrWhiteSpace(txtJobTitle.Text))
+        if (string.IsNullOrWhiteSpace(txtUserName.Text) && string.IsNullOrWhiteSpace(txtJobTitle.Text) && string.IsNullOrWhiteSpace(txtOrganization.Text))
         {
             DivError2.Visible = true;
             lblError2.Text = "الرجاء ادخال قيم البحث";
@@ -62,9 +74,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         DivError2.Visible = false;
 
-        if (!string.IsNullOrWhiteSpace(txtUserName.Text) || !string.IsNullOrWhiteSpace(txtJobTitle.Text))
+        if (!string.IsNullOrWhiteSpace(txtUserName.Text) || !string.IsNullOrWhiteSpace(txtJobTitle.Text) || !string.IsNullOrWhiteSpace(txtOrganization.Text))
         {
-            Response.Redirect(String.Format("SearchUser.aspx?name={0}&jobTitle={1}", txtUserName.Text, txtJobTitle.Text));
+            Response.Redirect(String.Format("SearchUser.aspx?name={0}&jobTitle={1}&organization={2}", txtUserName.Text, txtJobTitle.Text,txtOrganization.Text));
         }
     }
 }

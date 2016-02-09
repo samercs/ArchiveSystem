@@ -24,7 +24,7 @@
 
                     <tr>
                         <td>
-                            <%#Eval("Title") %>
+                            <a data-id="<%#Eval("id") %>" data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#"> <%#Eval("Title") %></a>
                         </td>
                         <td>
                             <%#(string.IsNullOrWhiteSpace(Eval("from").ToString()) || Eval("from").ToString().Equals("-1")) ? "مدير الموقع" :  Eval("UserName") %>
@@ -109,7 +109,10 @@
 
                     </table>
                     <asp:HiddenField ID="userId" runat="server" />
-                    <table dir="rtl" class="table table-responsive">
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <table dir="rtl" class="table table-responsive">
                         <tr>
                             <td class="space align_right">
                                 <asp:TextBox ID="txtTitle" placeholder="عنوان الرسالة" CssClass="form-control" runat="server"></asp:TextBox>
@@ -117,8 +120,8 @@
                         </tr>
                         <tr>
                             <td class="space align_right">
-                                <asp:TextBox ID="txtComment" placeholder="كتابة رد... " CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                
+                                <asp:TextBox ID="txtComment" MaxLength="500" placeholder="كتابة رد... " CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                   <div id="txtaddress" dir="rtl" style="font-size:12px;text-align:center;"></div>
                             </td>
                         </tr>
                         <tr>
@@ -130,6 +133,8 @@
                             <td></td>
                         </tr>
                     </table>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
 
                 </div>
 
@@ -178,6 +183,84 @@
 
             return input.replace(/\s/g, '').length < 1;
         }
+                $(document).ready(function() {
+
+            var text_max = 500;
+
+            $('#txtaddress').html(text_max+' حرف متبقي');
+
+            $("#<%=txtComment.ClientID%>").keyup(function() {
+
+                var text_length =   $("#<%=txtComment.ClientID%>").val().length;
+                var text_remaining = text_max - text_length;
+
+                $('#txtaddress').html(text_remaining+' حرف متبقي');
+         
+
+            });
+
+                });
+        
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        prm.add_endRequest(function () {
+             $(function () {
+
+
+            $(".btnReadMsg").click(function () {
+
+                var $this = $(this);
+                $("#<%=lblTitle.ClientID%>").text($this.data("title"));
+                $("#<%=txtTitle.ClientID%>").val('رد : ' + $this.data("title"));
+                $("#<%=lblMsg.ClientID%>").text($this.data("text"));
+                $("#<%=userId.ClientID%>").val($this.data("from"));
+                $.ajax({
+                    url: "ajax/updateMsg.ashx?id=" + $this.data("id"), success: function (result) {
+
+                    }
+                });
+
+            });
+
+        });
+
+        function validateSendMsg() {
+
+            var msg = $("#<%=txtComment.ClientID%>").val();
+            if (isNullOrWhitespace(msg)) {
+                alert("الرجاء ادخال الرد");
+                return false;
+            }
+
+            return true;
+
+        }
+
+
+        function isNullOrWhitespace(input) {
+
+            if (typeof input === 'undefined' || input == null) return true;
+
+            return input.replace(/\s/g, '').length < 1;
+        }
+                $(document).ready(function() {
+
+            var text_max = 500;
+
+            $('#txtaddress').html(text_max+' حرف متبقي');
+
+            $("#<%=txtComment.ClientID%>").keyup(function() {
+
+                var text_length =   $("#<%=txtComment.ClientID%>").val().length;
+                var text_remaining = text_max - text_length;
+
+                $('#txtaddress').html(text_remaining+' حرف متبقي');
+         
+
+            });
+
+                });
+        });
     </script>
 
 </asp:Content>

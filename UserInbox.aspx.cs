@@ -31,6 +31,13 @@ public partial class UserInbox : UICaltureBase
 
     protected void btnSendComent_OnClick(object sender, EventArgs e)
     {
+        if (txtComment.Text.Length > 500)
+        {
+           
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('نص الرسالة يجب الا يتخطى الـ500 حرف.')", true);
+
+            return;
+        }
         Database db=new Database();
         Users u = Session["User"] as Users;
         db.AddParameter("@from", u.Id);
@@ -40,7 +47,7 @@ public partial class UserInbox : UICaltureBase
         db.ExecuteNonQuery("insert into msg([from],toId,Title,Msg) values (@from,@toId,@Title,@Msg)");
         txtComment.Text = "";
         userId.Value = "";
-        ShowAlert("تم ارسال الرسالة بنجاح",MsgType.Success);
+         ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('تم ارسال الرسالة بنجاح.')", true);
     }
 
     protected void ListView1_OnPagePropertiesChanged(object sender, EventArgs e)

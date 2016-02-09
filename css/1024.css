@@ -406,7 +406,7 @@ header {
 }
 .SocalIcon ul li {
     padding: 0 !important;
-    margin: 10px 2px !important;
+    margin: 10px 1px !important;
 }
 
 .loginBtn {
@@ -419,26 +419,16 @@ header {
 }
 
 .SocalIcon ul li img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 
-.notifications {
-    margin-top: 5px;
+.notification a {
     
+    color: #4d4d4f;
+    padding: 0 5px;
 }
-
-    .notifications tr { float :left;
-    }
-
-    .notifications td {
-        float: left;
-        color: gray;
-    }
-    
-
-
 
 
 .logout:hover {
@@ -567,7 +557,7 @@ label {
 
 .events {
     float: left;
-    background: white;
+    
     width: 22.5%;
     height: auto;
 }
@@ -686,8 +676,10 @@ label {
 
 .search_form {
     text-align: right;
-    padding: 0.5em;
+    padding: 1.5em 0.5em;
     direction: rtl;
+    background-color: #fff;
+    color: gray;
 }
 
 .search_label {
@@ -1571,8 +1563,7 @@ label {
 }
 
 
-.emplow {padding :0em 2em;
-}
+
 
 @-moz-document url-prefix() {
 
@@ -1805,6 +1796,43 @@ label {
 .badge-info {
     background-color: #88C16C;
     color: #fff;
+}
+
+.search_input5 {
+    width: 100%;
+    background-color: #fff;
+    padding: 5px 20px 6px 20px;
+    border: none;
+}
+
+.btn-success {
+    background-color: #88C16C;
+    border: none;
+    border-radius: 0;
+    background-image: none;
+}
+
+.btn-warning {
+     background-color: goldenrod;
+    border: none;
+    border-radius: 0;
+    background-image: none;
+}
+
+.no-padding {
+    padding: 0;
+}
+.no-padding td {
+    padding: 0 !important;
+}
+
+.hr1 {
+    width: 70%;
+    margin: 15px auto;
+
+}
+.links-list a {
+    padding: 0 15px;
 }
 
 

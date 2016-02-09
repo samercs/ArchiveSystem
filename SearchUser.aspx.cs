@@ -14,14 +14,16 @@ public partial class SearchUser : UICaltureBase
         {
             string name = Request.QueryString["name"];
             string jobTitle = Request.QueryString["jobTitle"];
+            string organization = Request.QueryString["organization"];
             txtUserName.Text = name;
             txtJobTitle.Text = jobTitle;
+            txtOrganization.Text = organization;
             btnSearch_OnClick(this,null);
         }
         
     }
 
-    private void LoadData(string name = "", string jobTitle = "")
+    private void LoadData(string name = "", string jobTitle = "",string organization="")
     {
         Database db = new Database();
         
@@ -37,6 +39,11 @@ public partial class SearchUser : UICaltureBase
             sql += " and users.JobTitle like '%' + @JobTitle + '%'";
             db.AddParameter("@JobTitle", jobTitle);
         }
+        if (!string.IsNullOrWhiteSpace(organization))
+        {
+            sql += " and users.organization like '%' + @organization + '%'";
+            db.AddParameter("@organization", organization);
+        }
 
         DataTable dt = db.ExecuteDataTable(sql);
         ListView1.DataSource = dt;
@@ -45,12 +52,12 @@ public partial class SearchUser : UICaltureBase
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
     {
-        LoadData(txtUserName.Text,txtJobTitle.Text);
+        LoadData(txtUserName.Text,txtJobTitle.Text,txtOrganization.Text);
     }
 
     protected void ListView1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
-        LoadData(txtUserName.Text, txtJobTitle.Text);
+        LoadData(txtUserName.Text, txtJobTitle.Text,txtOrganization.Text);
     }
 
     protected void btnSendMsg_OnClick(object sender, EventArgs e)

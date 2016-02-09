@@ -70,9 +70,15 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
         if(ValidateData())
         {
             string baseClass = "alert msgBox text-center";
-            Users u=Session["User"] as Users;
+            Tools t = new Tools();
+            Users u=t.GetUser(Session);
+            object userId = DBNull.Value;
+            if (u != null)
+            {
+                userId = u.Id;
+            }
             Database db=new Database();
-            db.AddParameter("@from", u.Id);
+            db.AddParameter("@from", userId);
             db.AddParameter("@title", txtTitle.Text);
             db.AddParameter("@msg", txtMsg.Text);
             db.ExecuteNonQuery("insert into msg([from],title,msg) values(@from,@title,@msg)");

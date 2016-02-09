@@ -21,6 +21,10 @@
                     <label>المسمى الوظيفي</label>
                     <asp:TextBox ID="txtJobTitle" palceholder="المسمى الوظيفي" CssClass="search_input_page" runat="server"></asp:TextBox>
                 </td>
+                <td dir="rtl" class="th">
+                    <label>جهة العمل</label>
+                    <asp:TextBox ID="txtOrganization" palceholder=" جهة العمل" CssClass="search_input_page" runat="server"></asp:TextBox>
+                </td>
 
                 <td dir="rtl" class="th">
                     <label> ‫إسم الشخص‬</label>
@@ -49,6 +53,11 @@
                             <tr>
                                 <td>
                                     <h5><%#Eval("JobTitle") %></h5>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h5><%#Eval("Organization") %></h5>
                                 </td>
                             </tr>
                             <tr>

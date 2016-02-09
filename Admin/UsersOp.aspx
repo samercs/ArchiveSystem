@@ -45,6 +45,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <asp:Label ID="Label7" runat="server" Text="جهة العمل" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:TextBox ID="txtOrganization" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Label ID="Label1" runat="server" Text="البريد الالكتروني" CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <asp:TextBox ID="txtUserName" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
@@ -70,7 +78,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label5" runat="server" Text="رقم الهاتف " CssClass="label_xblack"></asp:Label></td>
+                        <asp:Label ID="Label5" runat="server" Text="رقم الجوال " CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <asp:TextBox ID="txtPhone" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
@@ -78,12 +86,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label6" runat="server" Text="محظور حتى تاريخ " CssClass="label_xblack"></asp:Label></td>
+                        <asp:Label ID="Label6" runat="server" Text="مدة المستخدم " CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <uc1:hijriCalender  Class="txtCal" ValidationGroup="Option3" runat="server" ID="txtLockedTo" />
                     </td>
                     <td>
-                        في حالة حظر مستخدم ادخل تاريخ الحظر
+                        الرجاء ادخال تاريخ انتهاء الصلاحية للحساب
                     </td>
                 </tr>
                 <tr>

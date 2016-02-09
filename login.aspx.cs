@@ -22,8 +22,10 @@ public partial class login : UICaltureBase
             else
             {
                 cbRememberMe.Checked = false;
-                
+
             }
+
+            txtTitle.Text = "نسيت كلمة السر";
         }
     }
 
@@ -103,7 +105,7 @@ public partial class login : UICaltureBase
             }
         }
 
-        
+
 
 
     }
@@ -136,11 +138,11 @@ public partial class login : UICaltureBase
         if (!string.IsNullOrWhiteSpace(dt.Rows[0]["LockedTo"].ToString()))
         {
             tmp = DateTime.Parse(dt.Rows[0]["LockedTo"].ToString());
-            if (tmp.CompareTo(DateTime.Now) >= 0)
+            if (tmp.CompareTo(DateTime.Now) <= 0)
             {
                 Dates dates = new Dates();
                 ErrorDiv.Visible = true;
-                lblError.Text = String.Format("الرجاء الانتظار حتى {0} كي تتمكن من تسجيل الدخول", dates.GregToHijri(tmp.ToString("dd/MM/yyyy"), "dd/MMM/yyyy hh:mm"));
+                lblError.Text = String.Format("هذا الحساب منتهي الصلاحية الرجاء مراسلة إدارة الموقع", dates.GregToHijri(tmp.ToString("dd/MM/yyyy"), "dd/MMM/yyyy hh:mm"));
                 return null;
             }
         }
@@ -154,5 +156,21 @@ public partial class login : UICaltureBase
         }
 
         return dt.Rows[0];
+    }
+
+
+    protected void btnSendMsg_OnClick(object sender, EventArgs e)
+    {
+
+        Database db = new Database();
+        db.AddParameter("@from", DBNull.Value);
+        db.AddParameter("@title", txtTitle.Text);
+        string msg = "البريد الالكتروني : " + txtEmail.Text + "<br/>";
+        msg += txtMsg.Text;
+        db.AddParameter("@msg", msg);
+        db.ExecuteNonQuery("insert into msg([from],title,msg) values(@from,@title,@msg)");
+        ClientScript.RegisterClientScriptBlock(GetType(),"Alert-Msg","alert('تم ارسال الرسالة الى مدير الموقع');",true);
+
+
     }
 }

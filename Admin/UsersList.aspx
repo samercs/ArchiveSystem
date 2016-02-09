@@ -27,7 +27,8 @@
                     <th>الاسم</th>
                     <th>البريد الالكتروني</th>
                     <th>الوظيفة</th>
-                    <th>رقم الهاتف</th>
+                    <th>جهة العمل</th>
+                    <th>رقم الجوال</th>
                     <th>التفعيل</th>
                     <th>الحجب</th>
                     <th></th>
@@ -65,6 +66,9 @@
                             </td>
                             <td>
                                 <%#Eval("jobtitle") %>
+                            </td>
+                             <td>
+                                <%#Eval("Organization") %>
                             </td>
                             <td>
                                 <%#Eval("phone") %>

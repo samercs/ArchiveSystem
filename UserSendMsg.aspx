@@ -18,7 +18,8 @@
     </div>
     <div class="form-group">
         <label>الرسالة</label>
-        <asp:TextBox ID="txtMsg" Height="120" TextMode="MultiLine"  CssClass="form-control" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtMsg" Height="120" MaxLength="500" TextMode="MultiLine"  CssClass="form-control" runat="server"></asp:TextBox>
+        <div id="txtaddress" dir="rtl" style="font-size:12px;text-align:center;"></div>
     </div>
     <div class="form-group">
         <asp:Button OnClick="btnSendMsg_OnClick" CssClass="btn btn-block btn-success" ID="btnSendMsg" runat="server" Text="ارسال الرسالة" />
@@ -41,7 +42,23 @@
             
 
         });
+        $(document).ready(function() {
 
+            var text_max = 500;
+
+            $('#txtaddress').html(text_max+' حرف متبقي');
+
+            $("#<%=txtMsg.ClientID%>").keyup(function() {
+
+                var text_length =   $("#<%=txtMsg.ClientID%>").val().length;
+                var text_remaining = text_max - text_length;
+
+                $('#txtaddress').html(text_remaining+' حرف متبقي');
+         
+
+            });
+
+        });
         
     </script>
 

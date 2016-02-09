@@ -96,27 +96,61 @@
                     </td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="Label4" runat="server" Text="الجهات المستهدفة " CssClass="label_xblack"></asp:Label></td>
-                    <td>
-                        <asp:TextBox ID="txtTarget" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        <small>يمكن ادخال اكثر من خيار يفصل بينها ,</small>
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>
                         <asp:Label ID="Label12" runat="server" Text="المجال " CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                        <asp:DropDownList ID="ddlTarget" CssClass="ddl1" runat="server">
                             
                         </asp:DropDownList>
                     </td>
                     <td>
                         
                     </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label4" runat="server" Text="النوع " CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlType" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label8" runat="server" Text="السرية" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlSecurity" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label7" runat="server" Text="الحالة" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlStatus" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <asp:Label ID="Label13" runat="server" Text="الدولة" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlCountry" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>
@@ -146,35 +180,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label7" runat="server" Text="الحالة" CssClass="label_xblack"></asp:Label></td>
+                        <asp:Label ID="Label15" runat="server" Text="كلمات مفتاحية " CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:DropDownList ID="ddlStatus" CssClass="ddl1" runat="server">
-                            <asp:ListItem Text="فعال" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="موقوف" Value="0"></asp:ListItem>
-                        </asp:DropDownList>
+                        <asp:TextBox ID="txtFileKey"  TextMode="MultiLine" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
-                    <td></td>
-                </tr>
-                <tr>
                     <td>
-                        <asp:Label ID="Label8" runat="server" Text="النوع" CssClass="label_xblack"></asp:Label></td>
-                    <td>
-                        <asp:DropDownList ID="ddlType" CssClass="ddl1" runat="server">
-                            <asp:ListItem Text="ملف" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="تعميم" Value="0"></asp:ListItem>
-                        </asp:DropDownList>
+                        
                     </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="Label13" runat="server" Text="الدولة" CssClass="label_xblack"></asp:Label></td>
-                    <td>
-                        <asp:DropDownList ID="ddlCountry" CssClass="ddl1" runat="server">
-                            
-                        </asp:DropDownList>
-                    </td>
-                    <td></td>
                 </tr>
                 <tr id="rowAttache" runat="server">
                     <td>

@@ -36,7 +36,7 @@ public partial class Admin_UsersOp : AdminPages
         txtName.Text = ds.Tables[0].Rows[0]["name"].ToString();
         txtUserName.Text = ds.Tables[0].Rows[0]["username"].ToString();
         txtPassword.Text = ds.Tables[0].Rows[0]["password"].ToString();
-        
+        txtOrganization.Text = ds.Tables[0].Rows[0]["Organization"].ToString();
         DateTime tmp2;
         if (DateTime.TryParse(ds.Tables[0].Rows[0]["LockedTo"].ToString(),out tmp2))
         {
@@ -73,6 +73,11 @@ public partial class Admin_UsersOp : AdminPages
         if (string.IsNullOrEmpty(txtName.Text))
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء ادخال الاسم.\")</SCRIPT>", false);
+            return;
+        }
+        if (string.IsNullOrEmpty(txtOrganization.Text))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء ادخال جهة العمل.\")</SCRIPT>", false);
             return;
         }
         if (string.IsNullOrEmpty(txtUserName.Text))
@@ -132,6 +137,7 @@ public partial class Admin_UsersOp : AdminPages
         db.AddParameter("@name", txtName.Text);
         db.AddParameter("@username", txtUserName.Text);
         db.AddParameter("@password", txtPassword.Text);
+        db.AddParameter("@Organization", txtOrganization.Text);
         db.AddParameter("@RequerChange", RadioButtonList1.SelectedValue);
 
         DateTime tmp2;
@@ -155,7 +161,7 @@ public partial class Admin_UsersOp : AdminPages
             try
             {
                 db.AddParameter("@id", Request.QueryString["id"]);
-                db.ExecuteNonQuery("Update " + tablename + " Set name=@name,[username]=@username,[img]=@img,password=@password,[RequerChange]=@RequerChange,[LockedTo]=@LockedTo,[IsActive]=@IsActive,[JobTitle]=@JobTitle,[Phone]=@Phone where Id=@id");
+                db.ExecuteNonQuery("Update " + tablename + " Set name=@name,[username]=@username,[img]=@img,password=@password,[RequerChange]=@RequerChange,[LockedTo]=@LockedTo,[IsActive]=@IsActive,[JobTitle]=@JobTitle,[Phone]=@Phone,Organization=@Organization where Id=@id");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم التعديل ','تم التعديل بنجاح').set('onok', function(closeEvent){ location.href='" + listpage+"'; } );", true);
             }
             catch (Exception ex)
@@ -166,7 +172,7 @@ public partial class Admin_UsersOp : AdminPages
         }
         else if (Request.QueryString["Op"] == "Add")
         {
-            db.ExecuteNonQuery("Insert into " + tablename + "(name,username,password,RequerChange,LockedTo,IsActive,JobTitle,Phone,Img) Values(@name,@username,@password,@RequerChange,@LockedTo,@IsActive,@JobTitle,@Phone,@Img)");
+            db.ExecuteNonQuery("Insert into " + tablename + "(name,username,password,RequerChange,LockedTo,IsActive,JobTitle,Phone,Img,Organization) Values(@name,@username,@password,@RequerChange,@LockedTo,@IsActive,@JobTitle,@Phone,@Img,@Organization)");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم الاضافة ','تم الاضافة بنجاح').set('onok', function(closeEvent){ location.href='" + listpage + "'; } );", true);
         }
     }

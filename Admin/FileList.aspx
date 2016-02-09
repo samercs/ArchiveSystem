@@ -52,7 +52,9 @@
                 <tr>
                     <th>
                         <asp:CheckBox ID="CheckBox10" OnCheckedChanged="CheckBox10_CheckedChanged" AutoPostBack="true" runat="server" /></th>
-                    
+                    <th>
+                        رقم التسلسلي
+                    </th>
                     <th>العنوان</th>
                     <th>الرقم</th>
                     <th>جهة الاصدار</th>
@@ -60,7 +62,10 @@
                      <th>الجهات المستهدفه</th>
                     <th>النوع</th>
                     <th>الحالة</th>
-                    <th>تاريخ الاضافة</th>
+                    <th>
+                        السرية
+                    </th>
+                    
                     <th>تاريخ الملف</th>
                     <th></th>
                 </tr>
@@ -87,6 +92,9 @@
                                 <asp:CheckBox ID="CheckBox1" runat="server" /></td>
                             
                             <td>
+                                <%#Eval("id") %>
+                            </td>
+                            <td>
                                 <%#Eval("title") %> 
                             </td>
                             <td>
@@ -99,20 +107,21 @@
                                 <%#Eval("To") %>
                             </td>
                             <td>
-                                <%#Eval("Target") %>
+                                <%#Eval("TargetName") %>
                             </td>
                             <td>
-                                <%#Eval("Type").ToString().Equals("1") ? "ملف" : "تعميم" %>
+                                <%#Eval("TypeName") %>
                             </td>
                             <td>
-                                <%#Eval("Status").ToString().Equals("1") ? "منشور" : "موقوف" %>
+                                <%#Eval("StatusName") %>
                                 - <asp:LinkButton OnCommand="btnEditStatus_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnEditStatus" runat="server">
                                     <%#Eval("Status").ToString().Equals("1") ? "ايقاف" : "تفعيل" %>
                                 </asp:LinkButton> 
                             </td>
                             <td>
-                                <%#new Dates().GregToHijri(Eval("AddedDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>
+                                <%#Eval("SecurityName") %>
                             </td>
+                            
                             <td>
                                 <%#new Dates().GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %>
                             </td>
