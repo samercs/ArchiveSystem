@@ -53,6 +53,15 @@ public partial class _Default : UICaltureBase
     {
         if (e.Item.ItemType == ListViewItemType.DataItem)
         {
+
+
+            Panel ShareCon = e.Item.FindControl("ShareCon") as Panel;
+            HiddenField Security = e.Item.FindControl("Security") as HiddenField;
+            if (Security.Value.Equals("1"))
+            {
+                ShareCon.Visible = true;
+            }
+
             ListView r = e.Item.FindControl("Repeater1") as ListView;
             HiddenField id=e.Item.FindControl("id") as HiddenField;
             Database db=new Database();
@@ -86,6 +95,8 @@ public partial class _Default : UICaltureBase
                 lblUser.Text = user.Name;
                 Image imgUser = e.Item.FindControl("imgUser") as Image;
                 imgUser.ImageUrl = "~/SystemFiles/Users/" + user.Image;
+                Panel CommentCon = e.Item.FindControl("CommentCon") as Panel;
+                CommentCon.Visible = true;
             }
             else
             {

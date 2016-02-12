@@ -97,20 +97,26 @@
                     <div class="SocalIcon">
                         <ul class="list-inline">
                             <li>
-                                <a href="#"><img src="/img/Twitter.jpg"/></a>
+                                <a href="#">
+                                    <img src="/img/Twitter.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#"><img src="/img/FB.jpg"/></a>
+                                <a href="#">
+                                    <img src="/img/FB.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#"><img src="/img/Google.jpg"/></a>
+                                <a href="#">
+                                    <img src="/img/Google.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#"><img src="/img/Linkedin.jpg"/></a>
+                                <a href="#">
+                                    <img src="/img/Linkedin.jpg" /></a>
                             </li>
                         </ul>
                         <asp:Panel ID="UserLoginSection1" runat="server">
-                            <a href="login.aspx" class="loginBtn"><img src="img/LoginIcon.jpg"/> تسجيل الدخول الى النظام</a>
+                            <a href="login.aspx" class="loginBtn">
+                                <img src="img/LoginIcon.jpg" />
+                                تسجيل الدخول الى النظام</a>
                         </asp:Panel>
                         <asp:Panel Visible="False" ID="UserSection2" runat="server">
                             <ul class="list-inline notification">
@@ -121,11 +127,11 @@
                                     <a class="btnInbox" href="#"><i class="fa fa-envelope font bell" title="الصندوق الوارد"></i><span id="lblMsgCount" runat="server" class="badge badge-info"></span></a>
                                 </li>
                                 <li>
-                                    <a  href="Notifications.aspx"><i class="fa fa-bell-o font emplow" title="المشاركات"></i></a>
+                                    <a href="Notifications.aspx"><i class="fa fa-bell-o font emplow" title="المشاركات"></i></a>
                                 </li>
                             </ul>
-                            
-                            
+
+
                         </asp:Panel>
                     </div>
 
@@ -147,7 +153,8 @@
         <div class="space"></div>
 
         <footer>
-            <div style="text-align:center; color :#fff;" class=" footer_img img-responsive"><br />
+            <div style="text-align: center; color: #fff;" class=" footer_img img-responsive">
+                <br />
                 الحقوق محفوظة © المركز الوطني للدراسات والبحوث الاجتماعية 2016
             </div>
         </footer>

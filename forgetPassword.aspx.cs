@@ -13,7 +13,10 @@ public partial class login : UICaltureBase
     
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            txtTitle.Text = "نسيت كلمة السر";
+        }
     }
 
     protected void btnLogin_OnClick(object sender, EventArgs e)
@@ -44,6 +47,21 @@ public partial class login : UICaltureBase
         ClientScript.RegisterClientScriptBlock(this.GetType(),"msgBox","alert('تم ارسال كلمة السر على بريدك الالكتروني');",true);
 
         
+
+
+    }
+
+    protected void btnSendMsg_OnClick(object sender, EventArgs e)
+    {
+
+        Database db = new Database();
+        db.AddParameter("@from", DBNull.Value);
+        db.AddParameter("@title", txtTitle.Text);
+        string msg = "البريد الالكتروني : " + txtEmail.Text + "<br/>";
+        msg += txtMsg.Text;
+        db.AddParameter("@msg", msg);
+        db.ExecuteNonQuery("insert into msg([from],title,msg) values(@from,@title,@msg)");
+        ClientScript.RegisterClientScriptBlock(GetType(), "Alert-Msg", "alert('تم ارسال الرسالة الى مدير الموقع');", true);
 
 
     }

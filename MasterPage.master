@@ -18,68 +18,76 @@
             <asp:ContentPlaceHolder runat="server" ID="ContentPlaceHolder1"></asp:ContentPlaceHolder>
         </section>
         <aside class="events">
-            <table class="table-responsive table no-padding noborder">
-                <tr>
+            <asp:Panel ID="Panel3" DefaultButton="btnSearch" runat="server">
+                <table class="table-responsive table no-padding noborder">
+                    <tr>
 
-                    <td>
-                        <asp:TextBox ID="txtSearch" CssClass="search_input5" runat="server"></asp:TextBox>
-                    </td>
-                    <td>
-                        <asp:LinkButton ID="btnSearch" CssClass="btn btn-success" runat="server">بحث <i class="fa fa-search"></i></asp:LinkButton>
-                    </td>
-                </tr>
-            </table>
-
+                        <td>
+                            <asp:TextBox ID="txtSearch" CssClass="search_input5" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+                            <asp:LinkButton ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="btn btn-success" runat="server">بحث <i class="fa fa-search"></i></asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+            </asp:Panel>
             <div class="text-right">
                 <a class="btn btn-warning" id="btnShowSearchAdvanced">بحث متقدم <i class="fa fa-plus"></i>
                 </a>
             </div>
-            <div class="search_form" id="advancedSearch">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                    <ContentTemplate>
 
-                        <h4>البحث عن ملف
-                        </h4>
-                        <label class="search_label">عنوان الملف: </label>
-                        <br />
-                        <asp:TextBox ID="txtFileName" CssClass="search_input" runat="server"></asp:TextBox>
-                        <div class="space"></div>
-                        <label class="search_label">رقم الملف: </label>
-                        <br />
-                        <asp:TextBox ID="txtNo1" CssClass="search_input3" runat="server"></asp:TextBox><div style="float: right; text-align: center; width: 10%;">/ </div>
-                        <asp:TextBox ID="txtNo2" CssClass="search_input4" runat="server"></asp:TextBox>
-                        <div class="space"></div>
-                        <label class="search_label">المجال:</label><br />
-                        <asp:DropDownList CssClass="search_input" ID="ddlField" runat="server"></asp:DropDownList>
-                        <br />
-                        <div class="space"></div>
-                        <label class="search_label">الدولة:</label><br />
-                        <asp:DropDownList CssClass="search_input" ID="ddlCountry" runat="server"></asp:DropDownList>
-                        <br />
-                        <div class="space"></div>
-                        <label class="search_label">التايخ :</label><br />
-                        <div class="input-group date ">
-                            <uc1:hijriCalender Class="txtCal search_input2" runat="server" ID="txtDate" />
-                        </div>
-                        <div class="space"></div>
-                        <div class="submit_box">
-                            <img src="img/green_serach.png" class="green_search" />
-                            <asp:Button OnClick="btnSearchFile_OnClick" ID="btnSearchFile" CssClass="green_submit" runat="server" Text="بحث" />
+            <asp:Panel ID="Panel2" DefaultButton="btnSearchFile" runat="server">
+                <div class="search_form" id="advancedSearch">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
 
-                        </div>
+                            <h4>البحث عن ملف
+                            </h4>
+                            <label class="search_label">عنوان الملف: </label>
+                            <br />
+                            <asp:TextBox ID="txtFileName" CssClass="search_input" runat="server"></asp:TextBox>
+                            <div class="space"></div>
+                            <label class="search_label">رقم الملف: </label>
+                            <br />
+                            <asp:TextBox ID="txtNo1" CssClass="search_input3" runat="server"></asp:TextBox><div style="float: right; text-align: center; width: 10%;">/ </div>
+                            <asp:TextBox ID="txtNo2" CssClass="search_input4" runat="server"></asp:TextBox>
+                            <div class="space"></div>
+                            <label class="search_label">المجال:</label><br />
+                            <asp:DropDownList CssClass="search_input" ID="ddlField" runat="server"></asp:DropDownList>
+                            <br />
+                            <div class="space"></div>
+                            <label class="search_label">نوع الملف:</label><br />
+                            <asp:DropDownList CssClass="search_input" ID="ddlType" runat="server"></asp:DropDownList>
+                            <br />
+                            <div class="space"></div>
+                            <label class="search_label">الدولة:</label><br />
+                            <asp:DropDownList CssClass="search_input" ID="ddlCountry" runat="server"></asp:DropDownList>
+                            <br />
+                            <div class="space"></div>
+                            <label class="search_label">التايخ :</label><br />
+                            <div class="input-group date ">
+                                <uc1:hijriCalender Class="txtCal search_input2" runat="server" ID="txtDate" />
+                            </div>
+                            <div class="space"></div>
+                            <div class="submit_box">
+                                <img src="img/green_serach.png" class="green_search" />
+                                <asp:Button OnClick="btnSearchFile_OnClick" ID="btnSearchFile" CssClass="green_submit" runat="server" Text="بحث" />
 
-                        <div class="clearfix"></div>
+                            </div>
 
-                        <asp:Panel Visible="False" ID="DivError" CssClass="alert alert-danger error" runat="server">
-                            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-                        </asp:Panel>
+                            <div class="clearfix"></div>
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
+                            <asp:Panel Visible="False" ID="DivError" CssClass="alert alert-danger error" runat="server">
+                                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+                            </asp:Panel>
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </asp:Panel>
             <br />
 
-            <asp:Panel ID="Panel1" Visible="False" runat="server">
+            <asp:Panel ID="Panel1" DefaultButton="btnSearchUsers" Visible="False" runat="server">
 
                 <div class="space gray"></div>
                 <div class="space gray"></div>

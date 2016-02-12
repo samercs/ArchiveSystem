@@ -29,6 +29,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 Repeater1.DataBind();
             }
             db.LoadDDL("Filetarget","title",ref ddlField,"المجال");
+            db.LoadDDL("FileType", "title", ref ddlType, "نوع الملف");
             db.LoadDDL("country", "name", ref ddlCountry, "الدولة", "lang=2");
             if (!t.IsUserLogin(Session))
             {
@@ -45,24 +46,48 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void btnSearchFile_OnClick(object sender, EventArgs e)
     {
         Dates datets = new Dates();
-        if (string.IsNullOrWhiteSpace(txtFileName.Text) && ddlField.SelectedValue.Equals("-1") && ddlCountry.SelectedValue.Equals("-1") &&
-            string.IsNullOrWhiteSpace(txtDate.Text) && string.IsNullOrWhiteSpace(txtNo1.Text) && string.IsNullOrWhiteSpace(txtNo2.Text))
+        if (!ValidateData())
         {
             DivError.Visible = true;
             lblError.Text = "الرجاء ادخال قيم البحث";
             return;
         }
+        else
+        {
+            DivError.Visible = false;
 
-        DivError.Visible = false;
+            DateTime tmp;
+            int no1, no2;
+            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy",
+                CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp);
 
+            int.TryParse(txtNo1.Text, out no1);
+            int.TryParse(txtNo2.Text, out no2);
+
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}&type={5}", txtFileName.Text, txtDate.Text, ddlField.SelectedValue, txtNo1.Text + "/" + txtNo2.Text, ddlCountry.SelectedValue,ddlType.SelectedValue));
+            
+        }
+
+        
+    }
+
+
+    private bool ValidateData()
+    {
         DateTime tmp;
         int no1, no2;
-        if (!string.IsNullOrWhiteSpace(txtFileName.Text) ||
-            DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) || !ddlField.SelectedValue.Equals("-1") || !ddlCountry.SelectedValue.Equals("-1") || int.TryParse(txtNo1.Text,out no1) || int.TryParse(txtNo2.Text, out no2))
-        {
-            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}",txtFileName.Text,txtDate.Text,ddlField.SelectedValue,txtNo1.Text+"/"+txtNo2.Text,ddlCountry.SelectedValue));
-        }
+        Dates datets = new Dates();
+
+        return !string.IsNullOrWhiteSpace(txtFileName.Text) ||
+               DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy",
+                   CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) ||
+               !ddlField.SelectedValue.Equals("-1") ||
+               !ddlCountry.SelectedValue.Equals("-1") ||
+               int.TryParse(txtNo1.Text, out no1) ||
+               int.TryParse(txtNo2.Text, out no2) ||
+               !ddlType.SelectedValue.Equals("-1");
     }
+
 
     protected void btnSearchUsers_OnClick(object sender, EventArgs e)
     {
@@ -77,6 +102,18 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (!string.IsNullOrWhiteSpace(txtUserName.Text) || !string.IsNullOrWhiteSpace(txtJobTitle.Text) || !string.IsNullOrWhiteSpace(txtOrganization.Text))
         {
             Response.Redirect(String.Format("SearchUser.aspx?name={0}&jobTitle={1}&organization={2}", txtUserName.Text, txtJobTitle.Text,txtOrganization.Text));
+        }
+    }
+
+    protected void btnSearch_OnClick(object sender, EventArgs e)
+    {
+        if (!string.IsNullOrEmpty(txtSearch.Text))
+        {
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}", txtSearch.Text));
+        }
+        else
+        {
+            
         }
     }
 }

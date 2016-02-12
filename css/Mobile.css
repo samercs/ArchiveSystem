@@ -331,8 +331,7 @@ header {
 .mobile_menu {
     display: block;
     background: white;
-    padding: 0.5em;
-    margin-top: 0.7em;
+    margin: 25px 0;
 }
 .menu_btn {
     font-size:1.7em;
@@ -434,9 +433,7 @@ header {
         }
 
 .shadow_class {
-    -webkit-box-shadow: 0 8px 6px -6px black;
-    -moz-box-shadow: 0 8px 6px -6px black;
-    box-shadow: 0 8px 6px -6px black;
+    
 }
 
 footer {
@@ -1518,4 +1515,92 @@ table .space .MobileChange {width:25%;float :right ; border:none ; font-size :0.
 .MobileChange { 
                 font-size :0.8em;
                 text-align:center;
+}
+
+.SocalIcon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.SocalIcon ul li {
+    padding: 0 !important;
+    margin: 10px 1px !important;
+}
+.SocalIcon ul li img {
+    width: 20px;
+    height: 20px;
+}
+.menunotifications {
+    display: none;
+}
+
+.loginBtn {
+    color: #4d4d4f;
+    font-size: 10px;
+    position: absolute;
+    top: 45px;
+    left: -5px;
+    width: 150px;
+}
+
+.loginBtn img {
+    width: 20px;
+    height: 20px;
+}
+
+.article {
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 0em;
+    width: 100%;
+    position: relative;
+}
+
+.article .number {
+    position: absolute;
+    background-color: #e78224;
+    padding: 10px 15px;
+    top: -5px;
+    left: -5px;
+    color: #fff;
+    box-shadow: 3px 3px 3px #a75f15;
+}
+
+
+.search_input5 {
+    width: 100%;
+    background-color: #fff;
+    padding: 5px 20px 6px 20px;
+    border: solid 1px #ddd;
+}
+
+.btn-success {
+    background-color: #88C16C;
+    border: none;
+    border-radius: 0;
+    background-image: none;
+}
+
+.btn-warning {
+     background-color: goldenrod;
+    border: none;
+    border-radius: 0;
+    background-image: none;
+}
+
+.no-padding {
+    padding: 0;
+}
+.no-padding td {
+    padding: 0 !important;
+}
+
+.hr1 {
+    width: 70%;
+    margin: 15px auto;
+
+}
+.noborder {
+    border: none !important;
 }

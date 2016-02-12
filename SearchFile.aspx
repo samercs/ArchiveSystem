@@ -11,19 +11,11 @@
             <h4 class="align_right margin_12em font_14_em">نتائج البحث عن ملف</h4>
             <table class="search_result margin_12e_bottom">
                 <tr>
-                    <td  colspan="2">
+                    <td rowspan="2">
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
                     </td>
-                    <td  >
-                        <label>‫الدولة‬</label> 
-                        <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlCountry" runat="server"></asp:DropDownList>
-
-                    </td>
+                    
                     <td>
-                        <label>‫تاريخ الملف‬</label>
-                        <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
-                    </td>
-                    <td >
                         <label>‫المجال‬</label>
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList>
 
@@ -33,7 +25,22 @@
                     <td>
                         <label>‫اسم البحث‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></td>
                 </tr>
-                
+                <tr>
+                    <td>
+                        <label>‫النوع‬</label> 
+                        <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlType" runat="server"></asp:DropDownList>
+
+                    </td>
+                    <td>
+                        <label>‫الدولة‬</label> 
+                        <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlCountry" runat="server"></asp:DropDownList>
+
+                    </td>
+                    <td>
+                        <label>‫تاريخ الملف‬</label>
+                        <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
+                    </td>
+                </tr>
             </table>
 
            
@@ -42,10 +49,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="green_background_color">
+                        <td>التسلسل </td>
                         <td id="width_10">الرقم </td>
                         <td id="width_20">اسم الملف</td>
                         <td id="width_10">التاريخ</td>
-                        <td id="width_20">المجال</td>
+                        <td id="width_10">المجال</td>
+                        <td id="width_10">النوع</td>
                         <td id="width_30">الوصف</td>
                         <td id="width_10">العمليات</td>
                     </tr>
@@ -54,13 +63,17 @@
                     <asp:ListView OnPagePropertiesChanged="Repeater1_OnPagePropertiesChanged" ID="Repeater1" runat="server">
                         <ItemTemplate>
                             <tr>
+                                <td  class="text-center"><%#Eval("Id")%></td>
                                 <td id="width_10"><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
                                 <td id="width_20">
                                     <p class="fontsize" id="sub_cont"><%#Eval("Title") %></p>
                                 </td>
                                 <td  class="Mobilehead" id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
-                                <td  class="Mobilehead" id="width_20">
-                                    <p  class="fontsize"  id="sub_cont"><%#Eval("fieldname") %></p>
+                                <td  class="Mobilehead" id="width_10">
+                                    <p  class="fontsize"  id="sub_cont"><%#Eval("targetName") %></p>
+                                </td>
+                                <td  class="Mobilehead" id="width_10">
+                                    <p  class="fontsize"  id="sub_cont"><%#Eval("TypeName") %></p>
                                 </td>
                                 <td  class="Mobilehead" id="width_30">
                                     <p  class="fontsize"  id="sub_cont">

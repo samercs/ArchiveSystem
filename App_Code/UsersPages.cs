@@ -4,6 +4,7 @@
     {
         protected override void InitializeCulture()
         {
+            base.InitializeCulture();
             Tools t =new Tools();
             if (!t.IsUserLogin(Session))
             {

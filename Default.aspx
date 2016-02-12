@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
@@ -40,12 +39,16 @@
                     <tr class="space txt_green align_right ">
                         <td colspan="5" class="links-list">
                             <div class="row">
-                                
+
                                 <div class="col-md-6">
-                                   <!-- AddToAny BEGIN -->
-                                    <a class="a2a_dd" href="https://www.addtoany.com/share"><img src="//static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share"/></a>
-                                    <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
-                                    <!-- AddToAny END -->
+                                    <asp:HiddenField ID="Security" Value='<%#Eval("Security") %>' runat="server" />
+                                    <asp:Panel ID="ShareCon" Visible="False" runat="server">
+                                        <!-- AddToAny BEGIN -->
+                                        <a class="a2a_dd" href="https://www.addtoany.com/share">
+                                        <img src="//static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share" /></a>
+                                        <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+                                        <!-- AddToAny END -->
+                                    </asp:Panel>
                                 </div>
                                 <div class="col-md-6 text-right">
                                     <a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬
@@ -53,7 +56,7 @@
                                     <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
                                         <i class="fa fa-star txt_green"></i>‫ مفضلة
                                     </asp:LinkButton>
-                                            <a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a>
+                                    <a data-id="<%#Eval("id") %>" data-name="<%#Eval("title") %>" class="txt_green vis btnSendError" href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i>‫إبلاغ‬</a>
                                 </div>
                             </div>
                         </td>
@@ -65,92 +68,94 @@
                 <img src="img/grayspliter.png" class="split img-responsive">
                 <div class="space"></div>
 
-                <div class="comment_box" id="comment_box_<%#Container.DataItemIndex +1 %>">
-                    <table dir="rtl">
-                        <tr>
-                            <td colspan="2">
-                                <a runat="server" id="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
-                        </tr>
-                        <asp:ListView ID="Repeater1" runat="server">
-                            <ItemTemplate>
+                <asp:Panel ID="CommentCon" Visible="False" runat="server">
+                    <div class="comment_box" id="comment_box_<%#Container.DataItemIndex +1 %>">
+                        <table dir="rtl">
+                            <tr>
+                                <td colspan="2">
+                                    <a runat="server" id="btnShowCommenter1" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                            </tr>
+                            <asp:ListView ID="Repeater1" runat="server">
+                                <ItemTemplate>
 
-                                <tr style="vertical-align: top;">
-                                    <td style="vertical-align: top;" class="width_50_px" rowspan="3">
-                                        <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
+                                    <tr style="vertical-align: top;">
+                                        <td style="vertical-align: top;" class="width_50_px" rowspan="3">
+                                            <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 style="padding: 0; margin: 0;" class="txt_green font_small space align_right"><%#Eval("name") %></h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border: none;" class="space align_right">
+                                            <p>
+                                                ‫
+                                            <%#Eval("text") %>
+                                            </p>
+                                        </td>
+                                    </tr>
+
+
+
+                                </ItemTemplate>
+                                <EmptyDataTemplate>
+
+                                    <tr>
+                                        <td colspan="2" class=" ">
+                                            <div class="text-center alert alert-warning">
+                                                لا يوجد تعليقات
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="visibility: hidden;">
+                                        <td colspan="2" class=" ">
+                                            <a runat="server" id="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
+                                    </tr>
+                                </EmptyDataTemplate>
+                            </asp:ListView>
+
+                        </table>
+
+                    </div>
+
+
+
+                    <div class="commenter" id="commenter_<%#Container.DataItemIndex+1 %>">
+                        <div class="space"></div>
+
+                        <div class="addcomment_box">
+                            <table style="width: 100%;" dir="rtl">
+                                <tr>
+                                    <td style="vertical-align: top;" rowspan="4">
+                                        <asp:Image CssClass="small_user_pic" BorderStyle="Solid" BorderWidth="2" BorderColor="#88c16c" ID="imgUser" runat="server" />
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h4 style="padding: 0; margin: 0;" class="txt_green font_small space align_right"><%#Eval("name") %></h4>
+                                        <h4 style="padding: 0; margin: 0;" class="txt_green font_small space align_right">
+                                            <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
+                                        </h4>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="border: none;" class="space align_right">
-                                        <p>
-                                            ‫
-                                            <%#Eval("text") %>
-                                        </p>
+                                    <td style="width: 84%;" class="space align_right">
+                                        <asp:TextBox ID="txtComment" placeholder="تعليق... " CssClass="comment_input" TextMode="MultiLine" runat="server"></asp:TextBox>
                                     </td>
                                 </tr>
-
-
-
-                            </ItemTemplate>
-                            <EmptyDataTemplate>
-
                                 <tr>
                                     <td colspan="2" class=" ">
-                                        <div class="text-center alert alert-warning">
-                                            لا يوجد تعليقات
-                                        </div>
+                                        <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">تعليق</asp:LinkButton>
                                     </td>
                                 </tr>
+                            </table>
+                        </div>
 
-                                <tr style="visibility: hidden;">
-                                    <td colspan="2" class=" ">
-                                        <a runat="server" id="btnShowCommenter2" class="comment_sub background_gray txt_left">&nbsp;&nbsp;&nbsp;تعليق&nbsp;&nbsp;&nbsp;<img src="img/goback_green.png" class="img-responsive txt_left" /></a></td>
-                                </tr>
-                            </EmptyDataTemplate>
-                        </asp:ListView>
-
-                    </table>
-
-                </div>
-
-
-
-                <div class="commenter" id="commenter_<%#Container.DataItemIndex+1 %>">
-                    <div class="space"></div>
-
-                    <div class="addcomment_box">
-                        <table style="width: 100%;" dir="rtl">
-                            <tr>
-                                <td style="vertical-align: top;" rowspan="4">
-                                    <asp:Image CssClass="small_user_pic" BorderStyle="Solid" BorderWidth="2" BorderColor="#88c16c" ID="imgUser" runat="server" />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h4 style="padding: 0; margin: 0;" class="txt_green font_small space align_right">
-                                        <asp:Label ID="lblUserName" runat="server" Text=""></asp:Label>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 84%;" class="space align_right">
-                                    <asp:TextBox ID="txtComment" placeholder="تعليق... " CssClass="comment_input" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class=" ">
-                                    <asp:LinkButton CommandArgument='<%#Container.DataItemIndex %>' OnCommand="btnSendComent_OnCommand" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">تعليق</asp:LinkButton>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
-
-                </div>
-                <a id="btnShowAllComment<%#Eval("id") %>" class="link btn-link font_small btn-show-all-comment" data-text="اخفاء التعليقات" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
-                <div class="space"></div>
+                    <a id="btnShowAllComment<%#Eval("id") %>" class="link btn-link font_small btn-show-all-comment" data-text="اخفاء التعليقات" data-id="comment_box_<%#Container.DataItemIndex+1 %>">إظهار جميع التعليقات </a>
+                    <div class="space"></div>
+                </asp:Panel>
 
                 <div class="collapse" id="attached-<%#Container.DataItemIndex + 1 %>">
                     <img src="img/arrow_attched.png" class="img-responsive attached_img " />

@@ -25,7 +25,7 @@ public partial class login : UICaltureBase
 
             }
 
-            txtTitle.Text = "نسيت كلمة السر";
+            
         }
     }
 
@@ -159,18 +159,5 @@ public partial class login : UICaltureBase
     }
 
 
-    protected void btnSendMsg_OnClick(object sender, EventArgs e)
-    {
-
-        Database db = new Database();
-        db.AddParameter("@from", DBNull.Value);
-        db.AddParameter("@title", txtTitle.Text);
-        string msg = "البريد الالكتروني : " + txtEmail.Text + "<br/>";
-        msg += txtMsg.Text;
-        db.AddParameter("@msg", msg);
-        db.ExecuteNonQuery("insert into msg([from],title,msg) values(@from,@title,@msg)");
-        ClientScript.RegisterClientScriptBlock(GetType(),"Alert-Msg","alert('تم ارسال الرسالة الى مدير الموقع');",true);
-
-
-    }
+   
 }
