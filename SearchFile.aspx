@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMasterPage.master" AutoEventWireup="true" CodeFile="SearchFile.aspx.cs" Inherits="SearchFile" %>
+
 <%@ Register TagPrefix="uc1" TagName="hijriCalender" Src="~/Controls/hijriCalender.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
@@ -14,83 +15,96 @@
                     <td rowspan="2">
                         <asp:Button ID="btnSearch" OnClick="btnSearch_OnClick" CssClass="search_submit_page float_left" runat="server" Text="بحث" />
                     </td>
-                    
+
                     <td>
                         <label>‫المجال‬</label>
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlField" runat="server"></asp:DropDownList>
 
                     </td>
-                    <td >
-                        <label>الرقم</label> <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox><asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></td>
                     <td>
-                        <label>‫اسم البحث‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></td>
+                        <label>الرقم</label>
+                        <asp:TextBox ID="txtNo1" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox><asp:TextBox ID="txtNo2" CssClass="search_input_page" size="4" MaxLength="4" runat="server"></asp:TextBox></td>
+                    <td>
+                        <label>عنوان الملف‬</label><asp:TextBox ID="txtTitle" CssClass="search_input_page search_input_page_width" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>
-                        <label>‫النوع‬</label> 
+                        <label>‫النوع‬</label>
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlType" runat="server"></asp:DropDownList>
 
                     </td>
                     <td>
-                        <label>‫الدولة‬</label> 
+                        <label>‫الدولة‬</label>
                         <asp:DropDownList CssClass="search_input_page search_input_page_width" ID="ddlCountry" runat="server"></asp:DropDownList>
 
                     </td>
                     <td>
                         <label>‫تاريخ الملف‬</label>
-                        <uc1:hijriCalender  Class=" search_input_page search_input_page_width"  runat="server" ID="txtFileDate" />
+                        <uc1:hijriCalender Class=" search_input_page search_input_page_width" runat="server" ID="txtFileDate" />
                     </td>
                 </tr>
             </table>
 
-           
+
 
             <div class="space"></div>
-            <table class="table table-striped">
-                <thead>
-                    <tr id="green_background_color">
-                        <td>التسلسل </td>
-                        <td id="width_10">الرقم </td>
-                        <td id="width_20">اسم الملف</td>
-                        <td id="width_10">التاريخ</td>
-                        <td id="width_10">المجال</td>
-                        <td id="width_10">النوع</td>
-                        <td id="width_30">الوصف</td>
-                        <td id="width_10">العمليات</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <asp:ListView OnPagePropertiesChanged="Repeater1_OnPagePropertiesChanged" ID="Repeater1" runat="server">
-                        <ItemTemplate>
-                            <tr>
-                                <td  class="text-center"><%#Eval("Id")%></td>
-                                <td id="width_10"><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
-                                <td id="width_20">
-                                    <p class="fontsize" id="sub_cont"><%#Eval("Title") %></p>
-                                </td>
-                                <td  class="Mobilehead" id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
-                                <td  class="Mobilehead" id="width_10">
-                                    <p  class="fontsize"  id="sub_cont"><%#Eval("targetName") %></p>
-                                </td>
-                                <td  class="Mobilehead" id="width_10">
-                                    <p  class="fontsize"  id="sub_cont"><%#Eval("TypeName") %></p>
-                                </td>
-                                <td  class="Mobilehead" id="width_30">
-                                    <p  class="fontsize"  id="sub_cont">
-                                        <%#Eval("desc") %>
-                                    </p>
-                                </td>
-                                <td id="width_10" class="green_background_color">
-                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link">تصفح  </a><br /><br />
-                                    <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>"> تحميل  </a>
-                                </td>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:ListView>
 
-                </tbody>
-            </table>
+            <asp:ListView ItemPlaceholderID="iph" OnPagePropertiesChanged="Repeater1_OnPagePropertiesChanged" ID="Repeater1" runat="server">
+                <LayoutTemplate>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr id="green_background_color">
+                                <td>التسلسل </td>
+                                <td id="width_10">الرقم </td>
+                                <td id="width_20">عنوان الملف</td>
+                                <td id="width_10">التاريخ</td>
+                                <td id="width_10">المجال</td>
+                                <td id="width_10">النوع</td>
+                                <td id="width_30">الوصف</td>
+                                <td id="width_10">العمليات</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <asp:PlaceHolder ID="iph" runat="server"></asp:PlaceHolder>
+                        </tbody>
+                    </table>
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td class="text-center"><%#Eval("Id")%></td>
+                        <td id="width_10"><%#Tools.RecierveNo(Eval("no").ToString()) %></td>
+                        <td id="width_20">
+                            <p class="fontsize" id="sub_cont"><%#Eval("Title") %></p>
+                        </td>
+                        <td class="Mobilehead" id="width_10"><%# (new Dates()).GregToHijri(Eval("FileDate","{0:dd/MM/yyyy}"),"dd/MMM/yyyy") %></td>
+                        <td class="Mobilehead" id="width_10">
+                            <p class="fontsize" id="sub_cont"><%#Eval("targetName") %></p>
+                        </td>
+                        <td class="Mobilehead" id="width_10">
+                            <p class="fontsize" id="sub_cont"><%#Eval("TypeName") %></p>
+                        </td>
+                        <td class="Mobilehead" id="width_30">
+                            <p class="fontsize" id="sub_cont">
+                                <%#Eval("desc") %>
+                            </p>
+                        </td>
+                        <td id="width_10" class="green_background_color">
+                            <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" target="_blank" class="sub_link">تصفح  </a>
+                            <br />
+                            <br />
+                            <a href="/SystemFiles/Files/<%#Eval("fileUrl") %>" class="sub_link" download="<%#Eval("fileUrl") %>">تحميل  </a>
+                        </td>
+                        </td>
+                    </tr>
+                </ItemTemplate>
+                <EmptyDataTemplate>
+                    <div class="text-center alert alert-warning">
+                        الملف الذي تبحث عنة غير موجود الرجاء تعديل صيغة البحث
+                    </div>
+                </EmptyDataTemplate>
+            </asp:ListView>
+
+
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
 
@@ -229,21 +243,21 @@
                 </div>
             </div>
             <div class="text-center">
-            <asp:DataPager class="btn-group btn-group-sm" ID="DataPager1" PagedControlID="Repeater1" PageSize="10" runat="server">
-                <Fields>
-                    <asp:NumericPagerField ButtonType="Link" CurrentPageLabelCssClass="btn btn-primary disabled" RenderNonBreakingSpacesBetweenControls="false"
-                    NumericButtonCssClass="btn btn-default" ButtonCount="10" NextPageText="..." NextPreviousButtonCssClass="btn btn-default" />
-                </Fields>
-            </asp:DataPager>
+                <asp:DataPager class="btn-group btn-group-sm" ID="DataPager1" PagedControlID="Repeater1" PageSize="10" runat="server">
+                    <Fields>
+                        <asp:NumericPagerField ButtonType="Link" CurrentPageLabelCssClass="btn btn-primary disabled" RenderNonBreakingSpacesBetweenControls="false"
+                            NumericButtonCssClass="btn btn-default" ButtonCount="10" NextPageText="..." NextPreviousButtonCssClass="btn btn-default" />
+                    </Fields>
+                </asp:DataPager>
             </div>
-            
+
             <div class="space"></div>
         </div>
     </div>
-    
+
     <script type="text/javascript">
         $(function () {
-            
+
             $(".calendars-trigger").hide();
 
         });

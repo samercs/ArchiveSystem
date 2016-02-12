@@ -25,10 +25,10 @@
         </tr>
         <tr>
             <td class="input_td">
-                <asp:TextBox placeholder="رقم الهاتف" CssClass="form_class_input" ID="txtPhoneNumber" runat="server"></asp:TextBox>
+                <asp:TextBox placeholder="رقم الجوال" CssClass="form_class_input" ID="txtPhoneNumber" runat="server"></asp:TextBox>
             </td>
             <td class="lable_td hme">
-                <label>رقم الهاتف</label>
+                <label>رقم الجوال</label>
             </td>
         </tr>
         <tr>
@@ -55,11 +55,13 @@
         <tr>
             <td class="input_td">
                 <asp:FileUpload ID="fileImg" runat="server" />
+                <span class="help-block">146 * 146</span>
             </td>
             <td class="lable_td hme">
                 <label>الصورة</label>
             </td>
         </tr>
+        
         <tr>
             <td class="full_widther" colspan="2">
                 <asp:Button ID="btnSubmit" OnClick="btnSubmit_OnClick" CssClass="btn yes" runat="server" Text="حفظ" />

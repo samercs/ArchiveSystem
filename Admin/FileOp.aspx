@@ -99,7 +99,7 @@
                 
                 <tr>
                     <td>
-                        <asp:Label ID="Label12" runat="server" Text="المجال " CssClass="label_xblack"></asp:Label></td>
+                        <asp:Label ID="Label12" runat="server" Text="الفئات المستهدفة " CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <asp:DropDownList ID="ddlTarget" CssClass="ddl1" runat="server">
                             
@@ -141,7 +141,16 @@
                     </td>
                     <td></td>
                 </tr>
-                
+                <tr>
+                    <td>
+                        <asp:Label ID="Label16" runat="server" Text="المعنين" CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                            
+                        </asp:DropDownList>
+                    </td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td>
                         <asp:Label ID="Label13" runat="server" Text="الدولة" CssClass="label_xblack"></asp:Label></td>

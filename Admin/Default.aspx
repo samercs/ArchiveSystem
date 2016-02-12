@@ -11,7 +11,7 @@
                 <i class="fa fa-lock fa-4x"></i>
                 <br />
                 <p>
-                    مدير الموقع
+                    ادارة الموقع
                 </p>
 
             </div>
@@ -22,16 +22,15 @@
                 <i class="fa fa-user fa-4x"></i>
                 <br />
                 <p class="posr">
-                   المستخدمين
-                    <span id="lblUsersCount" runat="server" class="badge">
-                    </span>
+                    المستخدمين
+                    <span id="lblUsersCount" runat="server" class="badge"></span>
                 </p>
 
             </div>
         </a>
         <a href="FileList.aspx">
             <div class="item">
-                <div class="clear sp20" "></div>
+                <div class="clear sp20"></div>
                 <i class="fa fa-file-text-o fa-4x"></i>
                 <br />
                 <p>
@@ -57,9 +56,8 @@
                 <i class="fa fa-bell fa-4x"></i>
                 <br />
                 <p class="posr">
-                   الابلاغات عن الملفات 
-                    <span id="lblFileNoticeCount" runat="server" class="badge">
-                    </span>
+                    الابلاغات عن الملفات 
+                    <span id="lblFileNoticeCount" runat="server" class="badge"></span>
                 </p>
 
             </div>
@@ -70,9 +68,8 @@
                 <i class="fa fa-comment fa-4x"></i>
                 <br />
                 <p class="posr">
-                   التعليقات 
-                    <span id="lblFileCommentCount" runat="server" class="badge">
-                    </span>
+                    التعليقات 
+                    <span id="lblFileCommentCount" runat="server" class="badge"></span>
                 </p>
 
             </div>
@@ -83,9 +80,8 @@
                 <i class="fa fa-inbox fa-4x"></i>
                 <br />
                 <p class="posr">
-                   رسائل مدير الموقع 
-                    <span id="lblMsgCount" runat="server" class="badge">
-                    </span>
+                    رسائل مدير الموقع 
+                    <span id="lblMsgCount" runat="server" class="badge"></span>
                 </p>
 
             </div>
@@ -96,12 +92,68 @@
                 <i class="fa fa-list fa-4x"></i>
                 <br />
                 <p class="posr">
-                   التصنيفات 
-                    <span id="Span1" runat="server" class="badge">
-                    </span>
+                    التصنيفات 
+                    <span id="Span1" runat="server" class="badge"></span>
                 </p>
 
             </div>
         </a>
-     </div>
+        <div class="clear"></div>
+        <h1 class="Title BorderBottom">خصائص الملفات</h1>
+        <a href="FileSecurityList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-user-secret fa-4x"></i>
+                <br />
+                <p class="posr">
+                    السرية
+                </p>
+
+            </div>
+        </a>
+        <a href="FileTypeList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-file-o fa-4x"></i>
+                <br />
+                <p class="posr">
+                    النوع
+                </p>
+
+            </div>
+        </a>
+        <a href="FileFieldList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-users fa-4x"></i>
+                <br />
+                <p class="posr">
+                    المعنين
+                </p>
+
+            </div>
+        </a>
+        <a href="FileTargetList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-check-circle-o  fa-4x"></i>
+                <br />
+                <p class="posr">
+                    المجال
+                </p>
+
+            </div>
+        </a>
+        <a href="FileStatusList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-list-alt   fa-4x"></i>
+                <br />
+                <p class="posr">
+                    حالة الملف
+                </p>
+
+            </div>
+        </a>
+    </div>
 </asp:Content>

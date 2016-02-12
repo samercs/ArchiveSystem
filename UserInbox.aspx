@@ -24,7 +24,7 @@
 
                     <tr>
                         <td>
-                            <a data-id="<%#Eval("id") %>" data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#"> <%#Eval("Title") %></a>
+                            <a data-id="<%#Eval("id") %>" data-from="<%#Eval("from") %>" data-text="<%#Eval("msg") %>" data-id="<%#Eval("id") %>" data-title="<%#Eval("title") %>" class="btnReadMsg" data-toggle="modal" data-target="#myModalInbox" href="#"><%#Eval("Title") %></a>
                         </td>
                         <td>
                             <%#(string.IsNullOrWhiteSpace(Eval("from").ToString()) || Eval("from").ToString().Equals("-1")) ? "مدير الموقع" :  Eval("UserName") %>
@@ -100,7 +100,9 @@
                             <td>الرسالة
                             </td>
                             <td>
-                                <asp:Label ID="lblMsg" runat="server" CssClass=" text-success" Text=""></asp:Label>
+                                <div style="overflow-x: scroll; width: 300px;">
+                                    <asp:Label ID="lblMsg" runat="server" CssClass=" text-success" Text=""></asp:Label>
+                                </div>
                             </td>
                         </tr>
                         <tr class="form_table_tr ">
@@ -109,30 +111,30 @@
 
                     </table>
                     <asp:HiddenField ID="userId" runat="server" />
-                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
                             <table dir="rtl" class="table table-responsive">
-                        <tr>
-                            <td class="space align_right">
-                                <asp:TextBox ID="txtTitle" placeholder="عنوان الرسالة" CssClass="form-control" runat="server"></asp:TextBox>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="space align_right">
-                                <asp:TextBox ID="txtComment" MaxLength="500" placeholder="كتابة رد... " CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                   <div id="txtaddress" dir="rtl" style="font-size:12px;text-align:center;"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">ارسال الرد</asp:LinkButton>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </table>
+                                <tr>
+                                    <td class="space align_right">
+                                        <asp:TextBox ID="txtTitle" placeholder="عنوان الرسالة" CssClass="form-control" runat="server"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="space align_right">
+                                        <asp:TextBox ID="txtComment" MaxLength="500" placeholder="كتابة رد... " CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
+                                        <div id="txtaddress" dir="rtl" style="font-size: 12px; text-align: center;"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:LinkButton OnClientClick="return validateSendMsg();" OnClick="btnSendComent_OnClick" CssClass="comment_sub commenter_btn  txt_left" ID="btnSendComent" runat="server">ارسال الرد</asp:LinkButton>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
                         </ContentTemplate>
                     </asp:UpdatePanel>
 
@@ -183,34 +185,34 @@
 
             return input.replace(/\s/g, '').length < 1;
         }
-                $(document).ready(function() {
+        $(document).ready(function () {
 
             var text_max = 500;
 
-            $('#txtaddress').html(text_max+' حرف متبقي');
+            $('#txtaddress').html(text_max + ' حرف متبقي');
 
-            $("#<%=txtComment.ClientID%>").keyup(function() {
+            $("#<%=txtComment.ClientID%>").keyup(function () {
 
-                var text_length =   $("#<%=txtComment.ClientID%>").val().length;
+                var text_length = $("#<%=txtComment.ClientID%>").val().length;
                 var text_remaining = text_max - text_length;
 
-                $('#txtaddress').html(text_remaining+' حرف متبقي');
-         
+                $('#txtaddress').html(text_remaining + ' حرف متبقي');
+
 
             });
 
                 });
-        
+
         var prm = Sys.WebForms.PageRequestManager.getInstance();
 
         prm.add_endRequest(function () {
-             $(function () {
+            $(function () {
 
 
-            $(".btnReadMsg").click(function () {
+                $(".btnReadMsg").click(function () {
 
-                var $this = $(this);
-                $("#<%=lblTitle.ClientID%>").text($this.data("title"));
+                    var $this = $(this);
+                    $("#<%=lblTitle.ClientID%>").text($this.data("title"));
                 $("#<%=txtTitle.ClientID%>").val('رد : ' + $this.data("title"));
                 $("#<%=lblMsg.ClientID%>").text($this.data("text"));
                 $("#<%=userId.ClientID%>").val($this.data("from"));
@@ -222,11 +224,11 @@
 
             });
 
-        });
+             });
 
-        function validateSendMsg() {
+            function validateSendMsg() {
 
-            var msg = $("#<%=txtComment.ClientID%>").val();
+                var msg = $("#<%=txtComment.ClientID%>").val();
             if (isNullOrWhitespace(msg)) {
                 alert("الرجاء ادخال الرد");
                 return false;
@@ -237,25 +239,25 @@
         }
 
 
-        function isNullOrWhitespace(input) {
+            function isNullOrWhitespace(input) {
 
-            if (typeof input === 'undefined' || input == null) return true;
+                if (typeof input === 'undefined' || input == null) return true;
 
-            return input.replace(/\s/g, '').length < 1;
-        }
-                $(document).ready(function() {
+                return input.replace(/\s/g, '').length < 1;
+            }
+            $(document).ready(function () {
 
-            var text_max = 500;
+                var text_max = 500;
 
-            $('#txtaddress').html(text_max+' حرف متبقي');
+                $('#txtaddress').html(text_max + ' حرف متبقي');
 
-            $("#<%=txtComment.ClientID%>").keyup(function() {
+                $("#<%=txtComment.ClientID%>").keyup(function () {
 
-                var text_length =   $("#<%=txtComment.ClientID%>").val().length;
+                var text_length = $("#<%=txtComment.ClientID%>").val().length;
                 var text_remaining = text_max - text_length;
 
-                $('#txtaddress').html(text_remaining+' حرف متبقي');
-         
+                $('#txtaddress').html(text_remaining + ' حرف متبقي');
+
 
             });
 

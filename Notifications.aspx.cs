@@ -5,8 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Kalboard360.ClassCode;
 
-public partial class Notifications : UICaltureBase
+public partial class Notifications : UsersPages
 {Database db = new Database();
     protected void Page_Load(object sender, EventArgs e)
     {

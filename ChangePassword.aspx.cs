@@ -5,8 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Kalboard360.ClassCode;
 
-public partial class ChangePassword : UICaltureBase
+public partial class ChangePassword : UsersPages
 {
     protected void Page_Load(object sender, EventArgs e)
     {
