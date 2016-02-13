@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -168,7 +169,20 @@ public partial class Admin_FileOp : AdminPages
                 }
                 ViewState["file"] = DateTime.Now.Ticks + System.IO.Path.GetFileName(fileFile.PostedFile.FileName);
 
-                fileFile.PostedFile.SaveAs(Server.MapPath("~/SystemFiles/Files/" + ViewState["file"].ToString()));
+                string filePath = Server.MapPath("~/SystemFiles/Files/" + ViewState["file"].ToString());
+                fileFile.PostedFile.SaveAs(filePath);
+
+                if (filePath.ToLower().EndsWith(".pdf"))
+                {
+                    string customizedText = String.Format("Social Polisies Directory - NCSS");
+                    FileInfo pdfFileInfo = new FileInfo(filePath);
+                    byte[] fileBytes = FooTheoryPdf.WriteToPdf(pdfFileInfo, customizedText);
+                    File.WriteAllBytes(filePath, fileBytes);
+
+                }
+                
+
+
             }
             catch (Exception ex)
             {
