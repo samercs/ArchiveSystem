@@ -56,7 +56,7 @@ public class FooTheoryPdf
                 //
                 BaseFont baseFont = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, Encoding.ASCII.EncodingName, false);
                 pdfPageContents.SetFontAndSize(baseFont, 20); // 40 point font
-                pdfPageContents.SetRGBColorFill(100, 100, 100); // Sets the color of the font, RED in this instance
+                pdfPageContents.SetRGBColorFill(200, 0, 0); // Sets the color of the font, RED in this instance
 
 
                 //

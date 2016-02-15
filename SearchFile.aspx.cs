@@ -32,8 +32,15 @@ public partial class SearchFile : UsersPages
             if (no != null)
             {
                 string[] noArray = no.Split('/');
-                txtNo1.Text = noArray[0];
-                txtNo2.Text = noArray[1];
+                if (noArray.Length > 0)
+                {
+                    txtNo1.Text = noArray[0];
+                }
+                if (noArray.Length > 1)
+                {
+                    txtNo2.Text = noArray[1];
+                }
+                
 
             }
             

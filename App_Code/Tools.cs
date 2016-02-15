@@ -78,7 +78,7 @@ public class Tools
     public static string RecierveNo(string no)
     {
         string[] noArray = no.Split('/');
-        return noArray[1] + "/" + noArray[0];
+        return noArray[0] + "/" + noArray[1];
 
     }
 

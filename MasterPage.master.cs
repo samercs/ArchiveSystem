@@ -57,14 +57,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
             DivError.Visible = false;
 
             DateTime tmp;
-            int no1, no2;
+            
             DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy",
                 CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp);
 
-            int.TryParse(txtNo1.Text, out no1);
-            int.TryParse(txtNo2.Text, out no2);
+            
+            
 
-            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}&type={5}", txtFileName.Text, txtDate.Text, ddlField.SelectedValue, txtNo1.Text + "/" + txtNo2.Text, ddlCountry.SelectedValue,ddlType.SelectedValue));
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}&type={5}", txtFileName.Text, txtDate.Text, ddlField.SelectedValue, txtNo1.Text , ddlCountry.SelectedValue,ddlType.SelectedValue));
             
         }
 
@@ -75,7 +75,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     private bool ValidateData()
     {
         DateTime tmp;
-        int no1, no2;
+        
         Dates datets = new Dates();
 
         return !string.IsNullOrWhiteSpace(txtFileName.Text) ||
@@ -83,8 +83,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
                    CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) ||
                !ddlField.SelectedValue.Equals("-1") ||
                !ddlCountry.SelectedValue.Equals("-1") ||
-               int.TryParse(txtNo1.Text, out no1) ||
-               int.TryParse(txtNo2.Text, out no2) ||
+               !string.IsNullOrEmpty(txtNo1.Text)  ||
                !ddlType.SelectedValue.Equals("-1");
     }
 

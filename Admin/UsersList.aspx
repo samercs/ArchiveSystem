@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="Title BorderBottom"><%=name %></h1>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager EnablePartialRendering="False" ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdateProgress runat="server" ID="PageUpdateProgress" AssociatedUpdatePanelID="UpdatePanel1" DisplayAfter="0">
         <ProgressTemplate>
             <div class="LoadingCenter">

@@ -65,11 +65,14 @@ public partial class Admin_UsersList : AdminPages
             System.IO.File.Delete(Server.MapPath("~/SystemFiles/Users/"+ e.CommandName));
         }
 
-        Database db = new Database(); string sql = string.Empty;
+        Database db = new Database();
+        string sql = string.Empty;
+        string sql2 = string.Empty;
 
         sql = "delete from " + tablename + " where id =" + e.CommandArgument;
+        sql2 = "delete from FileComment where UserId =" + e.CommandArgument;
 
-        if (db.ExecuteNonQuery(sql) >= 1)
+        if (db.ExecuteNonQuery(sql2+";"+sql) >= 1)
         {
             ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح.\")</SCRIPT>", false);
         }
@@ -106,8 +109,10 @@ public partial class Admin_UsersList : AdminPages
         }
 
         string sql = string.Empty;
+        string sql2 = string.Empty;
 
         sql = "delete from " + tablename + " where id in (";
+        sql2 = "delete from FileComment where UserId in (";
 
         if (arrlist.Count > 0)
         {
@@ -116,15 +121,21 @@ public partial class Admin_UsersList : AdminPages
                 if (i == 0)
                 {
                     sql += arrlist[i].ToString();
+                    sql2 += arrlist[i].ToString();
                 }
                 else
                 {
                     sql += "," + arrlist[i].ToString();
+                    sql2 += "," + arrlist[i].ToString();
                 }
 
             }
 
             sql += ")";
+            sql2 += ")";
+
+            db.ExecuteNonQuery(sql2);
+
             if (db.ExecuteNonQuery(sql) >= 1)
             {
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.success(\"تم الحذف بنجاح\")</SCRIPT>", false);
