@@ -53,6 +53,8 @@ public partial class login : UICaltureBase
             u.Image = row["Img"].ToString();
             u.Phone = row["Phone"].ToString();
             u.JobTitle = row["JobTitle"].ToString();
+            u.Organization = row["Organization"].ToString();
+            u.Mobile = row["Mobile"].ToString();
             u.RequeriedChangePassword = bool.Parse(row["RequerChange"].ToString());
             Session["User"] = u;
 

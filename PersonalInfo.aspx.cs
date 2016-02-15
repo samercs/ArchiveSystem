@@ -16,6 +16,8 @@ public partial class PersonalInfo : UsersPages
             Users u=Session["User"] as Users;
             txtName.Text = u.Name;
             txtJobTitle.Text = u.JobTitle;
+            txtOrganization.Text = u.Organization;
+            txtMobile.Text = u.Mobile;
             txtPhoneNumber.Text = u.Phone;
             txtUserName.Text = u.UserName;
             txtPassword.Attributes.Add("value",u.Password);
@@ -44,14 +46,19 @@ public partial class PersonalInfo : UsersPages
             Database db=new Database();
             db.AddParameter("@name", txtName.Text);
             db.AddParameter("@phone", txtPhoneNumber.Text);
+            db.AddParameter("@organization", txtOrganization.Text);
+            db.AddParameter("@mobile", txtMobile.Text);
             db.AddParameter("@img", imgFileName);
             db.AddParameter("@id", u.Id);
-            db.ExecuteNonQuery("update users set phone=@phone,name=@name,img=@img where id=@id");
+            db.ExecuteNonQuery("update users set mobile=@mobile,organization=@organization,phone=@phone,name=@name,img=@img where id=@id");
 
 
             u.Name = txtName.Text;
             u.Phone = txtPhoneNumber.Text;
             u.Image = imgFileName;
+            u.Organization = txtOrganization.Text;
+            u.Mobile = txtMobile.Text;
+
 
 
             Session["User"] = u;

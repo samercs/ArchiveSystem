@@ -25,7 +25,22 @@
         </tr>
         <tr>
             <td class="input_td">
-                <asp:TextBox placeholder="رقم الجوال" CssClass="form_class_input" ID="txtPhoneNumber" runat="server"></asp:TextBox>
+                <asp:TextBox  placeholder="جهة العمل" CssClass="form_class_input" ID="txtOrganization" runat="server"></asp:TextBox>
+            </td>
+            <td class="lable_td hme">
+                <label>جهة العمل</label></td>
+        </tr>
+        <tr>
+            <td class="input_td">
+                <asp:TextBox placeholder="رقم الهاتف" CssClass="form_class_input" ID="txtPhoneNumber" runat="server"></asp:TextBox>
+            </td>
+            <td class="lable_td hme">
+                <label>رقم الهاتف</label>
+            </td>
+        </tr>
+        <tr>
+            <td class="input_td">
+                <asp:TextBox placeholder="رقم الجوال" CssClass="form_class_input" ID="txtMobile" runat="server"></asp:TextBox>
             </td>
             <td class="lable_td hme">
                 <label>رقم الجوال</label>

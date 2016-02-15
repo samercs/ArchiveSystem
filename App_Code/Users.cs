@@ -14,7 +14,9 @@ public class Users
     public string Password { get; set; }
     public string Image { get; set; }
     public string Phone { get; set; }
+    public string Mobile { get; set; }
     public string JobTitle { get; set; }
+    public string Organization { get; set; }
 
     public bool RequeriedChangePassword { get; set; }
 
