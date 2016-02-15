@@ -19,7 +19,7 @@ public partial class Admin_FilesList : AdminPages
         if (!Page.IsPostBack)
         {
             Database db=new Database();
-            db.LoadDDL("category","title",ref ddlField,"المجال" , "catId=5");
+            db.LoadDDL("FileTarget","title",ref ddlField,"المجال" );
             HyperLink3.NavigateUrl = addPage;
             LoadData();
         }

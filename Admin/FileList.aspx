@@ -37,7 +37,7 @@
                         المجال
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlField" CssClass="ddl1" runat="server">
+                        <asp:DropDownList Width="200" ID="ddlField" CssClass="ddl1" runat="server">
                         </asp:DropDownList>
                     </td>
                     <td>

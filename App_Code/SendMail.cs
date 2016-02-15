@@ -27,7 +27,7 @@ public class SendMail
             eMail.Subject = subject;
             eMail.Priority = MailPriority.High;
             System.Net.Mail.SmtpClient SMTP = new System.Net.Mail.SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
-            NetworkCredential Xcred = new NetworkCredential("samercs", "samer2006");
+            NetworkCredential Xcred = new NetworkCredential("samer.alkhatib", "samer2006");
             SMTP.Credentials = Xcred;
             SMTP.Send(eMail);
         
