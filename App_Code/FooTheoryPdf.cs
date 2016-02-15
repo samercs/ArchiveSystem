@@ -48,7 +48,7 @@ public class FooTheoryPdf
                 // Gets the content ABOVE the PDF, Another option is GetUnderContent(...)  
                 // which will place the text below the PDF content. 
                 //
-                PdfContentByte pdfPageContents = pdfStamper.GetUnderContent(i);
+                PdfContentByte pdfPageContents = pdfStamper.GetOverContent(i);
                 pdfPageContents.BeginText(); // Start working with text.
 
                 //
@@ -56,7 +56,7 @@ public class FooTheoryPdf
                 //
                 BaseFont baseFont = BaseFont.CreateFont(BaseFont.HELVETICA_BOLD, Encoding.ASCII.EncodingName, false);
                 pdfPageContents.SetFontAndSize(baseFont, 20); // 40 point font
-                pdfPageContents.SetRGBColorFill(200, 0, 0); // Sets the color of the font, RED in this instance
+                pdfPageContents.SetRGBColorFill(170, 170, 170); // Sets the color of the font, RED in this instance
 
 
                 //
