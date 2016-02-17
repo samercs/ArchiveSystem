@@ -57,25 +57,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
             DivError.Visible = false;
 
             DateTime tmp;
-            
+
             DateTime.TryParseExact(datets.HijriToGreg(txtDate.Text, "d/M/yyyy"), "d/M/yyyy",
                 CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp);
 
-            
-            
 
-            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}&type={5}", txtFileName.Text, txtDate.Text, ddlField.SelectedValue, txtNo1.Text , ddlCountry.SelectedValue,ddlType.SelectedValue));
-            
+
+
+            Response.Redirect(String.Format("SearchFile.aspx?name={0}&date={1}&category={2}&no={3}&country={4}&type={5}", txtFileName.Text, txtDate.Text, ddlField.SelectedValue, txtNo1.Text, ddlCountry.SelectedValue, ddlType.SelectedValue));
+
         }
 
-        
-    }
 
+    }
 
     private bool ValidateData()
     {
         DateTime tmp;
-        
+
         Dates datets = new Dates();
 
         return !string.IsNullOrWhiteSpace(txtFileName.Text) ||
@@ -83,10 +82,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
                    CultureInfo.InvariantCulture, DateTimeStyles.None, out tmp) ||
                !ddlField.SelectedValue.Equals("-1") ||
                !ddlCountry.SelectedValue.Equals("-1") ||
-               !string.IsNullOrEmpty(txtNo1.Text)  ||
+               !string.IsNullOrEmpty(txtNo1.Text) ||
                !ddlType.SelectedValue.Equals("-1");
     }
-
 
     protected void btnSearchUsers_OnClick(object sender, EventArgs e)
     {

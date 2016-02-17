@@ -84,6 +84,7 @@ public partial class SearchUser : UsersPages
             ShowAlert("الرجاء تحديد المستخدم",MsgType.Error);
             return false;
         }
+
         return true;
     }
 }

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>الدليل لاألكتروني لأرشفة الملفات والقرارات الحكومية</title>
+    <title>دليل الأنظمة الاجتماعية</title>
     <link href="Styles/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

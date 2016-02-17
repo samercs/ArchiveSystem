@@ -98,9 +98,33 @@
 
             </div>
         </a>
+          <a href="PagesList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-newspaper-o fa-4x"></i>
+                <br />
+                <p class="posr">
+                  معلومات الاتصال
+                    <span id="Span2" runat="server" class="badge"></span>
+                </p>
+
+            </div>
+        </a>
+          <a href="SocialList.aspx">
+            <div class="item">
+                <div class="clear sp20"></div>
+                <i class="fa fa-facebook fa-4x"></i>
+                <br />
+                <p class="posr">
+                روابط التواصل الاجتماعي
+                    <span id="Span3" runat="server" class="badge"></span>
+                </p>
+
+            </div>
+        </a>
         <div class="clear"></div>
         <h1 class="Title BorderBottom">خصائص الملفات</h1>
-        <a href="FileSecurityList.aspx">
+        <a href="FileSecurityList.aspx" runat="server" visible="false">
             <div class="item">
                 <div class="clear sp20"></div>
                 <i class="fa fa-user-secret fa-4x"></i>
@@ -144,7 +168,7 @@
 
             </div>
         </a>
-        <a href="FileStatusList.aspx">
+        <a href="FileStatusList.aspx"  runat="server" visible="false">
             <div class="item">
                 <div class="clear sp20"></div>
                 <i class="fa fa-list-alt   fa-4x"></i>

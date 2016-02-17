@@ -140,8 +140,10 @@
                             </td>
                             <td colspan="6">
                                 <div class="input_box">
-                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" placeholder="الرسالة" TextMode="MultiLine" CssClass="input_txtarea" runat="server"></asp:TextBox>
-                                </div>
+                                    <img src="img/textarea.png" class="input_img_text_area img-responsive" /><asp:TextBox ID="txtMsg" MaxLength="500" placeholder="الرسالة" TextMode="MultiLine" CssClass="input_txtarea" runat="server"></asp:TextBox>
+                                 <div id="txtaddress" dir="rtl" style="font-size: 12px;text-align: center;display: block;margin: 0 auto;
+    width: 150px;"></div>
+                                     </div>
                             </td>
                         </tr>
                         <tr class="form_table_tr_extra ">
@@ -176,13 +178,35 @@
             
 
         });
+             $(document).ready(function () {
 
+            var text_max = 500;
+
+            $('#txtaddress').html(text_max + ' حرف متبقي');
+
+            $("#<%=txtMsg.ClientID%>").keyup(function () {
+
+                var text_length = $("#<%=txtMsg.ClientID%>").val().length;
+                var text_remaining = text_max - text_length;
+
+                $('#txtaddress').html(text_remaining + ' حرف متبقي');
+
+
+            });
+
+                });
 
         function validateMsg2() {
             var title = $("#<%=txtSubject.ClientID%>").val();
+            var txtMsg = $("#<%=txtMsg.ClientID%>").val();
             var msg = $("#<%=txtMsg.ClientID%>").val();
             if (title == "") {
                 alert("الرجاء ادخال عنوان الرسالة");
+                return false;
+
+            }
+            if (txtMsg.length>500) {
+                alert("نص الرسالة يجب الا يتخطى الـ500 حرف.");
                 return false;
 
             }

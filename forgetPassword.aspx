@@ -14,7 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="js/tooltip.js"></script>
-    
+    <style>
+        .hyperlink_login_form{
+            cursor:pointer;
+        }
+    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>

@@ -4,7 +4,17 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    
+    <script>
+
+        function Validate(event) {
+            var regex = new RegExp("^[0-9?]+$");
+            var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1 class="Title BorderBottom"><%=name %></h1>
@@ -28,8 +38,8 @@
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="رقم القيد" CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtNo1" Width="150" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox> / 
-                        <asp:TextBox ID="txtNo2" Width="150" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtNo1" Width="150" ValidationGroup="Option3" onkeypress="return Validate(event);" CssClass="txt1" runat="server"></asp:TextBox> / 
+                        <asp:TextBox ID="txtNo2" Width="150" ValidationGroup="Option3" onkeypress="return Validate(event);" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>

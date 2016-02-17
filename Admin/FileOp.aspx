@@ -31,7 +31,17 @@
                 { title: 'Table styles' },
                 { title: 'Table row 1', selector: 'tr', classes: 'tablerow1' }
             ],
-        });</script>
+        });
+
+        function Validate(event) {
+            var regex = new RegExp("^[0-9?]+$");
+            var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+            if (!regex.test(key)) {
+                event.preventDefault();
+                return false;
+            }
+        }
+    </script>
 
 
     <script type="text/javascript" src="/js/calender/jquery.calendars.js"></script>
@@ -74,8 +84,8 @@
                     <td>
                         <asp:Label ID="Label1" runat="server" Text="الرقم" CssClass="label_xblack"></asp:Label></td>
                     <td>
-                        <asp:TextBox Width="100" ID="txtNo1" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox> / 
-                        <asp:TextBox Width="100" ID="txtNo2" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                        <asp:TextBox Width="100" ID="txtNo1" ValidationGroup="Option3" onkeypress="return Validate(event);" CssClass="txt1" runat="server"></asp:TextBox> / 
+                        <asp:TextBox Width="100" ID="txtNo2" ValidationGroup="Option3" onkeypress="return Validate(event);" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>

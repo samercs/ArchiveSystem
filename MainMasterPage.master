@@ -7,7 +7,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>دليل الأنظمة الإجتماعية</title>
+    <title>دليل الأنظمة الاجتماعية</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -74,7 +74,7 @@
                         </ul>
                     </div>
                     <div class="logo_p">
-                        <p>دليل الأنظمة الإجتماعية</p>
+                        <p>دليل الأنظمة الاجتماعية</p>
                     </div>
                     <ul id="menu" runat="server" class="menu" dir="rtl">
                         <li class="menuitem"><a href="Default.aspx"><i class="fa fa-home font"></i>
@@ -97,20 +97,20 @@
                     <div class="SocalIcon">
                         <ul class="list-inline">
                             <li>
-                                <a href="#">
+                                <a runat="server" id="Twitter" target="_blank" href="#">
                                     <img src="/img/Twitter.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a runat="server" id="Facebook" target="_blank" href="#">
                                     <img src="/img/FB.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#">
+                             <a runat="server" id="Google" target="_blank" href="#">
                                     <img src="/img/Google.jpg" /></a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="/img/Linkedin.jpg" /></a>
+                               <a runat="server" id="Instagram" target="_blank" href="#">
+                                    <img src="img/Instagram.png" /></a>
                             </li>
                         </ul>
                         <asp:Panel ID="UserLoginSection1" runat="server">

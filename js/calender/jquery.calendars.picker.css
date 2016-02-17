@@ -8,9 +8,11 @@
     border-radius: 0.25em;
 	font-family: Arial,Helvetica,Sans-serif;
 	font-size: 90%;
+    width:100% !important;
 }
 .calendars-rtl {
 	direction: rtl;
+    width:100% !important;
 }
 .calendars-popup {
 	z-index: 1000;
@@ -42,10 +44,10 @@
 }
 .calendars-nav, .calendars-ctrl {
 	float: left;
-	width: 100%;
+	width: 100% !important;
 	background-color: #000;
 	color: #fff;
-	font-size: 90%;
+	font-size: 100%;
 	font-weight: bold;
 }
 .calendars-ctrl {
@@ -119,7 +121,7 @@ button.calendars-cmd {
 }
 .calendars-month {
 	float: left;
-	width: 15em;
+	width: 100% !important;
 	border: 1px solid #444;
 	text-align: center;
 }

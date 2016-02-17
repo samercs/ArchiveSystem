@@ -81,13 +81,16 @@
                                 <asp:Button OnClick="btnLogin_OnClick" ID="btnLogin" CssClass="submit_btn_login_form" runat="server" Text="دخول" /></td>
                             <td class="hme">
                                 <a href="forgetPassword.aspx" class="hyperlink_login_form">هل نسيت كلمة المرور ؟</a>
-                                
+                               <br />
+                                  <a href="Default.aspx"  class="hyperlink_login_form">العودة إلى الصفحة الرئيسية</a>
                             </td>
                         </tr>
                         <tr>
                             <td class="moblie_hide align_center">
 
                                 <a href="forgetPassword.aspx" class="hyperlink_login_form" id='hyperlink_login_form'>هل نسيت كلمة المرور ؟</a>
+                                   <br />
+                                  <a href="Default.aspx"  class="hyperlink_login_form">العودة إلى الصفحة الرئيسية</a>
                                 
                             </td>
 

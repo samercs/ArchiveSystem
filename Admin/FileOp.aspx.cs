@@ -69,7 +69,7 @@ public partial class Admin_FileOp : AdminPages
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        if (Request.QueryString["Op"].Equals("Add") && !fileFile.HasFile)
+        if (Request.QueryString["Op"].ToLower()== "add" && !fileFile.HasFile)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار الملف.\")</SCRIPT>", false);
             return;
@@ -79,9 +79,15 @@ public partial class Admin_FileOp : AdminPages
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء اختيار العنوان.\")</SCRIPT>", false);
             return;
         }
+        int x = 0;
         if (string.IsNullOrWhiteSpace(txtNo1.Text) || string.IsNullOrWhiteSpace(txtNo2.Text))
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"الرجاء ادخال رقم الملف.\")</SCRIPT>", false);
+            return;
+        }
+        if(!int.TryParse(txtNo1.Text, out x) || !int.TryParse(txtNo2.Text, out x))
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "<SCRIPT LANGUAGE=\"JavaScript\">alertify.error(\"رقم الملف يقبل الأعداد الصحيحة فقط..\")</SCRIPT>", false);
             return;
         }
 

@@ -269,7 +269,7 @@ header {
 }
 
 .undernav {
-    width: 100%;
+    width: 100%;margin-top:30px;
 }
 
 .logo_img_default {
@@ -321,7 +321,9 @@ header {
     font-size: 0.8em;
     display: none;
 }
-
+.notification{
+    margin-top:-25px;font-size:22px;
+}
     .notifications td {
         float: left;
         padding: 0.14em;
@@ -332,9 +334,10 @@ header {
     display: block;
     background: white;
     margin: 25px 0;
+    margin-top:45px;
 }
 .menu_btn {
-    font-size:1.7em;
+    font-size:1.7em;position:absolute;right:10px;
 }
 .menunotifications {
     float: right;
@@ -1016,7 +1019,8 @@ footer {
 }
 
 .search_input_page_width {
-    width: 7em;
+    width: 125px;
+    max-width:125px;
 }
 
 .search_submit_page {
@@ -1519,7 +1523,7 @@ table .space .MobileChange {width:25%;float :right ; border:none ; font-size :0.
 
 .SocalIcon {
     position: absolute;
-    top: 10px;
+    top: 75px;
     left: 10px;
 }
 .SocalIcon ul li {
@@ -1536,11 +1540,11 @@ table .space .MobileChange {width:25%;float :right ; border:none ; font-size :0.
 
 .loginBtn {
     color: #4d4d4f;
-    font-size: 10px;
+    font-size: 14px;
     position: absolute;
-    top: 45px;
+    top: 40px;
     left: -5px;
-    width: 150px;
+    width: 200px;
 }
 
 .loginBtn img {

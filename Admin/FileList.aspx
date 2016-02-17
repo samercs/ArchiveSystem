@@ -114,8 +114,8 @@
                             </td>
                             <td>
                                 <%#Eval("StatusName") %>
-                                - <asp:LinkButton OnCommand="btnEditStatus_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnEditStatus" runat="server">
-                                    <%#Eval("Status").ToString().Equals("1") ? "ايقاف" : "تفعيل" %>
+                                <%--- --%><asp:LinkButton OnCommand="btnEditStatus_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnEditStatus" runat="server">
+                                  <%--  <%#Eval("Status").ToString().Equals("1") ? "ايقاف" : "تفعيل" %>--%>
                                 </asp:LinkButton> 
                             </td>
                             <td>

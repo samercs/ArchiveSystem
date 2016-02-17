@@ -16,12 +16,22 @@ public partial class MainMasterPage : System.Web.UI.MasterPage
     {
         if(!Page.IsPostBack)
         {
+            Database db = new Database();
+            DataTable dt0 = db.ExecuteDataTable("select Link from Social");
+            if (dt0.Rows.Count > 3)
+            {
+                Facebook.Attributes.Add("href", dt0.Rows[1][0].ToString());
+                Twitter.Attributes.Add("href", dt0.Rows[0][0].ToString());
+                Google.Attributes.Add("href", dt0.Rows[2][0].ToString());
+                Instagram.Attributes.Add("href", dt0.Rows[3][0].ToString());
+            }
             Tools t = new Tools();
             if (t.IsUserLogin(Session))
             {
                 Users u = Session["User"] as Users;
                 LoadMsg();
-                Database db = new Database();
+                
+
                 db.AddParameter("@id", u.Id);
                 object count = db.ExecuteScalar("select count(*) from msg  where msg.toid=@id and msg.isread=0");
                 int tmp;

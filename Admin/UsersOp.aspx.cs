@@ -60,6 +60,7 @@ public partial class Admin_UsersOp : AdminPages
         }
         txtJobTitle.Text = ds.Tables[0].Rows[0]["JobTitle"].ToString();
         txtPhone.Text = ds.Tables[0].Rows[0]["Phone"].ToString();
+        txtMobile.Text = ds.Tables[0].Rows[0]["Mobile"].ToString();
         ViewState["file"] = ds.Tables[0].Rows[0]["img"].ToString();
     }
     protected void btnSave_Click(object sender, EventArgs e)
@@ -152,6 +153,7 @@ public partial class Admin_UsersOp : AdminPages
         db.AddParameter("@IsActive", ddlStatus.SelectedValue);
         db.AddParameter("@JobTitle",txtJobTitle.Text);
         db.AddParameter("@phone", txtPhone.Text);
+        db.AddParameter("@Mobile", txtMobile.Text);
         db.AddParameter("@img", ViewState["file"].ToString());
 
 
@@ -161,7 +163,7 @@ public partial class Admin_UsersOp : AdminPages
             try
             {
                 db.AddParameter("@id", Request.QueryString["id"]);
-                db.ExecuteNonQuery("Update " + tablename + " Set name=@name,[username]=@username,[img]=@img,password=@password,[RequerChange]=@RequerChange,[LockedTo]=@LockedTo,[IsActive]=@IsActive,[JobTitle]=@JobTitle,[Phone]=@Phone,Organization=@Organization where Id=@id");
+                db.ExecuteNonQuery("Update " + tablename + " Set name=@name,[username]=@username,[img]=@img,password=@password,[RequerChange]=@RequerChange,[LockedTo]=@LockedTo,[IsActive]=@IsActive,[JobTitle]=@JobTitle,[Phone]=@Phone,[Mobile]=@Mobile,Organization=@Organization where Id=@id");
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم التعديل ','تم التعديل بنجاح').set('onok', function(closeEvent){ location.href='" + listpage+"'; } );", true);
             }
             catch (Exception ex)
@@ -172,7 +174,7 @@ public partial class Admin_UsersOp : AdminPages
         }
         else if (Request.QueryString["Op"] == "Add")
         {
-            db.ExecuteNonQuery("Insert into " + tablename + "(name,username,password,RequerChange,LockedTo,IsActive,JobTitle,Phone,Img,Organization) Values(@name,@username,@password,@RequerChange,@LockedTo,@IsActive,@JobTitle,@Phone,@Img,@Organization)");
+            db.ExecuteNonQuery("Insert into " + tablename + "(name,username,password,RequerChange,LockedTo,IsActive,JobTitle,Phone,Img,Organization,Mobile) Values(@name,@username,@password,@RequerChange,@LockedTo,@IsActive,@JobTitle,@Phone,@Img,@Organization,@Mobile)");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "WriteMsg", "alertify.alert('تم الاضافة ','تم الاضافة بنجاح').set('onok', function(closeEvent){ location.href='" + listpage + "'; } );", true);
         }
     }

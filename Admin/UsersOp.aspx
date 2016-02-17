@@ -78,9 +78,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label5" runat="server" Text="رقم الجوال " CssClass="label_xblack"></asp:Label></td>
+                        <asp:Label ID="Label5" runat="server" Text="رقم الهاتف " CssClass="label_xblack"></asp:Label></td>
                     <td>
                         <asp:TextBox ID="txtPhone" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
+                    </td>
+                    <td></td>
+                </tr>
+                     <tr>
+                    <td>
+                        <asp:Label ID="Label8" runat="server" Text="رقم الجوال " CssClass="label_xblack"></asp:Label></td>
+                    <td>
+                        <asp:TextBox ID="txtMobile" ValidationGroup="Option3" CssClass="txt1" runat="server"></asp:TextBox>
                     </td>
                     <td></td>
                 </tr>

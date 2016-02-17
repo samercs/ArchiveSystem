@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h1 class="text-right">الرسائل المستلمة
+    <h1 class="text-right" style="padding-right:10px;">الرسائل المستلمة
     </h1>
     <table class="tbl table table-responsive ">
         <thead>

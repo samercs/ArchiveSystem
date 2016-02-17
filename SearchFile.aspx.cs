@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kalboard360.ClassCode;
 
-public partial class SearchFile : UsersPages
+public partial class SearchFile : UICaltureBase
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,19 +31,13 @@ public partial class SearchFile : UsersPages
             txtFileDate.Text = date;
             if (no != null)
             {
-                string[] noArray = no.Split('/');
-                if (noArray.Length > 0)
+               // string[] noArray = no.Split('/');
+                if (no.Length > 0)
                 {
-                    txtNo1.Text = noArray[0];
+                    txtNo1.Text = no;
                 }
-                if (noArray.Length > 1)
-                {
-                    txtNo2.Text = noArray[1];
-                }
-                
-
             }
-            
+
             LoadData(txtTitle.Text,no,ddlField.SelectedValue,txtFileDate.Text,ddlCountry.SelectedValue,ddlType.SelectedValue);
         }
     }
@@ -52,12 +46,21 @@ public partial class SearchFile : UsersPages
     {
         Dates dates =new Dates();
         Database db = new Database();
-        Users u = Session["User"] as Users;
-        db.AddParameter("@id", u.Id);
-        string sql = "select files.*,FileTarget.title as TargetName,FileType.Title as TypeName from  (files left join FileTarget on files.Target=FileTarget.id) inner join FileType on Files.Type=FileType.Id where 1=1";
-        if (!string.IsNullOrWhiteSpace(title))
+        //Users u = Session["User"] as Users;
+        //  db.AddParameter("@id", u.Id);
+        string sql;
+        if (Session["User"] == null)
         {
-            sql += " and files.title like '%' + @title + '%'";
+            sql = "select files.*,FileTarget.title as TargetName,FileType.Title as TypeName from  (files left join FileTarget on files.Target=FileTarget.id) inner join FileType on Files.Type=FileType.Id where files.[Security] in (1)";
+
+        }
+        else
+        {
+            sql = "select files.*,FileTarget.title as TargetName,FileType.Title as TypeName from  (files left join FileTarget on files.Target=FileTarget.id) inner join FileType on Files.Type=FileType.Id where  files.[Security] in (1,2)";
+        }
+            if (!string.IsNullOrWhiteSpace(title))
+        {
+            sql += " and (files.title like '%' + @title + '%' or files.[No] like '%' + @title + '%' or files.[From] like '%' + @title + '%' or files.[To] like '%' + @title + '%' or files.[Desc] like '%' + @title + '%' or files.[FileKey] like '%' + @title + '%')";
             db.AddParameter("@title", title);
         }
         if (!string.IsNullOrWhiteSpace(no))
@@ -90,7 +93,20 @@ public partial class SearchFile : UsersPages
             db.AddParameter("@type", type);
         }
 
-
+        if (ddlSort.SelectedValue != "-1")
+        {
+            if (ddlSort.SelectedValue == "1") {
+                sql += " order by files.fileDate desc";
+            }
+            else if (ddlSort.SelectedValue == "2")
+            {
+                sql += " order by files.fileDate asc";
+            }
+            else if (ddlSort.SelectedValue == "3")
+            {
+                sql += " order by files.Title";
+            }
+        }
         DataTable dt = db.ExecuteDataTable(sql);
         Repeater1.DataSource = dt;
         Repeater1.DataBind();
@@ -99,11 +115,43 @@ public partial class SearchFile : UsersPages
 
     protected void Repeater1_OnPagePropertiesChanged(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
     }
 
     protected void btnSearch_OnClick(object sender, EventArgs e)
     {
-        LoadData(txtTitle.Text, txtNo1.Text + "/" + txtNo2.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text,ddlCountry.SelectedValue);
+    }
+
+    protected void ddlSort_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
+    }
+
+    protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
+    }
+
+    protected void ddlField_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
+    }
+
+    protected void txtTitle_TextChanged(object sender, EventArgs e)
+    {
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
+    }
+
+
+    protected void txtFileDate_TextChanged(object sender, EventArgs e)
+    {
+      //  Response.Redirect("d");
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
+    }
+
+    protected void txtNo1_TextChanged(object sender, EventArgs e)
+    {
+        LoadData(txtTitle.Text, txtNo1.Text, ddlField.SelectedValue, txtFileDate.Text, ddlCountry.SelectedValue);
     }
 }

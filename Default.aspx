@@ -42,15 +42,15 @@
 
                                 <div class="col-md-6">
                                     <asp:HiddenField ID="Security" Value='<%#Eval("Security") %>' runat="server" />
-                                    <asp:Panel ID="ShareCon" Visible="False" runat="server">
+                                    <asp:Panel ID="ShareCon" Visible="False" class="txt_left" runat="server">
                                         <!-- AddToAny BEGIN -->
-                                        <a class="a2a_dd" href="https://www.addtoany.com/share">
+                                        <a class="a2a_dd" href="https://www.addtoany.com/share"  data-a2a-url="<%# "http://"+Request.Url.Host+"/FileDetails.aspx?id="+Eval("id") %>">
                                         <img src="//static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share" /></a>
                                         <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
                                         <!-- AddToAny END -->
                                     </asp:Panel>
                                 </div>
-                                <div class="col-md-6 text-right">
+                                <div class="col-md-12 text-right">
                                     <a href="/SystemFiles/Files/<%#Eval("FileUrl") %>" target="_blank"><i class="fa fa-mouse-pointer txt_green"></i>‫تصفح</a>‬
                                     <a class="txt_green" href="/SystemFiles/Files/<%#Eval("FileUrl") %>" download><i class="fa fa-download"></i>‫تحميل</a>‬
                                     <asp:LinkButton CssClass="txt_green" OnCommand="btnAddToFav_OnCommand" CommandArgument='<%#Eval("id") %>' ID="btnAddToFav" runat="server">
@@ -78,7 +78,7 @@
                             <asp:ListView ID="Repeater1" runat="server">
                                 <ItemTemplate>
 
-                                    <tr style="vertical-align: top;">
+                                    <tr style="vertical-align: top;min-height:125px;min-width:100%;">
                                         <td style="vertical-align: top;" class="width_50_px" rowspan="3">
                                             <img src="/SystemFiles/Users/<%#Eval("img") %>" class="small_user_pic" /></td>
                                     </tr>
@@ -242,7 +242,7 @@
                         <tr class="form_table_tr ">
                             <td class="hme">
                                 <img class="img-responsive label_img_model" src="img/arro.png" /><div class="arrow_boxs">
-                                    <label class="text_color_white_smoke ">إسم الملف</label>
+                                    <label class="text_color_white_smoke ">عنوان الملف</label>
                                 </div>
                             </td>
                             <td class="">
